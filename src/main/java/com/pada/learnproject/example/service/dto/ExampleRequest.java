@@ -19,4 +19,6 @@ public class ExampleRequest {
 
     @Enumerated(STRING)
     private ExampleEnum exampleEnum;
+
+    private OneToOneRequest oneToOneRequest;
 }

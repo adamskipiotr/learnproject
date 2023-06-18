@@ -1,0 +1,8 @@
+
+CREATE SEQUENCE one_to_one_seq START 1 INCREMENT 10;
+
+CREATE TABLE IF NOT EXISTS one_to_one
+(
+    id BIGINT NOT NULL,
+    one_column VARCHAR(255)
+);

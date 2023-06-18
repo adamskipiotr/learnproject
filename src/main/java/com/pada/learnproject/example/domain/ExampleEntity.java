@@ -3,10 +3,12 @@ package com.pada.learnproject.example.domain;
 
 import static jakarta.persistence.EnumType.STRING;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Enumerated;
@@ -33,5 +35,7 @@ public class ExampleEntity {
     @Enumerated(STRING)
     private ExampleEnum exampleEnum;
 
+    @OneToOne(mappedBy = "exampleEntity", cascade = CascadeType.ALL)
+    private OneToOneEntity oneToOneEntity;
 
 }
