@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  learnproject-db:
+    image: postgres:14.7
+    environment:
+      - POSTGRES_DB=learnproject
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 127.0.0.1:5432:5432
