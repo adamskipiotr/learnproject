@@ -4,14 +4,15 @@ import com.pada.learnproject.example.domain.OneToOneEntity;
 import com.pada.learnproject.example.service.dto.OneToOneRequest;
 import com.pada.learnproject.example.service.dto.OneToOneResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface OneToOneMapper {
 
-//    @Mapping(target = "id", ignore = true)
-//    @Mapping(target = "exampleEntity", source = "exampleRequest")
     OneToOneEntity toEntity(OneToOneRequest request);
 
     OneToOneResponse toResponse(OneToOneEntity entity);
+
+    OneToOneEntity updateEntity(@MappingTarget OneToOneEntity entity, OneToOneRequest request);
 }

@@ -21,9 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ExampleService {
 
     private final ExampleEntityRepository exampleEntityRepository;
-    private final OneToOneRepository oneToOneRepository;
     private final ExampleEntityMapper exampleEntityMapper;
-    private final OneToOneMapper oneToOneMapper;
 
 
     @Transactional
@@ -44,5 +42,16 @@ public class ExampleService {
         ExampleEntity exampleEntity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         return exampleEntityMapper.toResponse(exampleEntity);
 
+    }
+
+    public ExampleResponse updateExampleEntity(ExampleRequest exampleRequest, Long id) {
+        ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
+        entity = exampleEntityMapper.updateEntity(entity, exampleRequest);
+        exampleEntityRepository.save(entity);
+        return exampleEntityMapper.toResponse(entity);
+    }
+
+    public void deleteExample(Long id) {
+        exampleEntityRepository.deleteById(id);
     }
 }

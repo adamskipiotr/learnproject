@@ -21,7 +21,7 @@ public class OneToOneEntity {
     private Long id;
 
     @MapsId
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id") // owning side
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ExampleEntity exampleEntity;
 

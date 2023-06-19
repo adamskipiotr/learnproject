@@ -5,16 +5,26 @@ import static jakarta.persistence.EnumType.STRING;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Enumerated;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SortNatural;
 
 @Entity
 @NoArgsConstructor
@@ -37,5 +47,35 @@ public class ExampleEntity {
 
     @OneToOne(mappedBy = "exampleEntity", cascade = CascadeType.ALL)
     private OneToOneEntity oneToOneEntity;
+
+    @OneToMany(mappedBy = "exampleEntity", cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<ManyToOneEntity> manyToOneEntityList = new ArrayList<>();
+
+    // Good practice - use Set in ManyToMany
+    // Good practice - Cascade.ALL makes no sense in ManyToMany, may be even harmful
+    // https://vladmihalcea.com/the-best-way-to-use-the-manytomany-annotation-with-jpa-and-hibernate/
+    @ManyToMany(cascade = {
+        CascadeType.PERSIST,
+        CascadeType.MERGE
+    })
+    @JoinTable(name = "example_entity__many_to_many_entity",
+    joinColumns = @JoinColumn(name = "example_entity_id"),
+    inverseJoinColumns = @JoinColumn(name = "many_to_many_entity_id"))
+    @SortNatural
+    private SortedSet<ManyToManyEntity> manyToManyEntitySet = new TreeSet<>();
+
+
+    // Good practice - use adder
+    // https://medium.com/@rajibrath20/the-best-way-to-map-a-onetomany-relationship-with-jpa-and-hibernate-dbbf6dba00d3
+    public void addManyToOneEntity(ManyToOneEntity manyToOneEntity) {
+        manyToOneEntityList.add(manyToOneEntity);
+        manyToOneEntity.setExampleEntity(this);
+    }
+
+    public void removeManyToOneEntity(ManyToOneEntity branch) {
+        manyToOneEntityList.remove(branch);
+        branch.setExampleEntity(null);
+    }
 
 }
