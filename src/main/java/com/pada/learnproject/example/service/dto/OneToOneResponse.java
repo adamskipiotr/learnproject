@@ -4,12 +4,5 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-public class OneToOneResponse {
-
-    private Long id;
-
-    private String oneColumn;
+public record OneToOneResponse(Long id, String oneColumn) {
 }

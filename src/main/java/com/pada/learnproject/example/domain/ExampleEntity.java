@@ -45,10 +45,10 @@ public class ExampleEntity {
     @Enumerated(STRING)
     private ExampleEnum exampleEnum;
 
-    @OneToOne(mappedBy = "exampleEntity", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = OneToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL)
     private OneToOneEntity oneToOneEntity;
 
-    @OneToMany(mappedBy = "exampleEntity", cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = ManyToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL,
         fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ManyToOneEntity> manyToOneEntityList = new ArrayList<>();
 

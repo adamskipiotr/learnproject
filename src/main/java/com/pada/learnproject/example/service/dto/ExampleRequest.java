@@ -10,21 +10,36 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-public class ExampleRequest {
+public record ExampleRequest (
 
-    public String name;
+     String name,
 
-    private Long value;
+     Long value,
 
-    @Enumerated(STRING)
-    private ExampleEnum exampleEnum;
 
-    private OneToOneRequest oneToOneRequest;
+     OneToOneRequest oneToOneRequest,
 
-    private List<ManyToOneRequest> manyToOneRequestList;
+     List<ManyToOneRequest> manyToOneRequestList,
 
-    private Set<ManyToManyRequest> manyToManyRequestSet;
-}
+     Set<ManyToManyRequest> manyToManyRequestSet
+){}
+
+
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//public class ExampleRequest {
+//
+//    public String name;
+//
+//    private Long value;
+//
+//    @Enumerated(STRING)
+//    private ExampleEnum exampleEnum;
+//
+//    private OneToOneRequest oneToOneRequest;
+//
+//    private List<ManyToOneRequest> manyToOneRequestList;
+//
+//    private Set<ManyToManyRequest> manyToManyRequestSet;
+//}

@@ -1,14 +1,15 @@
 package com.pada.learnproject.example.service;
 
+import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byNameLike;
+import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byValue;
+
 import com.pada.learnproject.example.domain.ExampleCriteria;
 import com.pada.learnproject.example.domain.ExampleEntity;
 import com.pada.learnproject.example.repository.ExampleEntityRepository;
-import com.pada.learnproject.example.repository.OneToOneRepository;
 import com.pada.learnproject.example.service.dto.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.ExampleRequest;
 import com.pada.learnproject.example.service.dto.ExampleResponse;
 import com.pada.learnproject.example.service.mapper.ExampleEntityMapper;
-import com.pada.learnproject.example.service.mapper.OneToOneMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,9 +27,18 @@ public class ExampleService {
 
     @Transactional
     public Page<ExampleListResponse> getExamples(Pageable pageable, ExampleCriteria exampleCriteria) {
-        Specification<ExampleEntity> exampleEntitySpecification = null;
+        Specification<ExampleEntity> exampleEntitySpecification = createSpecification(exampleCriteria);
         Page<ExampleEntity> exampleEntityPage = exampleEntityRepository.findAll(exampleEntitySpecification, pageable);
         return exampleEntityPage.map(exampleEntityMapper::toListResponse);
+    }
+
+
+    private Specification<ExampleEntity> createSpecification(ExampleCriteria filter) {
+        Specification<ExampleEntity> specification = Specification.where(null);
+        specification = byValue(specification, filter.getValue());
+        specification = byNameLike(specification, filter.getName());
+        return specification;
+
     }
 
     @Transactional
@@ -44,6 +54,7 @@ public class ExampleService {
 
     }
 
+    @Transactional
     public ExampleResponse updateExampleEntity(ExampleRequest exampleRequest, Long id) {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         entity = exampleEntityMapper.updateEntity(entity, exampleRequest);
@@ -51,6 +62,7 @@ public class ExampleService {
         return exampleEntityMapper.toResponse(entity);
     }
 
+    @Transactional
     public void deleteExample(Long id) {
         exampleEntityRepository.deleteById(id);
     }

@@ -28,7 +28,7 @@ public class ManyToManyEntity implements Comparable<ManyToManyEntity> {
     private String manyToManyName;
 
 
-    @ManyToMany(mappedBy = "manyToManyEntitySet")
+    @ManyToMany(mappedBy = ExampleEntity_.MANY_TO_MANY_ENTITY_SET)
     private Set<ExampleEntity> exampleEntitySet = new HashSet<>();
 
 
