@@ -10,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -21,16 +22,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.SortNatural;
 
+
+
 @Entity
+@Data
+@Builder
+//All args constructor and no args constructor needed -
+// @Builder prevents from compiling otherwise
+@AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@Table(name = "example_table")
+@Table(name = "example_table", indexes = @Index(columnList = "name, value"))
 public class ExampleEntity {
 
     @Id
@@ -50,6 +57,7 @@ public class ExampleEntity {
 
     @OneToMany(mappedBy = ManyToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL,
         fetch = FetchType.LAZY, orphanRemoval = true)
+    @Builder.Default
     private List<ManyToOneEntity> manyToOneEntityList = new ArrayList<>();
 
     // Good practice - use Set in ManyToMany
@@ -60,9 +68,10 @@ public class ExampleEntity {
         CascadeType.MERGE
     })
     @JoinTable(name = "example_entity__many_to_many_entity",
-    joinColumns = @JoinColumn(name = "example_entity_id"),
-    inverseJoinColumns = @JoinColumn(name = "many_to_many_entity_id"))
+        joinColumns = @JoinColumn(name = "example_entity_id"),
+        inverseJoinColumns = @JoinColumn(name = "many_to_many_entity_id"))
     @SortNatural
+    @Builder.Default
     private SortedSet<ManyToManyEntity> manyToManyEntitySet = new TreeSet<>();
 
 

@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.show-sql: true
+    hibernate.ddl-auto: validate
+    show-sql: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:tc:postgresql:12.8:///learnproject?TC_TMPFS=/testtmpfs:rw
+    username: postgres
+    password:
+  flyway:
+    baseline-on-migrate: true
+  graphql:
+    graphiql.enabled: true
+    graphiql.path: /graphiql
+
+graphql.servlet.maxQueryDepth: 5
+

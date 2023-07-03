@@ -24,6 +24,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.4'
     implementation 'org.springframework.boot:spring-boot-starter-graphql:3.0.4'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.0.4'
+    // https://mvnrepository.com/artifact/org.springframework/spring-websocket
+    implementation group: 'org.springframework', name: 'spring-websocket', version: '6.0.10'
+// https://mvnrepository.com/artifact/org.springframework/spring-messaging
+    implementation group: 'org.springframework', name: 'spring-messaging', version: '6.0.10'
+
+    implementation 'com.graphql-java:graphql-java:20.4'
+    // https://mvnrepository.com/artifact/com.graphql-java-kickstart/playground-spring-boot-starter
+    runtimeOnly group: 'com.graphql-java-kickstart', name: 'playground-spring-boot-starter', version: '5.10.0'
+
     // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
     implementation group: 'org.flywaydb', name: 'flyway-core', version: '9.19.3'
 
@@ -49,13 +58,23 @@ dependencies {
 
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
+    //Needed for Specification<> to generate metamodel classes for entities
+    annotationProcessor 'org.hibernate:hibernate-jpamodelgen:6.1.7.Final'
+
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.0'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.springframework:spring-webflux:6.0.6'
     testImplementation 'org.springframework.graphql:spring-graphql-test:1.2.0'
     testImplementation 'org.testcontainers:junit-jupiter:1.17.6'
-    testImplementation 'org.testcontainers:postgresql:1.17.6'
+    // https://mvnrepository.com/artifact/org.springframework/spring-aop
+    implementation group: 'org.springframework', name: 'spring-aop', version: '6.0.10'
+    // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+    runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.19'
+    // https://mvnrepository.com/artifact/org.testcontainers/postgresql
+    testImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.18.3'
+
+
 
 }
 

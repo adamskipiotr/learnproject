@@ -1,8 +1,8 @@
 package com.pada.learnproject.example.service.mapper;
 
 import com.pada.learnproject.example.domain.ManyToManyEntity;
-import com.pada.learnproject.example.service.dto.ManyToManyRequest;
-import com.pada.learnproject.example.service.dto.ManyToManyResponse;
+import com.pada.learnproject.example.service.dto.request.ManyToManyRequest;
+import com.pada.learnproject.example.service.dto.response.ManyToManyResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;

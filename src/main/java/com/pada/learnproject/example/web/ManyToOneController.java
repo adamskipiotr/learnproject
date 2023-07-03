@@ -1,9 +1,8 @@
 package com.pada.learnproject.example.web;
 
 import com.pada.learnproject.example.service.ManyToOneService;
-import com.pada.learnproject.example.service.dto.ManyToManyRequest;
-import com.pada.learnproject.example.service.dto.ManyToOneRequest;
-import com.pada.learnproject.example.service.dto.ManyToOneResponse;
+import com.pada.learnproject.example.service.dto.request.ManyToOneRequest;
+import com.pada.learnproject.example.service.dto.response.ManyToOneResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;

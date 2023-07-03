@@ -7,12 +7,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "one_to_one")
 public class OneToOneEntity {
@@ -26,4 +30,9 @@ public class OneToOneEntity {
     private ExampleEntity exampleEntity;
 
     private String oneColumn;
+
+    public void setExampleEntity(ExampleEntity exampleEntity) {
+        this.exampleEntity = exampleEntity;
+        exampleEntity.setOneToOneEntity(this);
+    }
 }

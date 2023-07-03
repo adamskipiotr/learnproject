@@ -1,9 +1,9 @@
 package com.pada.learnproject.example.service.mapper;
 
 import com.pada.learnproject.example.domain.ExampleEntity;
-import com.pada.learnproject.example.service.dto.ExampleListResponse;
-import com.pada.learnproject.example.service.dto.ExampleRequest;
-import com.pada.learnproject.example.service.dto.ExampleResponse;
+import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
+import com.pada.learnproject.example.service.dto.request.ExampleRequest;
+import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import java.util.Optional;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.CollectionMappingStrategy;

@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.show-sql: true
+    hibernate.ddl-auto: validate
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learnproject
+    username: postgres
+    password: postgres
+  flyway:
+    baseline-on-migrate: true
+  graphql:
+    graphiql.enabled: true
+    graphiql.path: /graphiql
+
+graphql.servlet.maxQueryDepth: 5

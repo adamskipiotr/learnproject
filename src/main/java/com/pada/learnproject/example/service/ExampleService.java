@@ -2,14 +2,17 @@ package com.pada.learnproject.example.service;
 
 import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byNameLike;
 import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byValue;
+import static java.util.stream.Collectors.toList;
 
 import com.pada.learnproject.example.domain.ExampleCriteria;
 import com.pada.learnproject.example.domain.ExampleEntity;
 import com.pada.learnproject.example.repository.ExampleEntityRepository;
-import com.pada.learnproject.example.service.dto.ExampleListResponse;
-import com.pada.learnproject.example.service.dto.ExampleRequest;
-import com.pada.learnproject.example.service.dto.ExampleResponse;
+import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
+import com.pada.learnproject.example.service.dto.request.ExampleRequest;
+import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
+import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.service.mapper.ExampleEntityMapper;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,10 +29,16 @@ public class ExampleService {
 
 
     @Transactional
-    public Page<ExampleListResponse> getExamples(Pageable pageable, ExampleCriteria exampleCriteria) {
+    public ExampleListWrapperResponse getExamples(Pageable pageable, ExampleCriteria exampleCriteria) {
         Specification<ExampleEntity> exampleEntitySpecification = createSpecification(exampleCriteria);
         Page<ExampleEntity> exampleEntityPage = exampleEntityRepository.findAll(exampleEntitySpecification, pageable);
-        return exampleEntityPage.map(exampleEntityMapper::toListResponse);
+
+        List<ExampleListResponse> data = exampleEntityPage
+            .stream()
+            .map(exampleEntityMapper::toListResponse)
+            .collect(toList());
+
+        return new ExampleListWrapperResponse(data);
     }
 
 
@@ -37,14 +46,18 @@ public class ExampleService {
         Specification<ExampleEntity> specification = Specification.where(null);
         specification = byValue(specification, filter.getValue());
         specification = byNameLike(specification, filter.getName());
+
         return specification;
 
     }
 
     @Transactional
-    public void addExampleEntity(ExampleRequest exampleRequest) {
+    public ExampleResponse addExampleEntity(ExampleRequest exampleRequest) {
         ExampleEntity entity = exampleEntityMapper.toEntity(exampleRequest);
+        //TODO refactor
+        entity.getOneToOneEntity().setExampleEntity(entity);
         exampleEntityRepository.save(entity);
+        return exampleEntityMapper.toResponse(entity);
     }
 
     @Transactional
@@ -58,12 +71,14 @@ public class ExampleService {
     public ExampleResponse updateExampleEntity(ExampleRequest exampleRequest, Long id) {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         entity = exampleEntityMapper.updateEntity(entity, exampleRequest);
-        exampleEntityRepository.save(entity);
+        //save not needed with JPA - persistent entity
         return exampleEntityMapper.toResponse(entity);
     }
 
     @Transactional
-    public void deleteExample(Long id) {
+    public ExampleResponse deleteExample(Long id) {
+        ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         exampleEntityRepository.deleteById(id);
+        return exampleEntityMapper.toResponse(entity);
     }
 }

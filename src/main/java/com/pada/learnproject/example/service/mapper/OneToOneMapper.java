@@ -1,8 +1,8 @@
 package com.pada.learnproject.example.service.mapper;
 
 import com.pada.learnproject.example.domain.OneToOneEntity;
-import com.pada.learnproject.example.service.dto.OneToOneRequest;
-import com.pada.learnproject.example.service.dto.OneToOneResponse;
+import com.pada.learnproject.example.service.dto.request.OneToOneRequest;
+import com.pada.learnproject.example.service.dto.response.OneToOneResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;

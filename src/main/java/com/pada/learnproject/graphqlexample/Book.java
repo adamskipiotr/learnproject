@@ -2,7 +2,9 @@ package com.pada.learnproject.graphqlexample;
 
 import java.util.Arrays;
 import java.util.List;
+import lombok.Data;
 
+@Data
 public class Book {
 
     private String id;
@@ -25,6 +27,10 @@ public class Book {
 
     public static Book getById(String id) {
         return books.stream().filter(book -> book.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public static List<Book> getBooks() {
+        return books;
     }
 
     public String getId() {
