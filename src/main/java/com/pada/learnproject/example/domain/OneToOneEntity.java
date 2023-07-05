@@ -24,6 +24,8 @@ public class OneToOneEntity {
     @Id
     private Long id;
 
+    //Good practice - mapping ID with parent
+    //see:
     @MapsId
     @JoinColumn(name = "id") // owning side
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

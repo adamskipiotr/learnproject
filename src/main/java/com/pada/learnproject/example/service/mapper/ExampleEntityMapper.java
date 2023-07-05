@@ -35,5 +35,8 @@ public interface ExampleEntityMapper {
     @Mapping(target = "manyToManyResponseSet", source = "manyToManyEntitySet")
     ExampleResponse toResponse(ExampleEntity exampleEntity);
 
+    @Mapping(target = "oneToOneEntity", source = "oneToOneRequest")
+    @Mapping(target = "manyToOneEntityList", source = "manyToOneRequestList")
+    @Mapping(target = "manyToManyEntitySet", source = "manyToManyRequestSet")
     ExampleEntity updateEntity(@MappingTarget ExampleEntity entity, ExampleRequest request);
 }

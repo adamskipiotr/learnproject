@@ -16,6 +16,9 @@ import com.pada.learnproject.example.repository.ExampleEntityRepository;
 import com.pada.learnproject.example.repository.ManyToManyRepository;
 import com.pada.learnproject.example.repository.ManyToOneRepository;
 import com.pada.learnproject.example.repository.OneToOneRepository;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,35 +52,40 @@ public class ExampleBaseIT {
     @Transactional
     public void setUpTestData() {
         insertDefaultExampleEntity();
-        insertOneToOneExampleEntity();
-        insertManyToOneExampleEntity();
-        insertManyToManyExampleEntity();
+        //TODO fix setters
+        //        insertOneToOneExampleEntity();
+        //        insertManyToOneExampleEntity();
+        //        insertManyToManyExampleEntity();
         exampleEntityRepository.saveAndFlush(createSecondTestExampleEntity());
         exampleEntityRepository.saveAndFlush(createThirdTestExampleEntity());
 
     }
 
-    private void insertOneToOneExampleEntity() {
-        oneToOneEntity = createDefaultTestOneToOneEntity();
-        oneToOneEntity.setExampleEntity(exampleEntity);
-        oneToOneEntity = oneToOneRepository.saveAndFlush(oneToOneEntity);
-    }
 
-    private void insertManyToOneExampleEntity() {
-        manyToOneEntity = createDefaultTestManyToOneEntity();
-        manyToOneEntity = manyToOneRepository.saveAndFlush(manyToOneEntity);
-    }
+    //TODO fix setters
+    //    private void insertOneToOneExampleEntity() {
+    //        oneToOneEntity = createDefaultTestOneToOneEntity();
+    //        oneToOneEntity.setExampleEntity(exampleEntity);
+    //        oneToOneEntity = oneToOneRepository.saveAndFlush(oneToOneEntity);
+    //    }
+    //
+    //    private void insertManyToOneExampleEntity() {
+    //        manyToOneEntity = createDefaultTestManyToOneEntity();
+    //        manyToOneEntity = manyToOneRepository.saveAndFlush(manyToOneEntity);
+    //    }
+    //
+    //    private void insertManyToManyExampleEntity() {
+    //        manyToManyEntity = createDefaultTestManyToManyEntity();
+    //        manyToManyEntity = manyToManyRepository.saveAndFlush(manyToManyEntity);
+    //    }
 
-    private void insertManyToManyExampleEntity() {
-        manyToManyEntity = createDefaultTestManyToManyEntity();
-        manyToManyEntity = manyToManyRepository.saveAndFlush(manyToManyEntity);
-    }
-
+    //TODO fix setters
     private void insertDefaultExampleEntity() {
         exampleEntity = createDefaultTestExampleEntity();
-         //    exampleEntity.setOneToOneEntity(oneToOneEntity);
-        //     exampleEntity.setManyToOneEntityList(List.of(manyToOneEntity));
-        //     exampleEntity.setManyToManyEntitySet(new TreeSet<>(Set.of(manyToManyEntity)));
+        exampleEntity.setOneToOneEntity(createDefaultTestOneToOneEntity());
+        exampleEntity.getOneToOneEntity().setExampleEntity(exampleEntity);
+        exampleEntity.setManyToOneEntityList(List.of(createDefaultTestManyToOneEntity()));
+        exampleEntity.setManyToManyEntitySet(new TreeSet<>(Set.of(createDefaultTestManyToManyEntity())));
         exampleEntity = exampleEntityRepository.saveAndFlush(exampleEntity);
     }
 

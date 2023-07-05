@@ -3,7 +3,6 @@ package com.pada.learnproject.example.service;
 import com.pada.learnproject.example.domain.ExampleEntity;
 import com.pada.learnproject.example.domain.ManyToOneEntity;
 import com.pada.learnproject.example.repository.ExampleEntityRepository;
-import com.pada.learnproject.example.repository.ManyToOneRepository;
 import com.pada.learnproject.example.service.dto.request.ManyToOneRequest;
 import com.pada.learnproject.example.service.dto.response.ManyToOneResponse;
 import com.pada.learnproject.example.service.mapper.ManyToOneMapper;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class ManyToOneService {
 
     private final ExampleEntityRepository exampleEntityRepository;
-    private final ManyToOneRepository manyToOneRepository;
     private final ManyToOneMapper manyToOneMapper;
 
 

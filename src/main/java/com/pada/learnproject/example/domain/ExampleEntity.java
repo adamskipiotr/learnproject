@@ -25,14 +25,19 @@ import java.util.TreeSet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.SortNatural;
 
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
+@EqualsAndHashCode
 //All args constructor and no args constructor needed -
 // @Builder prevents from compiling otherwise
 @AllArgsConstructor
@@ -72,6 +77,9 @@ public class ExampleEntity {
         inverseJoinColumns = @JoinColumn(name = "many_to_many_entity_id"))
     @SortNatural
     @Builder.Default
+    //Preventing loop in hashCode
+    //see more: https://stackoverflow.com/a/68605588
+    @EqualsAndHashCode.Exclude
     private SortedSet<ManyToManyEntity> manyToManyEntitySet = new TreeSet<>();
 
 
