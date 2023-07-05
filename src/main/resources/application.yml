@@ -2,7 +2,9 @@ spring:
   jpa:
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate.show-sql: true
+      hibernate:
+        format_sql: true
+        show-sql: true
     hibernate.ddl-auto: validate
     show-sql: true
   datasource:
@@ -15,4 +17,7 @@ spring:
     graphiql.enabled: true
     graphiql.path: /graphiql
 
+
 graphql.servlet.maxQueryDepth: 5
+
+

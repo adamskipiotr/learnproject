@@ -1,8 +1,8 @@
 package com.pada.learnproject.example.service.mapper;
 
 import com.pada.learnproject.example.domain.ExampleEntity;
-import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.request.ExampleRequest;
+import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import java.util.Optional;
 import org.mapstruct.AfterMapping;
@@ -13,7 +13,8 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", uses = {OneToOneMapper.class, ManyToOneMapper.class, ManyToManyMapper.class},
-    collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+    collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED, unmappedTargetPolicy =
+    ReportingPolicy.IGNORE)
 public interface ExampleEntityMapper {
 
     ExampleListResponse toListResponse(ExampleEntity entity);
@@ -39,4 +40,5 @@ public interface ExampleEntityMapper {
     @Mapping(target = "manyToOneEntityList", source = "manyToOneRequestList")
     @Mapping(target = "manyToManyEntitySet", source = "manyToManyRequestSet")
     ExampleEntity updateEntity(@MappingTarget ExampleEntity entity, ExampleRequest request);
+
 }

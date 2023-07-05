@@ -85,6 +85,7 @@ public class ExampleBaseIT {
         exampleEntity.setOneToOneEntity(createDefaultTestOneToOneEntity());
         exampleEntity.getOneToOneEntity().setExampleEntity(exampleEntity);
         exampleEntity.setManyToOneEntityList(List.of(createDefaultTestManyToOneEntity()));
+        exampleEntity.getManyToOneEntityList().forEach(manyToOne -> manyToOne.setExampleEntity(exampleEntity));
         exampleEntity.setManyToManyEntitySet(new TreeSet<>(Set.of(createDefaultTestManyToManyEntity())));
         exampleEntity = exampleEntityRepository.saveAndFlush(exampleEntity);
     }

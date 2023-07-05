@@ -9,10 +9,8 @@ import com.pada.learnproject.common.TestUtil;
 import com.pada.learnproject.example.ExampleBaseIT;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 
-@SpringBootTest
 public class ExampleControllerPostExample extends ExampleBaseIT {
 
     @Test

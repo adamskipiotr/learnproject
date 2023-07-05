@@ -12,5 +12,9 @@ public interface ExampleEntityConstants {
 
     class Urls {
          public static final String EXAMPLES = "/examples";
+
+         public static String createUrlWithEntityId(Long id){
+             return EXAMPLES + "/" + id;
+         }
     }
 }

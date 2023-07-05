@@ -24,7 +24,6 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -65,21 +64,19 @@ public class ExampleEntity {
     @Builder.Default
     private List<ManyToOneEntity> manyToOneEntityList = new ArrayList<>();
 
-    // Good practice - use Set in ManyToMany
-    // Good practice - Cascade.ALL makes no sense in ManyToMany, may be even harmful
-    // https://vladmihalcea.com/the-best-way-to-use-the-manytomany-annotation-with-jpa-and-hibernate/
-    @ManyToMany(cascade = {
-        CascadeType.PERSIST,
-        CascadeType.MERGE
-    })
-    @JoinTable(name = "example_entity__many_to_many_entity",
-        joinColumns = @JoinColumn(name = "example_entity_id"),
-        inverseJoinColumns = @JoinColumn(name = "many_to_many_entity_id"))
+
     @SortNatural
     @Builder.Default
     //Preventing loop in hashCode
     //see more: https://stackoverflow.com/a/68605588
     @EqualsAndHashCode.Exclude
+    // Good practice - use Set in ManyToMany
+    // Good practice - Cascade.ALL makes no sense in ManyToMany, may be even harmful
+    // https://vladmihalcea.com/the-best-way-to-use-the-manytomany-annotation-with-jpa-and-hibernate/
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "example_entity__many_to_many_entity",
+        joinColumns = @JoinColumn(name = "example_entity_id"),
+        inverseJoinColumns = @JoinColumn(name = "many_to_many_entity_id"))
     private SortedSet<ManyToManyEntity> manyToManyEntitySet = new TreeSet<>();
 
 

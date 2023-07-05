@@ -58,14 +58,15 @@ public class ExamplesController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ExampleResponse> updateExample(@PathVariable(name = "id") Long id, @RequestBody ExampleRequest exampleRequest) {
+    public ResponseEntity<ExampleResponse> updateExample(@PathVariable(name = "id") Long id,
+        @RequestBody ExampleRequest exampleRequest) {
         ExampleResponse response = exampleEntityService.updateExampleEntity(exampleRequest, id);
         return ResponseEntity.status(OK).body(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ExampleResponse> deleteExample(@PathVariable(name = "id") Long id) {
-        ExampleResponse response =exampleEntityService.deleteExample(id);
+        ExampleResponse response = exampleEntityService.deleteExample(id);
         return ResponseEntity.status(OK).body(response);
     }
 }

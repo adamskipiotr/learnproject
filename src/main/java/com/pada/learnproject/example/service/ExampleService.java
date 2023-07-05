@@ -10,6 +10,7 @@ import com.pada.learnproject.example.repository.ExampleEntityRepository;
 import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.request.ExampleRequest;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
+import com.pada.learnproject.example.service.dto.response.ExampleProjection;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.service.mapper.ExampleEntityMapper;
 import java.util.List;
@@ -54,9 +55,8 @@ public class ExampleService {
     @Transactional
     public ExampleResponse addExampleEntity(ExampleRequest exampleRequest) {
         ExampleEntity entity = exampleEntityMapper.toEntity(exampleRequest);
-        //TODO refactor
+        //TODO refactor setter
         entity.getOneToOneEntity().setExampleEntity(entity);
-        exampleEntityRepository.save(entity);
         return exampleEntityMapper.toResponse(entity);
     }
 
@@ -68,10 +68,11 @@ public class ExampleService {
     }
 
     @Transactional
+    //TODO manyToOne updating - expected behaviour to update existing and add new
     public ExampleResponse updateExampleEntity(ExampleRequest exampleRequest, Long id) {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         entity = exampleEntityMapper.updateEntity(entity, exampleRequest);
-        //save not needed with JPA - persistent entity
+        //save not needed with JPA
         return exampleEntityMapper.toResponse(entity);
     }
 

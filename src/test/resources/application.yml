@@ -2,9 +2,10 @@ spring:
   jpa:
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate.show-sql: true
+      hibernate:
+        format_sql: true
+        show-sql: true
     hibernate.ddl-auto: validate
-    show-sql: true
   datasource:
     url: jdbc:postgresql://localhost:5432/learnproject
     username: postgres
