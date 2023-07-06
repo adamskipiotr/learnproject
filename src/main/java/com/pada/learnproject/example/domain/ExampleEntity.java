@@ -28,6 +28,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.Singular;
 import org.hibernate.annotations.SortNatural;
 
 
@@ -35,17 +36,19 @@ import org.hibernate.annotations.SortNatural;
 @Entity
 @Getter
 @Setter
-@Builder
 @EqualsAndHashCode
+@Builder
 //All args constructor and no args constructor needed -
 // @Builder prevents from compiling otherwise
-@AllArgsConstructor
+//  NoArgsConstructor must be before
+// AllArgsConstructor in order to be used
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "example_table", indexes = @Index(columnList = "name, value"))
 public class ExampleEntity {
 
     @Id
-    @SequenceGenerator(name = "config_id_sequence", sequenceName = "config_id_seq", allocationSize = 22)
+    @SequenceGenerator(name = "config_id_sequence", sequenceName = "config_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "config_id_sequence")
     private Long id;
 
@@ -73,7 +76,7 @@ public class ExampleEntity {
     // Good practice - use Set in ManyToMany
     // Good practice - Cascade.ALL makes no sense in ManyToMany, may be even harmful
     // https://vladmihalcea.com/the-best-way-to-use-the-manytomany-annotation-with-jpa-and-hibernate/
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "example_entity__many_to_many_entity",
         joinColumns = @JoinColumn(name = "example_entity_id"),
         inverseJoinColumns = @JoinColumn(name = "many_to_many_entity_id"))
@@ -87,9 +90,9 @@ public class ExampleEntity {
         manyToOneEntity.setExampleEntity(this);
     }
 
+
     public void removeManyToOneEntity(ManyToOneEntity branch) {
         manyToOneEntityList.remove(branch);
         branch.setExampleEntity(null);
     }
-
 }

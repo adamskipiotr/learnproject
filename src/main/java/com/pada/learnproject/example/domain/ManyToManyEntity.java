@@ -1,6 +1,7 @@
 package com.pada.learnproject.example.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,7 +34,7 @@ public class ManyToManyEntity implements Comparable<ManyToManyEntity> {
 
     @Builder.Default
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = ExampleEntity_.MANY_TO_MANY_ENTITY_SET)
+    @ManyToMany(mappedBy = ExampleEntity_.MANY_TO_MANY_ENTITY_SET, fetch = FetchType.LAZY)
     private Set<ExampleEntity> exampleEntitySet = new HashSet<>();
 
     public int compareTo(ManyToManyEntity o) {

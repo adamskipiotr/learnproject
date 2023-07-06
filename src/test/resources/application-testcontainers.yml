@@ -19,4 +19,5 @@ spring:
     graphiql.path: /graphiql
 
 graphql.servlet.maxQueryDepth: 5
+spring.jpa.open-in-view: false
 

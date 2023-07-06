@@ -14,6 +14,7 @@ import com.pada.learnproject.example.service.dto.response.ExampleProjection;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.service.mapper.ExampleEntityMapper;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -57,14 +58,16 @@ public class ExampleService {
         ExampleEntity entity = exampleEntityMapper.toEntity(exampleRequest);
         //TODO refactor setter
         entity.getOneToOneEntity().setExampleEntity(entity);
+        exampleEntityRepository.save(entity);
         return exampleEntityMapper.toResponse(entity);
     }
 
     @Transactional
     public ExampleResponse getExample(Long id) {
         ExampleEntity exampleEntity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
+        exampleEntity.getManyToManyEntitySet().forEach(System.out::println);
+        exampleEntity.getManyToOneEntityList().forEach(System.out::println);
         return exampleEntityMapper.toResponse(exampleEntity);
-
     }
 
     @Transactional
@@ -72,7 +75,7 @@ public class ExampleService {
     public ExampleResponse updateExampleEntity(ExampleRequest exampleRequest, Long id) {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         entity = exampleEntityMapper.updateEntity(entity, exampleRequest);
-        //save not needed with JPA
+        //save not needed with JPA for managed entity
         return exampleEntityMapper.toResponse(entity);
     }
 

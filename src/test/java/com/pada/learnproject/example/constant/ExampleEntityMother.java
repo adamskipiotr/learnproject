@@ -31,7 +31,7 @@ public interface ExampleEntityMother {
     String UPDATE_EXAMPLE_ENTITY_NAME = "UPDATE EXAMPLE ENTITY NAME";
     Long UPDATE_EXAMPLE_ENTITY_VALUE = 1111L;
     ExampleEnum UPDATE_EXAMPLE_ENUM = ExampleEnum.POSITION_2;
-     Long NON_EXISTING_ID = -1L;
+    Long NON_EXISTING_ID = -1L;
 
     static ExampleEntity createDefaultTestExampleEntity() {
         return ExampleEntity.builder()
@@ -64,6 +64,7 @@ public interface ExampleEntityMother {
 
     static ExampleRequest createUpdateExampleRequest() {
         return new ExampleRequest(UPDATE_EXAMPLE_ENTITY_NAME, UPDATE_EXAMPLE_ENTITY_VALUE,
-            createUpdateOneToOneRequest(), List.of(createUpdateManyToOneRequest()), Set.of(createUpdateManyToManyRequest()));
+            createUpdateOneToOneRequest(), List.of(createUpdateManyToOneRequest()),
+            Set.of(createUpdateManyToManyRequest()));
     }
 }
