@@ -15,4 +15,4 @@ jobs:
       - name: Testcontainer up
         run: docker-compose -f devops/postgres.yml up
       - name: Build with gradle
-        run: ./gradlew build
+        run: gradle build
