@@ -12,5 +12,7 @@ jobs:
           distribution: 'adopt'
       - name: Make gradlew executable
         run: chmod +x ./gradlew
+      - name: Testcontainer up
+        run: docker-compose -f devops/postgres.yml up
       - name: Build with gradle
         run: ./gradlew build
