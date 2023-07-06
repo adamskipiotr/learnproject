@@ -1,39 +1,45 @@
 package com.pada.learnproject;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.boot.test.util.TestPropertyValues;
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@ActiveProfiles("test")
 @Testcontainers
+@DirtiesContext
+@ContextConfiguration(initializers = LearnprojectApplicationTests.TestEnvInitializer.class)
+@TestPropertySource(properties = {
+    "spring.datasource.driver-class-name="
+})
 public class LearnprojectApplicationTests {
 
-
     @Container
-    private static PostgreSQLContainer<?> postgreSQLContainer =
-        new PostgreSQLContainer<>("postgres:14.1")
-            .withDatabaseName("postgres")
-            .withPassword("postgres")
-            .withUsername("postgres");
+    private static final PostgreSQLContainer<?> POSTGRES_DB = new PostgreSQLContainer<>("postgres:12.8")
+        .withDatabaseName("testdb")
+        .withUsername("postgres")
+        .withPassword("postgres");
 
-    @DynamicPropertySource
-    public static void containerConfig(DynamicPropertyRegistry dynamicPropertyRegistry) {
-        dynamicPropertyRegistry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
-        dynamicPropertyRegistry.add("spring.datasource.username", postgreSQLContainer::getUsername);
-        dynamicPropertyRegistry.add("spring.datasource.password", postgreSQLContainer::getPassword);
-
+    @Test
+    void testFakeData() {
     }
 
-//    @Test
-//    void contextLoads() {
-//    }
 
+    static class TestEnvInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+
+        @Override
+        public void initialize(ConfigurableApplicationContext applicationContext) {
+            TestPropertyValues values = TestPropertyValues.of(
+                "spring.datasource.url=" + POSTGRES_DB.getJdbcUrl(),
+                "spring.datasource.password=" + POSTGRES_DB.getPassword(),
+                "spring.datasource.username=" + POSTGRES_DB.getUsername()
+            );
+            values.applyTo(applicationContext);
+        }
+    }
 }
