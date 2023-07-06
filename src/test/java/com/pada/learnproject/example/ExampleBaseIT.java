@@ -8,6 +8,7 @@ import static com.pada.learnproject.example.constant.ManyToOneEntityMother.creat
 import static com.pada.learnproject.example.constant.OneToOneEntityMother.createDefaultTestOneToOneEntity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pada.learnproject.LearnprojectApplicationTests;
 import com.pada.learnproject.example.domain.ExampleEntity;
 import com.pada.learnproject.example.domain.ManyToManyEntity;
 import com.pada.learnproject.example.domain.ManyToOneEntity;
@@ -29,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ExampleBaseIT {
+public class ExampleBaseIT  extends LearnprojectApplicationTests {
 
     @Autowired
     protected MockMvc mockMvc;

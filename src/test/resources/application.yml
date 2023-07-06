@@ -1,11 +1,13 @@
 spring:
   jpa:
+    open-in-view: false
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
       hibernate:
         format_sql: true
         show-sql: true
     hibernate.ddl-auto: validate
+    show-sql: true
   datasource:
     url: jdbc:postgresql://localhost:5432/learnproject
     username: postgres
@@ -16,5 +18,8 @@ spring:
     graphiql.enabled: true
     graphiql.path: /graphiql
 
+
 graphql.servlet.maxQueryDepth: 5
+
+
 spring.jpa.open-in-view: false
