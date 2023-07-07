@@ -28,8 +28,7 @@ public class LearnprojectApplicationTests {
     @Test
     void testFakeData() {
     }
-
-
+    
     static class TestEnvInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
         @Override
