@@ -56,27 +56,15 @@ public class ExampleBaseIT  extends LearnprojectApplicationTests {
         insertManyToOneExampleEntity();
         insertManyToManyExampleEntity();
 
-        //TODO fix setters
-        //        insertOneToOneExampleEntity();
         exampleEntityRepository.saveAndFlush(createSecondTestExampleEntity());
         exampleEntityRepository.saveAndFlush(createThirdTestExampleEntity());
-
     }
 
-
-    //TODO fix setters
-    //    private void insertOneToOneExampleEntity() {
-    //        oneToOneEntity = createDefaultTestOneToOneEntity();
-    //        oneToOneEntity.setExampleEntity(exampleEntity);
-    //        oneToOneEntity = oneToOneRepository.saveAndFlush(oneToOneEntity);
-    //    }
-    
-    //TODO fix setters
     private void insertDefaultExampleEntity() {
         exampleEntity = createDefaultTestExampleEntity();
         exampleEntity.setOneToOneEntity(createDefaultTestOneToOneEntity());
         exampleEntity.getOneToOneEntity().setExampleEntity(exampleEntity);
-        exampleEntity = exampleEntityRepository.save(exampleEntity);
+        exampleEntity = exampleEntityRepository.saveAndFlush(exampleEntity);
     }
 
     private void insertManyToOneExampleEntity() {
