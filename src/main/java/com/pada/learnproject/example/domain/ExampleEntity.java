@@ -95,4 +95,11 @@ public class ExampleEntity {
         manyToOneEntityList.remove(branch);
         branch.setExampleEntity(null);
     }
+
+    // Good practice - use adder
+    // https://vladmihalcea.com/jpa-hibernate-synchronize-bidirectional-entity-associations/
+    public void addManyToManyEntity(ManyToManyEntity manyToManyEntity) {
+        manyToManyEntitySet.add(manyToManyEntity);
+        manyToManyEntity.getExampleEntitySet().add(this);
+    }
 }

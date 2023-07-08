@@ -37,7 +37,6 @@ public class ExampleBaseIT  extends LearnprojectApplicationTests {
     @Autowired
     protected ObjectMapper objectMapper;
     protected ExampleEntity exampleEntity;
-    protected OneToOneEntity oneToOneEntity;
     protected ManyToOneEntity manyToOneEntity;
     protected ManyToManyEntity manyToManyEntity;
     @Autowired
@@ -79,7 +78,7 @@ public class ExampleBaseIT  extends LearnprojectApplicationTests {
             manyToManyEntity = createDefaultTestManyToManyEntity();
             manyToManyEntity = manyToManyRepository.saveAndFlush(manyToManyEntity);
 
-            exampleEntity.setManyToManyEntitySet(new TreeSet<>(Set.of(manyToManyEntity)));
+            exampleEntity.addManyToManyEntity(manyToManyEntity);
             exampleEntity = exampleEntityRepository.save(exampleEntity);
         }
 
