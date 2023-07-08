@@ -59,7 +59,7 @@ public class ExampleEntity {
     @Enumerated(STRING)
     private ExampleEnum exampleEnum;
 
-    @OneToOne(mappedBy = OneToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = OneToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private OneToOneEntity oneToOneEntity;
 
     @OneToMany(mappedBy = ManyToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL,

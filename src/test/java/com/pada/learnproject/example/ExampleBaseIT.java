@@ -53,10 +53,11 @@ public class ExampleBaseIT  extends LearnprojectApplicationTests {
     @Transactional
     public void setUpTestData() {
         insertDefaultExampleEntity();
+        insertManyToOneExampleEntity();
+        insertManyToManyExampleEntity();
+
         //TODO fix setters
         //        insertOneToOneExampleEntity();
-        //        insertManyToOneExampleEntity();
-        //        insertManyToManyExampleEntity();
         exampleEntityRepository.saveAndFlush(createSecondTestExampleEntity());
         exampleEntityRepository.saveAndFlush(createThirdTestExampleEntity());
 
@@ -69,27 +70,30 @@ public class ExampleBaseIT  extends LearnprojectApplicationTests {
     //        oneToOneEntity.setExampleEntity(exampleEntity);
     //        oneToOneEntity = oneToOneRepository.saveAndFlush(oneToOneEntity);
     //    }
-    //
-    //    private void insertManyToOneExampleEntity() {
-    //        manyToOneEntity = createDefaultTestManyToOneEntity();
-    //        manyToOneEntity = manyToOneRepository.saveAndFlush(manyToOneEntity);
-    //    }
-    //
-    //    private void insertManyToManyExampleEntity() {
-    //        manyToManyEntity = createDefaultTestManyToManyEntity();
-    //        manyToManyEntity = manyToManyRepository.saveAndFlush(manyToManyEntity);
-    //    }
-
+    
     //TODO fix setters
     private void insertDefaultExampleEntity() {
         exampleEntity = createDefaultTestExampleEntity();
         exampleEntity.setOneToOneEntity(createDefaultTestOneToOneEntity());
         exampleEntity.getOneToOneEntity().setExampleEntity(exampleEntity);
-        exampleEntity.setManyToOneEntityList(List.of(createDefaultTestManyToOneEntity()));
-        exampleEntity.getManyToOneEntityList().forEach(manyToOne -> manyToOne.setExampleEntity(exampleEntity));
-        exampleEntity.setManyToManyEntitySet(new TreeSet<>(Set.of(createDefaultTestManyToManyEntity())));
-        exampleEntity = exampleEntityRepository.saveAndFlush(exampleEntity);
+        exampleEntity = exampleEntityRepository.save(exampleEntity);
     }
+
+    private void insertManyToOneExampleEntity() {
+        manyToOneEntity = createDefaultTestManyToOneEntity();
+        manyToOneEntity = manyToOneRepository.save(manyToOneEntity);
+
+        exampleEntity.addManyToOneEntity(manyToOneEntity);
+        exampleEntityRepository.save(exampleEntity);
+    }
+
+        private void insertManyToManyExampleEntity() {
+            manyToManyEntity = createDefaultTestManyToManyEntity();
+            manyToManyEntity = manyToManyRepository.saveAndFlush(manyToManyEntity);
+
+            exampleEntity.setManyToManyEntitySet(new TreeSet<>(Set.of(manyToManyEntity)));
+            exampleEntity = exampleEntityRepository.save(exampleEntity);
+        }
 
 
     @AfterEach
