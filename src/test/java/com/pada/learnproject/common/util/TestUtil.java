@@ -1,4 +1,4 @@
-package com.pada.learnproject.common;
+package com.pada.learnproject.common.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

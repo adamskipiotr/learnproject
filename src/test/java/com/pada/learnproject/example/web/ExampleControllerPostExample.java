@@ -5,9 +5,10 @@ import static com.pada.learnproject.example.constant.ExampleEntityMother.createE
 import static com.pada.learnproject.example.validator.ExampleValidator.validateExampleResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
-import com.pada.learnproject.common.TestUtil;
+import com.pada.learnproject.common.util.TestUtil;
 import com.pada.learnproject.example.ExampleBaseIT;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
+import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
@@ -24,6 +25,6 @@ public class ExampleControllerPostExample extends ExampleBaseIT {
             .getContentAsString();
 
         var response = objectMapper.readValue(result, ExampleResponse.class);
-        validateExampleResponse(response);
+        ExampleValidator.validateExampleResponse(response);
     }
 }

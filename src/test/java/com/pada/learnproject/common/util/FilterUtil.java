@@ -1,4 +1,4 @@
-package com.pada.learnproject.common;
+package com.pada.learnproject.common.util;
 
 import java.util.ArrayList;
 import java.util.List;
