@@ -28,7 +28,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.Singular;
 import org.hibernate.annotations.SortNatural;
 
 
@@ -89,7 +88,6 @@ public class ExampleEntity {
         manyToOneEntityList.add(manyToOneEntity);
         manyToOneEntity.setExampleEntity(this);
     }
-
 
     public void removeManyToOneEntity(ManyToOneEntity branch) {
         manyToOneEntityList.remove(branch);

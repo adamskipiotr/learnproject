@@ -8,6 +8,7 @@ import com.pada.learnproject.example.service.ExampleService;
 import com.pada.learnproject.example.service.dto.request.ExampleRequest;
 import com.pada.learnproject.example.service.dto.request.ManyToOneRequest;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
+import com.pada.learnproject.example.service.dto.response.ExampleProjection;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.service.dto.response.ManyToOneResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -40,6 +41,12 @@ public class ExamplesController {
     @GetMapping("/{id}")
     public ResponseEntity<ExampleResponse> getExample(@PathVariable(name = "id") Long id) {
         ExampleResponse response = exampleEntityService.getExample(id);
+        return ResponseEntity.status(OK).body(response);
+    }
+
+    @GetMapping("/projections/{name}")
+    public ResponseEntity<ExampleProjection> getExampleProjection(@PathVariable(name = "name") String name) {
+        ExampleProjection response = exampleEntityService.getExampleProjection(name);
         return ResponseEntity.status(OK).body(response);
     }
 
