@@ -19,7 +19,7 @@ public class ManyToManyValidator {
     }
 
     public static void validateUpdateManyToManyResponseSet(Set<ManyToManyResponse> manyToManyResponseList) {
-        assertEquals(1, manyToManyResponseList.size());
+        assertEquals(2, manyToManyResponseList.size());
 
         var exampleListResponse = manyToManyResponseList.stream().findFirst().get();
         assertEquals(UPDATE_MANY_TO_MANY_NAME, exampleListResponse.manyToManyName());

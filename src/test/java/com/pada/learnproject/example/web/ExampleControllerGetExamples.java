@@ -1,6 +1,6 @@
 package com.pada.learnproject.example.web;
 
-import static com.pada.learnproject.common.FilterUtil.filterBy;
+import static com.pada.learnproject.common.util.FilterUtil.filterBy;
 import static com.pada.learnproject.example.constant.ExampleEntityConstants.FilteringFields.NAME;
 import static com.pada.learnproject.example.constant.ExampleEntityConstants.FilteringFields.VALUE;
 import static com.pada.learnproject.example.constant.ExampleEntityConstants.Urls.EXAMPLES;

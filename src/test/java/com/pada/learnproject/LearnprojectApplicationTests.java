@@ -41,5 +41,5 @@ public class LearnprojectApplicationTests {
             values.applyTo(applicationContext);
         }
     }
-    
+
 }

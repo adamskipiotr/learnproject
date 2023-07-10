@@ -59,7 +59,7 @@ public class ExampleEntity {
     @Enumerated(STRING)
     private ExampleEnum exampleEnum;
 
-    @OneToOne(mappedBy = OneToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = OneToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private OneToOneEntity oneToOneEntity;
 
     @OneToMany(mappedBy = ManyToOneEntity_.EXAMPLE_ENTITY, cascade = CascadeType.ALL,
@@ -94,5 +94,12 @@ public class ExampleEntity {
     public void removeManyToOneEntity(ManyToOneEntity branch) {
         manyToOneEntityList.remove(branch);
         branch.setExampleEntity(null);
+    }
+
+    // Good practice - use adder
+    // https://vladmihalcea.com/jpa-hibernate-synchronize-bidirectional-entity-associations/
+    public void addManyToManyEntity(ManyToManyEntity manyToManyEntity) {
+        manyToManyEntitySet.add(manyToManyEntity);
+        manyToManyEntity.getExampleEntitySet().add(this);
     }
 }
