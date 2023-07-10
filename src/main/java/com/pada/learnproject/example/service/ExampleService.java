@@ -7,9 +7,10 @@ import static java.util.stream.Collectors.toList;
 import com.pada.learnproject.example.domain.ExampleCriteria;
 import com.pada.learnproject.example.domain.ExampleEntity;
 import com.pada.learnproject.example.repository.ExampleEntityRepository;
-import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.request.ExampleRequest;
+import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
+import com.pada.learnproject.example.service.dto.response.ExampleProjection;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.service.mapper.ExampleEntityMapper;
 import java.util.List;
@@ -80,5 +81,9 @@ public class ExampleService {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         exampleEntityRepository.deleteById(id);
         return exampleEntityMapper.toResponse(entity);
+    }
+
+    public ExampleProjection getExampleProjection(String name) {
+        return exampleEntityRepository.findByName(name, ExampleProjection.class);
     }
 }

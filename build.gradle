@@ -79,6 +79,8 @@ dependencies {
     runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.19'
     // https://mvnrepository.com/artifact/org.testcontainers/postgresql
     testImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.18.3'
+    // https://mvnrepository.com/artifact/net.javacrumbs.shedlock/shedlock-spring
+    implementation group: 'net.javacrumbs.shedlock', name: 'shedlock-spring', version: '5.5.0'
 }
 
 tasks.named('test') {
