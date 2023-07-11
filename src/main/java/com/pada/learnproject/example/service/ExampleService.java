@@ -75,6 +75,8 @@ public class ExampleService {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         System.out.println("Test");
         System.out.println("Test");
+        System.out.println("Test");
+
         entity = exampleEntityMapper.updateEntity(entity, exampleRequest);
         //save not needed with JPA for managed entity
         return exampleEntityMapper.toResponse(entity);
