@@ -7,6 +7,14 @@ plugins {
 
 }
 
+jacocoTestReport {
+    reports {
+        xml.required = true
+        csv.required = true
+        html.required = true
+    }
+}
+
 sonar {
     properties {
         property "sonar.projectKey", "adamskipiotr_learnproject"
