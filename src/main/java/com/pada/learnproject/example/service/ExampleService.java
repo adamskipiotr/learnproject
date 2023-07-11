@@ -71,6 +71,7 @@ public class ExampleService {
     //TODO manyToOne updating - expected behaviour to update existing and add new
     public ExampleResponse updateExampleEntity(ExampleRequest exampleRequest, Long id) {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
+        System.out.println("test");
         entity = exampleEntityMapper.updateEntity(entity, exampleRequest);
         //save not needed with JPA for managed entity
         return exampleEntityMapper.toResponse(entity);
