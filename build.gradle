@@ -6,6 +6,12 @@ plugins {
     id 'org.sonarqube' version '3.5.0.2730'
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
 group = 'com.pada'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
@@ -77,19 +83,10 @@ dependencies {
     runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.19'
     // https://mvnrepository.com/artifact/org.testcontainers/postgresql
     testImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.18.3'
-
-
-
 }
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
 }
 
 compileJava {
