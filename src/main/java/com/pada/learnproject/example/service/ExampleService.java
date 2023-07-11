@@ -89,4 +89,8 @@ public class ExampleService {
     public ExampleProjection getExampleProjection(String name) {
         return exampleEntityRepository.findByName(name, ExampleProjection.class);
     }
+
+    public void changeEnum() {
+        
+    }
 }
