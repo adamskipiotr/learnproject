@@ -3,16 +3,10 @@ plugins {
     id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'jacoco'
-    id 'org.sonarqube' version '3.5.0.2730'
+    id("org.sonarqube") version "4.2.1.3168"
+
 }
 
-jacocoTestReport {
-    reports {
-        xml.required = true
-        csv.required = false
-        html.required = false
-    }
-}
 
 group = 'com.pada'
 version = '0.0.1-SNAPSHOT'
@@ -96,4 +90,13 @@ compileJava {
 
     // if you need to configure mapstruct component model
     options.compilerArgs << "-Amapstruct.defaultComponentModel=spring"
+}
+
+
+sonar {
+    properties {
+        property "sonar.projectKey", "adamskipiotr_sandbox"
+        property "sonar.organization", "adamskipiotr"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
