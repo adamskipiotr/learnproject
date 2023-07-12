@@ -95,7 +95,7 @@ compileJava {
 
 sonar {
     properties {
-        property "sonar.projectKey", "adamskipiotr_sandbox"
+        property "sonar.projectKey", "adamskipiotr_learnproject"
         property "sonar.organization", "adamskipiotr"
         property "sonar.host.url", "https://sonarcloud.io"
     }
