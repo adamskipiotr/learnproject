@@ -63,8 +63,6 @@ public class ExampleService {
     @Transactional
     public ExampleResponse getExample(Long id) {
         ExampleEntity exampleEntity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
-        exampleEntity.getManyToManyEntitySet().forEach(System.out::println);
-        exampleEntity.getManyToOneEntityList().forEach(System.out::println);
         return exampleEntityMapper.toResponse(exampleEntity);
     }
 
