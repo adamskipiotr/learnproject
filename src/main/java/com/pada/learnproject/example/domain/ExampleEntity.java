@@ -1,6 +1,5 @@
 package com.pada.learnproject.example.domain;
 
-
 import static jakarta.persistence.EnumType.STRING;
 
 import jakarta.persistence.CascadeType;
@@ -99,5 +98,9 @@ public class ExampleEntity {
     public void addManyToManyEntity(ManyToManyEntity manyToManyEntity) {
         manyToManyEntitySet.add(manyToManyEntity);
         manyToManyEntity.getExampleEntitySet().add(this);
+    }
+
+    public void toggleEnumValue() {
+       exampleEnum = exampleEnum.toggle();
     }
 }
