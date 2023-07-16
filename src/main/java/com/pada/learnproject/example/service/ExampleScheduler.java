@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ExampleScheduler {
 
-    public ExampleService exampleService;
+    private ExampleService exampleService;
     
     //Do not connect Scheduled and Transactional - https://stackoverflow.com/a/45356139
     @Scheduled(cron = "${com.pada.learnproject.example.change-example-enum.cron-job")
