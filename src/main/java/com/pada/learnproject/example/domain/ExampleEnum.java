@@ -2,7 +2,7 @@ package com.pada.learnproject.example.domain;
 
 public enum ExampleEnum {
 
-    POSITION_XYZ("Position 1") {
+    POSITION_1("Position 1") {
         @Override
         public ExampleEnum toggle() {
             return POSITION_2;
@@ -17,7 +17,7 @@ public enum ExampleEnum {
     POSITION_3("Position 3") {
         @Override
         public ExampleEnum toggle() {
-            return POSITION_XYZ;
+            return POSITION_1;
         }
     };
 
