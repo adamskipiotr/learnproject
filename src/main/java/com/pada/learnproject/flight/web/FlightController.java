@@ -1,7 +1,22 @@
 package com.pada.learnproject.flight.web;
 
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
+
+import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
+import com.pada.learnproject.flight.service.FlightCriteria;
+import com.pada.learnproject.flight.service.FlightService;
+import com.pada.learnproject.flight.service.dto.FlightRequest;
+import com.pada.learnproject.flight.service.dto.FlightResponse;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,4 +25,31 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Flights Controller")
 @RequiredArgsConstructor
 public class FlightController {
+
+    private final FlightService flightService;
+
+    @GetMapping
+    public ResponseEntity<ExampleListWrapperResponse> getFlights(Pageable pageable, FlightCriteria flightCriteria) {
+        var responseBody = flightService.findFlights(pageable, flightCriteria);
+        return ResponseEntity.status(OK).body(responseBody);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FlightResponse> getFlightById(@PathVariable(name = "id") Long id) {
+        var responseBody = flightService.findById(id);
+        return ResponseEntity.status(OK).body(responseBody);
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> addFlight(@RequestBody FlightRequest flightRequest) {
+        flightService.addFlight(flightRequest);
+        return ResponseEntity.status(CREATED).body(null);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateFlight(@PathVariable(name = "id") Long id,
+        @RequestBody FlightRequest flightRequest) {
+        flightService.updateFlight(id, flightRequest);
+        return ResponseEntity.status(CREATED).body(null);
+    }
 }
