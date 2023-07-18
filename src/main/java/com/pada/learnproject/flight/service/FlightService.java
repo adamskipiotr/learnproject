@@ -43,4 +43,10 @@ public class FlightService {
         flight = flightMapper.updateEntity(flight, flightRequest);
         return flightMapper.toResponse(flight);
     }
+
+    public FlightResponse deleteFlight(Long id) {
+        Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
+        flightRepository.deleteById(id);
+        return flightMapper.toResponse(flight);
+    }
 }

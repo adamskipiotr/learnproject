@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,5 +52,11 @@ public class FlightController {
         @RequestBody FlightRequest flightRequest) {
         var responseBody = flightService.updateFlight(id, flightRequest);
         return ResponseEntity.status(CREATED).body(responseBody);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<FlightResponse> deleteFlight(@PathVariable(name = "id") Long id) {
+        var responseBody = flightService.deleteFlight(id);
+        return ResponseEntity.status(OK).body(responseBody);
     }
 }

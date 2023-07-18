@@ -26,7 +26,7 @@ public class FlightControllerGetFlight extends FlightBaseIT {
             .getContentAsString();
 
         var response = objectMapper.readValue(result, FlightResponse.class);
-        FlightValidator.validateFlightResponse(response);
+        FlightValidator.validateFlightResponseDetails(response);
     }
 
     @Test

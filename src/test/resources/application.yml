@@ -19,3 +19,8 @@ graphql.servlet.maxQueryDepth: 5
 
 
 spring.jpa.open-in-view: false
+
+logging:
+  level:
+    ROOT: WARN
+    pl.gov.mc.sepis.hs: WARN
