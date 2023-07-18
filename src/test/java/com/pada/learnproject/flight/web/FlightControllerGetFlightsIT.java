@@ -2,10 +2,10 @@ package com.pada.learnproject.flight.web;
 
 import com.pada.learnproject.flight.FlightBaseIT;
 
-public class FlightControllerGetFlights extends FlightBaseIT {
+public class FlightControllerGetFlightsIT extends FlightBaseIT {
 
     //    @Test
-    //    public void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {
+    //    void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {
     //        var result = mockMvc.perform(get(EXAMPLES))
     //            .andReturn()
     //            .getResponse()
@@ -17,7 +17,7 @@ public class FlightControllerGetFlights extends FlightBaseIT {
     //    }
     //
     //    @Test
-    //    public void shouldReturnResponseWithEmptyListWhenProvidedFilterCriteriaMatchingDefaultEntity() throws
+    //    void shouldReturnResponseWithEmptyListWhenProvidedFilterCriteriaMatchingDefaultEntity() throws
     //    Exception {
     //        var result = mockMvc.perform(get(EXAMPLES + defaultEntityFilters()))
     //            .andReturn()
@@ -29,7 +29,7 @@ public class FlightControllerGetFlights extends FlightBaseIT {
     //    }
     //
     //    @Test
-    //    public void shouldReturnResponseWithEmptyListWhenNoMatchingFilterCriteriaProvided() throws Exception {
+    //    void shouldReturnResponseWithEmptyListWhenNoMatchingFilterCriteriaProvided() throws Exception {
     //        var result = mockMvc.perform(get(EXAMPLES + nonMatchingFilters()))
     //            .andReturn()
     //            .getResponse()

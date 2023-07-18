@@ -17,10 +17,10 @@ import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class FlightControllerPutFlight extends FlightBaseIT {
+public class FlightControllerPutFlightIT extends FlightBaseIT {
 
     @Test
-    public void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {
         var aaa = TestUtil.convertObjectToJsonBytes(createUpdateFlightRequest());
         var result = mockMvc.perform(
                 put(createUrlWithEntityId(defaultFlight.getId()))
@@ -35,7 +35,7 @@ public class FlightControllerPutFlight extends FlightBaseIT {
     }
 
     @Test
-    public void shouldThrowRuntimeExceptionWhenNonExistingIdProvided() throws Exception {
+    void shouldThrowRuntimeExceptionWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
                 get(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())

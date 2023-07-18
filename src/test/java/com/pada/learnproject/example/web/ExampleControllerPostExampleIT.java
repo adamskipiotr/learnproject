@@ -11,10 +11,10 @@ import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class ExampleControllerPostExample extends ExampleBaseIT {
+public class ExampleControllerPostExampleIT extends ExampleBaseIT {
 
     @Test
-    public void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {
         var result = mockMvc.perform(
                 post(EXAMPLES)
                     .content(TestUtil.convertObjectToJsonBytes(createExampleRequest()))

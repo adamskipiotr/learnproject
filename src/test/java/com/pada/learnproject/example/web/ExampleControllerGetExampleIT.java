@@ -1,9 +1,9 @@
 package com.pada.learnproject.example.web;
 
+
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
 import static com.pada.learnproject.example.constant.ExampleEntityConstants.Urls.createUrlWithEntityId;
 import static com.pada.learnproject.example.constant.ExampleEntityMother.NON_EXISTING_ID;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -14,12 +14,13 @@ import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 
-public class ExampleControllerDeleteExample extends ExampleBaseIT {
+public class ExampleControllerGetExampleIT extends ExampleBaseIT {
+
 
     @Test
-    public void shouldReturnDeletedEntityWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnDefaultEntityWhenSearchingForExampleEntityWithValidId() throws Exception {
         var result = mockMvc.perform(
-                delete(createUrlWithEntityId(exampleEntity.getId())))
+                get(createUrlWithEntityId(exampleEntity.getId())))
             .andReturn()
             .getResponse()
             .getContentAsString();
@@ -29,7 +30,7 @@ public class ExampleControllerDeleteExample extends ExampleBaseIT {
     }
 
     @Test
-    public void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
+    void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
                 get(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())

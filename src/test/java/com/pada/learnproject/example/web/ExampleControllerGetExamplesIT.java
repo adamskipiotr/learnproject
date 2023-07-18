@@ -16,10 +16,10 @@ import com.pada.learnproject.example.ExampleBaseIT;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
-public class ExampleControllerGetExamples extends ExampleBaseIT {
+public class ExampleControllerGetExamplesIT extends ExampleBaseIT {
 
     @Test
-    public void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {
+    void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {
         var result = mockMvc.perform(get(EXAMPLES))
             .andReturn()
             .getResponse()
@@ -31,7 +31,7 @@ public class ExampleControllerGetExamples extends ExampleBaseIT {
     }
 
     @Test
-    public void shouldReturnResponseWithEmptyListWhenProvidedFilterCriteriaMatchingDefaultEntity() throws Exception {
+    void shouldReturnResponseWithEmptyListWhenProvidedFilterCriteriaMatchingDefaultEntity() throws Exception {
         var result = mockMvc.perform(get(EXAMPLES + defaultEntityFilters()))
             .andReturn()
             .getResponse()
@@ -42,7 +42,7 @@ public class ExampleControllerGetExamples extends ExampleBaseIT {
     }
 
     @Test
-    public void shouldReturnResponseWithEmptyListWhenNoMatchingFilterCriteriaProvided() throws Exception {
+    void shouldReturnResponseWithEmptyListWhenNoMatchingFilterCriteriaProvided() throws Exception {
         var result = mockMvc.perform(get(EXAMPLES + nonMatchingFilters()))
             .andReturn()
             .getResponse()

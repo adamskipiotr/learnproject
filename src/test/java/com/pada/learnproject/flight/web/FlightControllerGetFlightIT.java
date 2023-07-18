@@ -14,11 +14,11 @@ import com.pada.learnproject.flight.service.dto.FlightResponse;
 import com.pada.learnproject.flight.validator.FlightValidator;
 import org.junit.jupiter.api.Test;
 
-public class FlightControllerGetFlight extends FlightBaseIT {
+public class FlightControllerGetFlightIT extends FlightBaseIT {
 
 
     @Test
-    public void shouldReturnDefaultFlightWhenSearchingWithValidId() throws Exception {
+    void shouldReturnDefaultFlightWhenSearchingWithValidId() throws Exception {
         var result = mockMvc.perform(
                 get(createUrlWithEntityId(defaultFlight.getId())))
             .andReturn()
@@ -30,7 +30,7 @@ public class FlightControllerGetFlight extends FlightBaseIT {
     }
 
     @Test
-    public void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
+    void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
                 get(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())

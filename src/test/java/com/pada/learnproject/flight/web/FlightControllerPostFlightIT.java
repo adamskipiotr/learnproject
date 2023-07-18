@@ -12,10 +12,10 @@ import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class FlightControllerPostFlight extends FlightBaseIT {
+public class FlightControllerPostFlightIT extends FlightBaseIT {
 
     @Test
-    public void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {
         var result = mockMvc.perform(
                 post(FLIGHTS)
                     .content(TestUtil.convertObjectToJsonBytes(createFlightRequest()))
