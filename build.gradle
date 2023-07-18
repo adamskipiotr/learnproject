@@ -7,6 +7,18 @@ plugins {
 
 }
 
+jacoco {
+    toolVersion = "0.8.7" // Use the desired JaCoCo version
+    reportsDir = file("$buildDir/reports/jacoco")
+}
+
+test {
+    jacoco {
+        // Enable JaCoCo coverage for tests
+        enabled = true
+    }
+}
+
 
 group = 'com.pada'
 version = '0.0.1-SNAPSHOT'
@@ -101,5 +113,6 @@ sonar {
         property "sonar.projectKey", "adamskipiotr_learnproject"
         property "sonar.organization", "adamskipiotr"
         property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco/test.exec"
     }
 }
