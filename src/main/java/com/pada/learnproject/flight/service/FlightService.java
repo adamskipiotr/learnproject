@@ -30,15 +30,17 @@ public class FlightService {
     }
 
     @Transactional
-    public void addFlight(FlightRequest flightRequest) {
+    public FlightResponse addFlight(FlightRequest flightRequest) {
         Flight flight = flightMapper.toEntity(flightRequest);
-        flightRepository.save(flight);
+        flight = flightRepository.save(flight);
+        return flightMapper.toResponse(flight);
     }
 
 
     @Transactional
-    public void updateFlight(Long id, FlightRequest flightRequest) {
+    public FlightResponse updateFlight(Long id, FlightRequest flightRequest) {
         Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
         flightMapper.updateEntity(flight, flightRequest);
+        return flightMapper.toResponse(flight);
     }
 }

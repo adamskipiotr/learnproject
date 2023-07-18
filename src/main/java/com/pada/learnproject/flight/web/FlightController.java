@@ -41,15 +41,15 @@ public class FlightController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> addFlight(@RequestBody FlightRequest flightRequest) {
-        flightService.addFlight(flightRequest);
-        return ResponseEntity.status(CREATED).body(null);
+    public ResponseEntity<FlightResponse> addFlight(@RequestBody FlightRequest flightRequest) {
+        var responseBody = flightService.addFlight(flightRequest);
+        return ResponseEntity.status(CREATED).body(responseBody);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateFlight(@PathVariable(name = "id") Long id,
+    public ResponseEntity<FlightResponse> updateFlight(@PathVariable(name = "id") Long id,
         @RequestBody FlightRequest flightRequest) {
-        flightService.updateFlight(id, flightRequest);
-        return ResponseEntity.status(CREATED).body(null);
+        var responseBody = flightService.updateFlight(id, flightRequest);
+        return ResponseEntity.status(CREATED).body(responseBody);
     }
 }

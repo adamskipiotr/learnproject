@@ -2,7 +2,6 @@ package com.pada.learnproject.example.web;
 
 import static com.pada.learnproject.example.constant.ExampleEntityConstants.Urls.EXAMPLES;
 import static com.pada.learnproject.example.constant.ExampleEntityMother.createExampleRequest;
-import static com.pada.learnproject.example.validator.ExampleValidator.validateExampleResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.pada.learnproject.common.util.TestUtil;
