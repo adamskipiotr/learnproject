@@ -2,7 +2,7 @@ package com.pada.learnproject.flight.web;
 
 import com.pada.learnproject.flight.FlightBaseIT;
 
-public class FlightControllerGetFlightsIT extends FlightBaseIT {
+class FlightControllerGetFlightsIT extends FlightBaseIT {
 
     //    @Test
     //    void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {

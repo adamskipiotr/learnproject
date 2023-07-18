@@ -12,7 +12,7 @@ import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class FlightControllerPostFlightIT extends FlightBaseIT {
+class FlightControllerPostFlightIT extends FlightBaseIT {
 
     @Test
     void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {

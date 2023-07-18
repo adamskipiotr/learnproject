@@ -14,7 +14,7 @@ import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 
-public class ExampleControllerDeleteExampleIT extends ExampleBaseIT {
+class ExampleControllerDeleteExampleIT extends ExampleBaseIT {
 
     @Test
     void shouldReturnDeletedEntityWhenCorrectRequestProvided() throws Exception {

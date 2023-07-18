@@ -14,7 +14,7 @@ import com.pada.learnproject.flight.service.dto.FlightResponse;
 import com.pada.learnproject.flight.validator.FlightValidator;
 import org.junit.jupiter.api.Test;
 
-public class FlightControllerGetFlightIT extends FlightBaseIT {
+class FlightControllerGetFlightIT extends FlightBaseIT {
 
 
     @Test

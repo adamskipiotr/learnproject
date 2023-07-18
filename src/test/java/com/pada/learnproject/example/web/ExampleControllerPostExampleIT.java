@@ -11,7 +11,7 @@ import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class ExampleControllerPostExampleIT extends ExampleBaseIT {
+class ExampleControllerPostExampleIT extends ExampleBaseIT {
 
     @Test
     void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {

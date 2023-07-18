@@ -14,7 +14,7 @@ import com.pada.learnproject.flight.FlightBaseIT;
 import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.junit.jupiter.api.Test;
 
-public class FlightControllerDeleteFlightIT extends FlightBaseIT {
+class FlightControllerDeleteFlightIT extends FlightBaseIT {
 
     @Test
     void shouldReturnDeletedFlightWhenCorrectRequestProvided() throws Exception {

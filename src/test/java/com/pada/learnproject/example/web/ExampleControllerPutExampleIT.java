@@ -17,7 +17,7 @@ import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class ExampleControllerPutExampleIT extends ExampleBaseIT {
+class ExampleControllerPutExampleIT extends ExampleBaseIT {
 
     @Test
     void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {

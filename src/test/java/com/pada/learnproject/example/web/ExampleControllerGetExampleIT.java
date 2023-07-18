@@ -14,7 +14,7 @@ import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 
-public class ExampleControllerGetExampleIT extends ExampleBaseIT {
+class ExampleControllerGetExampleIT extends ExampleBaseIT {
 
 
     @Test

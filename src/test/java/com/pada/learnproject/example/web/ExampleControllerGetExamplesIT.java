@@ -16,7 +16,7 @@ import com.pada.learnproject.example.ExampleBaseIT;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
-public class ExampleControllerGetExamplesIT extends ExampleBaseIT {
+class ExampleControllerGetExamplesIT extends ExampleBaseIT {
 
     @Test
     void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {
