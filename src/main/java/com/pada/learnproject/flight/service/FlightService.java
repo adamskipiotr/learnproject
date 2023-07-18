@@ -40,7 +40,7 @@ public class FlightService {
     @Transactional
     public FlightResponse updateFlight(Long id, FlightRequest flightRequest) {
         Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
-        flightMapper.updateEntity(flight, flightRequest);
+        flight = flightMapper.updateEntity(flight, flightRequest);
         return flightMapper.toResponse(flight);
     }
 }

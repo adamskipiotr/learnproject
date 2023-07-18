@@ -2,9 +2,6 @@ spring:
   jpa:
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      format_sql: true
-      show-sql: true
     hibernate.ddl-auto: validate
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
