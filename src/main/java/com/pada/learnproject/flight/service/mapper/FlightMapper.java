@@ -1,6 +1,7 @@
 package com.pada.learnproject.flight.service.mapper;
 
 import com.pada.learnproject.flight.domain.Flight;
+import com.pada.learnproject.flight.service.dto.FlightListResponse;
 import com.pada.learnproject.flight.service.dto.FlightRequest;
 import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.mapstruct.Mapper;
@@ -15,6 +16,8 @@ public interface FlightMapper {
     Flight toEntity(FlightRequest request);
 
     FlightResponse toResponse(Flight flight);
+
+    FlightListResponse toListResponse(Flight flight);
 
     Flight updateEntity(@MappingTarget Flight flight, FlightRequest flightRequest);
 }

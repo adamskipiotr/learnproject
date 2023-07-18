@@ -1,20 +1,26 @@
 package com.pada.learnproject.flight.web;
 
+import static com.pada.learnproject.flight.constant.FlightConstants.Urls.FLIGHTS;
+import static com.pada.learnproject.flight.validator.FlightValidator.validateFlightListWrapperWithWithThreeElementsInList;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import com.pada.learnproject.flight.FlightBaseIT;
+import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
+import org.junit.jupiter.api.Test;
 
 class FlightControllerGetFlightsIT extends FlightBaseIT {
 
-    //    @Test
-    //    void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {
-    //        var result = mockMvc.perform(get(EXAMPLES))
-    //            .andReturn()
-    //            .getResponse()
-    //            .getContentAsString();
-    //
-    //        var response = objectMapper.readValue(result, ExampleListWrapperResponse.class);
-    //        validateExampleListWrapperWithWithThreeElementsInList(response);
-    //
-    //    }
+    @Test
+    void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {
+        var result = mockMvc.perform(get(FLIGHTS))
+            .andReturn()
+            .getResponse()
+            .getContentAsString();
+
+        var response = objectMapper.readValue(result, FlightListWrapperResponse.class);
+        validateFlightListWrapperWithWithThreeElementsInList(response);
+    }
+
     //
     //    @Test
     //    void shouldReturnResponseWithEmptyListWhenProvidedFilterCriteriaMatchingDefaultEntity() throws

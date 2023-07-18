@@ -1,13 +1,20 @@
 package com.pada.learnproject.flight.service;
 
-import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
+import static com.pada.learnproject.flight.repository.FlightRepository.Specs.flightStartBetween;
+import static java.util.stream.Collectors.toList;
+
 import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.repository.FlightRepository;
+import com.pada.learnproject.flight.service.dto.FlightListResponse;
+import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.FlightRequest;
 import com.pada.learnproject.flight.service.dto.FlightResponse;
 import com.pada.learnproject.flight.service.mapper.FlightMapper;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +26,25 @@ public class FlightService {
     private final FlightMapper flightMapper;
 
     @Transactional
-    public ExampleListWrapperResponse findFlights(Pageable pageable, FlightCriteria flightCriteria) {
-        return null;
+    public FlightListWrapperResponse findFlights(Pageable pageable, FlightCriteria flightCriteria) {
+        Specification<Flight> flightSpecification = createSpecification(flightCriteria);
+        Page<Flight> flightPage = flightRepository.findAll(flightSpecification, pageable);
+
+        List<FlightListResponse> data = flightPage
+            .stream()
+            .map(flightMapper::toListResponse)
+            .collect(toList());
+
+        return new FlightListWrapperResponse(data);
+    }
+
+    private Specification<Flight> createSpecification(FlightCriteria filter) {
+        Specification<Flight> specification = Specification.where(null);
+        specification = flightStartBetween(specification, filter.getFlightStartLowerBoundary(),
+            filter.getFlightStartUpperBoundary());
+
+        return specification;
+
     }
 
     @Transactional

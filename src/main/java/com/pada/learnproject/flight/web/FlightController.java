@@ -3,9 +3,9 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
-import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
 import com.pada.learnproject.flight.service.FlightCriteria;
 import com.pada.learnproject.flight.service.FlightService;
+import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.FlightRequest;
 import com.pada.learnproject.flight.service.dto.FlightResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -30,7 +30,7 @@ public class FlightController {
     private final FlightService flightService;
 
     @GetMapping
-    public ResponseEntity<ExampleListWrapperResponse> getFlights(Pageable pageable, FlightCriteria flightCriteria) {
+    public ResponseEntity<FlightListWrapperResponse> getFlights(Pageable pageable, FlightCriteria flightCriteria) {
         var responseBody = flightService.findFlights(pageable, flightCriteria);
         return ResponseEntity.status(OK).body(responseBody);
     }

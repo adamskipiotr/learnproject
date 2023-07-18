@@ -9,11 +9,18 @@ import static com.pada.learnproject.flight.constant.FlightMother.UPDATE_FLIGHT_E
 import static com.pada.learnproject.flight.constant.FlightMother.UPDATE_FLIGHT_START;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FlightValidator {
+
+    public static void validateFlightListWrapperWithWithThreeElementsInList(FlightListWrapperResponse response) {
+        var flightListResponseList = response.flights();
+        assertEquals(3, flightListResponseList.size());
+    }
 
     public static void validateFlightResponseDetails(FlightResponse flightResponse) {
         assertEquals(DEFAULT_FLIGHT_START, flightResponse.getFlightStart());
