@@ -4,6 +4,7 @@ import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_
 import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_REQUEST_END;
 import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_REQUEST_START;
 import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_START;
+import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_STATUS;
 import static com.pada.learnproject.flight.constant.FlightMother.UPDATE_FLIGHT_END;
 import static com.pada.learnproject.flight.constant.FlightMother.UPDATE_FLIGHT_START;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,15 +18,19 @@ public class FlightValidator {
     public static void validateFlightResponseDetails(FlightResponse flightResponse) {
         assertEquals(DEFAULT_FLIGHT_START, flightResponse.getFlightStart());
         assertEquals(DEFAULT_FLIGHT_END, flightResponse.getFlightEnd());
+        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
     }
 
     public static void validateCreateFlightResponse(FlightResponse flightResponse) {
         assertEquals(DEFAULT_FLIGHT_REQUEST_START, flightResponse.getFlightStart());
         assertEquals(DEFAULT_FLIGHT_REQUEST_END, flightResponse.getFlightEnd());
+        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
     }
 
     public static void validateUpdateFlightResponse(FlightResponse flightResponse) {
         assertEquals(UPDATE_FLIGHT_START, flightResponse.getFlightStart());
         assertEquals(UPDATE_FLIGHT_END, flightResponse.getFlightEnd());
+        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
+
     }
 }

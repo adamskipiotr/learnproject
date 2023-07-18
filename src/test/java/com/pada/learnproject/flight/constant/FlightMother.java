@@ -1,6 +1,7 @@
 package com.pada.learnproject.flight.constant;
 
 import com.pada.learnproject.flight.domain.Flight;
+import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.service.dto.FlightRequest;
 import java.time.LocalDateTime;
 
@@ -16,13 +17,13 @@ public interface FlightMother {
     LocalDateTime THIRD_FLIGHT_END = LocalDateTime.of(2023, 7, 30, 20, 30, 25);
 
     LocalDateTime DEFAULT_FLIGHT_REQUEST_START = LocalDateTime.of(2023, 8, 1, 20, 30, 25);
-
     LocalDateTime DEFAULT_FLIGHT_REQUEST_END = LocalDateTime.of(2023, 8, 1, 20, 30, 25);
 
 
     LocalDateTime UPDATE_FLIGHT_START = LocalDateTime.of(2023, 9, 10, 20, 30, 25);
-
     LocalDateTime UPDATE_FLIGHT_END = LocalDateTime.of(2023, 9, 10, 20, 30, 25);
+
+    FlightStatus DEFAULT_FLIGHT_STATUS = FlightStatus.SCHEDULED;
 
 
     Long NON_EXISTING_ID = -1L;
@@ -31,6 +32,7 @@ public interface FlightMother {
         return Flight.builder()
             .flightStart(DEFAULT_FLIGHT_START)
             .flightEnd(DEFAULT_FLIGHT_END)
+            .flightStatus(DEFAULT_FLIGHT_STATUS)
             .build();
     }
 
