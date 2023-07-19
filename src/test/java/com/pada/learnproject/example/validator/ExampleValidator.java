@@ -1,8 +1,5 @@
 package com.pada.learnproject.example.validator;
 
-import static com.pada.learnproject.common.constant.ExceptionsMother.BAD_REQUEST_CODE;
-import static com.pada.learnproject.common.constant.ExceptionsMother.BAD_REQUEST_DESCRIPTION;
-import static com.pada.learnproject.common.constant.ExceptionsMother.BAD_REQUEST_NAME;
 import static com.pada.learnproject.example.constant.ExampleEntityMother.DEFAULT_EXAMPLE_ENTITY_NAME;
 import static com.pada.learnproject.example.constant.ExampleEntityMother.DEFAULT_EXAMPLE_ENTITY_VALUE;
 import static com.pada.learnproject.example.constant.ExampleEntityMother.UPDATE_EXAMPLE_ENTITY_NAME;
@@ -16,7 +13,6 @@ import static com.pada.learnproject.example.validator.OneToOneValidator.validate
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.pada.learnproject.common.infractructure.ErrorResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import org.springframework.stereotype.Component;
