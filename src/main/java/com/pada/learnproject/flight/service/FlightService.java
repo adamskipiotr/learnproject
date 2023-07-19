@@ -67,6 +67,7 @@ public class FlightService {
         return flightMapper.toResponse(flight);
     }
 
+    @Transactional
     public FlightResponse deleteFlight(Long id) {
         Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
         flightRepository.deleteById(id);
