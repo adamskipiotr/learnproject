@@ -1,6 +1,6 @@
 CREATE TYPE crew_member_rank as ENUM ('FIRST_OFFICER','SENIOR_FIRST_OFFICER','CAPTAIN');
 
-CREATE SEQUENCE crew_member_id_sequence START 1000 INCREMENT 10;
+CREATE SEQUENCE crew_member_id_seq START 1000 INCREMENT 10;
 
 CREATE TABLE IF NOT EXISTS flights__crew_members
 (
