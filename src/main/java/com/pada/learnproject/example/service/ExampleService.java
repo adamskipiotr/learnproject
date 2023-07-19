@@ -2,13 +2,12 @@ package com.pada.learnproject.example.service;
 
 import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byNameLike;
 import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byValue;
-import static java.util.stream.Collectors.toList;
 
 import com.pada.learnproject.example.domain.ExampleCriteria;
 import com.pada.learnproject.example.domain.ExampleEntity;
 import com.pada.learnproject.example.repository.ExampleEntityRepository;
-import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.request.ExampleRequest;
+import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.service.mapper.ExampleEntityMapper;

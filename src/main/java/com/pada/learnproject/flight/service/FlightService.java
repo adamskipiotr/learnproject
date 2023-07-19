@@ -1,7 +1,6 @@
 package com.pada.learnproject.flight.service;
 
 import static com.pada.learnproject.flight.repository.FlightRepository.Specs.flightStartBetween;
-import static java.util.stream.Collectors.toList;
 
 import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.repository.FlightRepository;

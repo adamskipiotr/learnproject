@@ -2,9 +2,6 @@ package com.pada.learnproject.graphqlexample;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
-import lombok.Builder;
-import lombok.Value;
 
 public class Author {
 
