@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS crew_member
     firstName VARCHAR(255),
     lastName VARCHAR(255),
     crewMemberRank VARCHAR(255),
-    age BIGINT
+    age INTEGER
 );
