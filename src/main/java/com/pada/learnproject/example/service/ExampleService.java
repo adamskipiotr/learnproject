@@ -36,7 +36,7 @@ public class ExampleService {
         List<ExampleListResponse> data = exampleEntityPage
             .stream()
             .map(exampleEntityMapper::toListResponse)
-            .collect(toList());
+            .toList();
 
         return new ExampleListWrapperResponse(data);
     }

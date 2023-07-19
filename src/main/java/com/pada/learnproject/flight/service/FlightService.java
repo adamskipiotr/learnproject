@@ -33,7 +33,7 @@ public class FlightService {
         List<FlightListResponse> data = flightPage
             .stream()
             .map(flightMapper::toListResponse)
-            .collect(toList());
+            .toList();
 
         return new FlightListWrapperResponse(data);
     }

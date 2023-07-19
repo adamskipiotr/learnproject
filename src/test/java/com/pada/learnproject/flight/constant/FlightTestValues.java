@@ -5,7 +5,7 @@ import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.service.dto.FlightRequest;
 import java.time.LocalDateTime;
 
-public interface FlightMother {
+public interface FlightTestValues {
 
     LocalDateTime DEFAULT_FLIGHT_START = LocalDateTime.of(2023, 7, 11, 16, 30, 25);
     LocalDateTime DEFAULT_FLIGHT_END = LocalDateTime.of(2023, 7, 11, 20, 30, 25);
@@ -22,6 +22,9 @@ public interface FlightMother {
 
     LocalDateTime UPDATE_FLIGHT_START = LocalDateTime.of(2023, 9, 10, 20, 30, 25);
     LocalDateTime UPDATE_FLIGHT_END = LocalDateTime.of(2023, 9, 10, 20, 30, 25);
+
+    LocalDateTime INVALID_FILTER_FLIGHT_START = LocalDateTime.of(1999, 7, 11, 16, 30, 25);
+    LocalDateTime INVALID_FILTER_FLIGHT_END = LocalDateTime.of(1999, 7, 11, 20, 30, 25);
 
     FlightStatus DEFAULT_FLIGHT_STATUS = FlightStatus.SCHEDULED;
 

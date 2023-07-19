@@ -1,15 +1,15 @@
 package com.pada.learnproject.flight.validator;
 
-import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_END;
-import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_REQUEST_END;
-import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_REQUEST_START;
-import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_START;
-import static com.pada.learnproject.flight.constant.FlightMother.DEFAULT_FLIGHT_STATUS;
-import static com.pada.learnproject.flight.constant.FlightMother.UPDATE_FLIGHT_END;
-import static com.pada.learnproject.flight.constant.FlightMother.UPDATE_FLIGHT_START;
+import static com.pada.learnproject.flight.constant.FlightTestValues.DEFAULT_FLIGHT_END;
+import static com.pada.learnproject.flight.constant.FlightTestValues.DEFAULT_FLIGHT_REQUEST_END;
+import static com.pada.learnproject.flight.constant.FlightTestValues.DEFAULT_FLIGHT_REQUEST_START;
+import static com.pada.learnproject.flight.constant.FlightTestValues.DEFAULT_FLIGHT_START;
+import static com.pada.learnproject.flight.constant.FlightTestValues.DEFAULT_FLIGHT_STATUS;
+import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIGHT_END;
+import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIGHT_START;
+import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.springframework.stereotype.Component;
@@ -20,6 +20,20 @@ public class FlightValidator {
     public static void validateFlightListWrapperWithWithThreeElementsInList(FlightListWrapperResponse response) {
         var flightListResponseList = response.flights();
         assertEquals(3, flightListResponseList.size());
+    }
+
+    public static void validateFlightListWrapperWithFlightListResponse(FlightListWrapperResponse response) {
+        var flightListResponseList = response.flights();
+        assertEquals(1, flightListResponseList.size());
+
+        var flightListResponse = flightListResponseList.get(0);
+        assertEquals(DEFAULT_FLIGHT_START, flightListResponse.getFlightStart());
+        assertEquals(DEFAULT_FLIGHT_END, flightListResponse.getFlightEnd());
+    }
+
+    public static void validateEmptyFlightListWrapperResponse(FlightListWrapperResponse response) {
+        var flightListResponseList = response.flights();
+        assertTrue(flightListResponseList.isEmpty());
     }
 
     public static void validateFlightResponseDetails(FlightResponse flightResponse) {

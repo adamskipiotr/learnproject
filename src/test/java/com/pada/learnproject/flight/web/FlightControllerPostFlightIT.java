@@ -1,9 +1,8 @@
 package com.pada.learnproject.flight.web;
 
 import static com.pada.learnproject.flight.constant.FlightConstants.Urls.FLIGHTS;
-import static com.pada.learnproject.flight.constant.FlightMother.createFlightRequest;
+import static com.pada.learnproject.flight.constant.FlightTestValues.createFlightRequest;
 import static com.pada.learnproject.flight.validator.FlightValidator.validateCreateFlightResponse;
-import static com.pada.learnproject.flight.validator.FlightValidator.validateFlightResponseDetails;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.pada.learnproject.common.util.TestUtil;

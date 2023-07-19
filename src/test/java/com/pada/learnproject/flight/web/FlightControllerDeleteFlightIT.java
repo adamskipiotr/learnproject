@@ -2,7 +2,7 @@ package com.pada.learnproject.flight.web;
 
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
 import static com.pada.learnproject.flight.constant.FlightConstants.Urls.createUrlWithEntityId;
-import static com.pada.learnproject.flight.constant.FlightMother.NON_EXISTING_ID;
+import static com.pada.learnproject.flight.constant.FlightTestValues.NON_EXISTING_ID;
 import static com.pada.learnproject.flight.validator.FlightValidator.validateFlightResponseDetails;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

@@ -1,8 +1,8 @@
 package com.pada.learnproject.flight;
 
-import static com.pada.learnproject.flight.constant.FlightMother.createDefaultTestFlight;
-import static com.pada.learnproject.flight.constant.FlightMother.createSecondTestFlight;
-import static com.pada.learnproject.flight.constant.FlightMother.createThirdTestFlight;
+import static com.pada.learnproject.flight.constant.FlightTestValues.createDefaultTestFlight;
+import static com.pada.learnproject.flight.constant.FlightTestValues.createSecondTestFlight;
+import static com.pada.learnproject.flight.constant.FlightTestValues.createThirdTestFlight;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pada.learnproject.LearnprojectApplicationTests;

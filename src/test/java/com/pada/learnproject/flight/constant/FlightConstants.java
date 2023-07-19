@@ -3,6 +3,8 @@ package com.pada.learnproject.flight.constant;
 public interface FlightConstants {
 
      class FilteringFields {
+         public static final String FLIGHT_START_LOWER_BOUNDARY = "flightStartLowerBoundary";
+         public static final String FLIGHT_START_UPPER_BOUNDARY = "flightStartUpperBoundary";
 
         private FilteringFields() {
         }
