@@ -21,7 +21,6 @@ class FlightControllerPutFlightIT extends FlightBaseIT {
 
     @Test
     void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {
-        var aaa = TestUtil.convertObjectToJsonBytes(createUpdateFlightRequest());
         var result = mockMvc.perform(
                 put(createUrlWithEntityId(defaultFlight.getId()))
                     .content(TestUtil.convertObjectToJsonBytes(createUpdateFlightRequest()))

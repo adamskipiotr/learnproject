@@ -47,7 +47,6 @@ public class Flight {
     @Enumerated(STRING)
     private FlightStatus flightStatus;
 
-    @SortNatural
     @Builder.Default
     @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
