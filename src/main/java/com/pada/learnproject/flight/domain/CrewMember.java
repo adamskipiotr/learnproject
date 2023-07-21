@@ -1,6 +1,10 @@
 package com.pada.learnproject.flight.domain;
 
+import static jakarta.persistence.EnumType.STRING;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,6 +40,7 @@ public class CrewMember {
 
     private String lastName;
 
+    @Enumerated(STRING)
     private CrewMemberRank crewMemberRank;
 
     private Integer age;
