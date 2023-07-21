@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS flights__crew_members
 CREATE TABLE IF NOT EXISTS crew_member
 (
     id BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('crew_member_id_seq'),
-    firstName VARCHAR(255),
-    lastName VARCHAR(255),
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
     crew_member_rank VARCHAR(255),
     age INTEGER
 );
