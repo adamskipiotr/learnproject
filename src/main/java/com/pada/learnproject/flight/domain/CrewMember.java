@@ -3,7 +3,6 @@ package com.pada.learnproject.flight.domain;
 import static jakarta.persistence.EnumType.STRING;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -49,4 +48,5 @@ public class CrewMember {
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = Flight_.CREW_MEMBERS, fetch = FetchType.LAZY)
     private Set<Flight> flights = new HashSet<>();
+
 }

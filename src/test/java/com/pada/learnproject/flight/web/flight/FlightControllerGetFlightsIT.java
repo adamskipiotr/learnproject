@@ -1,4 +1,4 @@
-package com.pada.learnproject.flight.web;
+package com.pada.learnproject.flight.web.flight;
 
 import static com.pada.learnproject.common.util.FilterUtil.filterBy;
 import static com.pada.learnproject.flight.constant.FlightConstants.FilteringFields.FLIGHT_START_LOWER_BOUNDARY;
@@ -13,7 +13,6 @@ import static com.pada.learnproject.flight.validator.FlightValidator.validateFli
 import static com.pada.learnproject.flight.validator.FlightValidator.validateFlightListWrapperWithWithThreeElementsInList;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import com.pada.learnproject.flight.FlightBaseIT;
 import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
 import org.junit.jupiter.api.Test;
 

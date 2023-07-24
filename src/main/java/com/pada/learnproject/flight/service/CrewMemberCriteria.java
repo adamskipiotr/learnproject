@@ -12,4 +12,7 @@ public class CrewMemberCriteria {
     private String firstName;
 
     private String lastName;
+
+    private Integer age;
+
 }

@@ -1,7 +1,11 @@
 package com.pada.learnproject.flight.service;
 
 
+import static com.pada.learnproject.flight.repository.CrewMemberRepository.Specs.byAgeFrom;
+import static com.pada.learnproject.flight.repository.CrewMemberRepository.Specs.byNameLike;
+
 import com.pada.learnproject.flight.domain.CrewMember;
+import com.pada.learnproject.flight.domain.CrewMember_;
 import com.pada.learnproject.flight.repository.CrewMemberRepository;
 import com.pada.learnproject.flight.service.dto.CrewMemberListResponse;
 import com.pada.learnproject.flight.service.dto.CrewMemberListWrapperResponse;
@@ -23,6 +27,7 @@ public class CrewMemberService {
     private final CrewMemberRepository crewMemberRepository;
     private final CrewMemberMapper crewMemberMapper;
 
+
     @Transactional
     public CrewMemberListWrapperResponse findCrewMembers(Pageable pageable, CrewMemberCriteria crewMemberCriteria) {
         Specification<CrewMember> crewMemberSpecification = createSpecification(crewMemberCriteria);
@@ -37,7 +42,9 @@ public class CrewMemberService {
 
     private Specification<CrewMember> createSpecification(CrewMemberCriteria filter) {
         Specification<CrewMember> specification = Specification.where(null);
-
+        specification = byNameLike(specification, filter.getFirstName(), CrewMember_.firstName);
+        specification = byNameLike(specification, filter.getLastName(), CrewMember_.lastName);
+        specification = byAgeFrom(specification, filter.getAge());
         return specification;
 
     }

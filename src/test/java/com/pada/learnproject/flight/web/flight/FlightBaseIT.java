@@ -1,4 +1,4 @@
-package com.pada.learnproject.flight;
+package com.pada.learnproject.flight.web.flight;
 
 import static com.pada.learnproject.flight.constant.FlightTestValues.createDefaultTestFlight;
 import static com.pada.learnproject.flight.constant.FlightTestValues.createSecondTestFlight;
