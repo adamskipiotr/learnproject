@@ -2,19 +2,15 @@ package com.pada.learnproject.flight.domain;
 
 import static jakarta.persistence.EnumType.STRING;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -31,26 +27,26 @@ import lombok.Setter;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "flight")
-public class Flight {
+@Table(name = "crew_member")
+public class CrewMember {
 
     @Id
-    @SequenceGenerator(name = "flight_id_sequence", sequenceName = "flight_id_seq", allocationSize = 10)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flight_id_sequence")
+    @SequenceGenerator(name = "crew_member_id_sequence", sequenceName = "crew_member_id_seq", allocationSize = 10)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "crew_member_id_sequence")
     private Long id;
 
-    private LocalDateTime flightStart;
+    private String firstName;
 
-    private LocalDateTime flightEnd;
+    private String lastName;
 
     @Enumerated(STRING)
-    private FlightStatus flightStatus;
+    private CrewMemberRank crewMemberRank;
+
+    private Integer age;
 
     @Builder.Default
     @EqualsAndHashCode.Exclude
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "flights__crew_members",
-        joinColumns = @JoinColumn(name = "flight_id"),
-        inverseJoinColumns = @JoinColumn(name = "crew_member_id"))
-    private Set<CrewMember> crewMembers = new HashSet<>();
+    @ManyToMany(mappedBy = Flight_.CREW_MEMBERS, fetch = FetchType.LAZY)
+    private Set<Flight> flights = new HashSet<>();
+
 }

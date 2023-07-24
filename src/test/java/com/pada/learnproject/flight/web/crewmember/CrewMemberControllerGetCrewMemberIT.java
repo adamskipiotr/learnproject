@@ -1,31 +1,31 @@
-package com.pada.learnproject.flight.web;
+package com.pada.learnproject.flight.web.crewmember;
+
 
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
-import static com.pada.learnproject.flight.constant.FlightConstants.Urls.createUrlWithEntityId;
-import static com.pada.learnproject.flight.constant.FlightTestValues.NON_EXISTING_ID;
-import static com.pada.learnproject.flight.validator.FlightValidator.validateFlightResponseDetails;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static com.pada.learnproject.flight.constant.CrewMemberConstants.Urls.createUrlWithEntityId;
+import static com.pada.learnproject.flight.constant.CrewMemberTestValues.NON_EXISTING_ID;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
-import com.pada.learnproject.flight.FlightBaseIT;
-import com.pada.learnproject.flight.service.dto.FlightResponse;
+import com.pada.learnproject.flight.service.dto.CrewMemberResponse;
+import com.pada.learnproject.flight.validator.CrewMemberValidator;
 import org.junit.jupiter.api.Test;
 
-class FlightControllerDeleteFlightIT extends FlightBaseIT {
+class CrewMemberControllerGetCrewMemberIT extends CrewMemberBaseIT {
+
 
     @Test
-    void shouldReturnDeletedFlightWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnDefaultCrewMemberWhenSearchingWithValidId() throws Exception {
         var result = mockMvc.perform(
-                delete(createUrlWithEntityId(defaultFlight.getId())))
+                get(createUrlWithEntityId(defaultCrewMember.getId())))
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        var response = objectMapper.readValue(result, FlightResponse.class);
-        validateFlightResponseDetails(response);
+        var response = objectMapper.readValue(result, CrewMemberResponse.class);
+        CrewMemberValidator.validateCrewMemberResponseDetails(response);
     }
 
     @Test

@@ -4,6 +4,7 @@ import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.service.dto.FlightRequest;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 
 public interface FlightTestValues {
 
@@ -36,6 +37,7 @@ public interface FlightTestValues {
             .flightStart(DEFAULT_FLIGHT_START)
             .flightEnd(DEFAULT_FLIGHT_END)
             .flightStatus(DEFAULT_FLIGHT_STATUS)
+            .crewMembers(new HashSet<>())
             .build();
     }
 
@@ -43,6 +45,8 @@ public interface FlightTestValues {
         return Flight.builder()
             .flightStart(SECOND_FLIGHT_START)
             .flightEnd(SECOND_FLIGHT_END)
+            .crewMembers(new HashSet<>())
+
             .build();
     }
 
@@ -50,6 +54,8 @@ public interface FlightTestValues {
         return Flight.builder()
             .flightStart(THIRD_FLIGHT_START)
             .flightEnd(THIRD_FLIGHT_END)
+            .crewMembers(new HashSet<>())
+
             .build();
     }
 

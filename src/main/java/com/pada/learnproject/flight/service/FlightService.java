@@ -28,7 +28,6 @@ public class FlightService {
     public FlightListWrapperResponse findFlights(Pageable pageable, FlightCriteria flightCriteria) {
         Specification<Flight> flightSpecification = createSpecification(flightCriteria);
         Page<Flight> flightPage = flightRepository.findAll(flightSpecification, pageable);
-
         List<FlightListResponse> data = flightPage
             .stream()
             .map(flightMapper::toListResponse)

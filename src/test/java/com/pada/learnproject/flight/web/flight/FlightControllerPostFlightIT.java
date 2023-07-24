@@ -1,4 +1,4 @@
-package com.pada.learnproject.flight.web;
+package com.pada.learnproject.flight.web.flight;
 
 import static com.pada.learnproject.flight.constant.FlightConstants.Urls.FLIGHTS;
 import static com.pada.learnproject.flight.constant.FlightTestValues.createFlightRequest;
@@ -6,7 +6,6 @@ import static com.pada.learnproject.flight.validator.FlightValidator.validateCre
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.pada.learnproject.common.util.TestUtil;
-import com.pada.learnproject.flight.FlightBaseIT;
 import com.pada.learnproject.flight.service.dto.FlightResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
