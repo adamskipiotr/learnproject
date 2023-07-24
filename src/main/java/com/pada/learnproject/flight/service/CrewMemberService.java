@@ -46,7 +46,6 @@ public class CrewMemberService {
         specification = byNameLike(specification, filter.getLastName(), CrewMember_.lastName);
         specification = byAgeFrom(specification, filter.getAge());
         return specification;
-
     }
 
     @Transactional
