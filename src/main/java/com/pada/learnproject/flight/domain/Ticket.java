@@ -3,7 +3,6 @@ package com.pada.learnproject.flight.domain;
 import static jakarta.persistence.EnumType.STRING;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
