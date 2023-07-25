@@ -30,8 +30,8 @@ public class AirportController {
     private final AirportService airportService;
 
     @GetMapping
-    public ResponseEntity<AirportListWrapperResponse> getAirports(Pageable pageable, AirportCriteria flightCriteria) {
-        var responseBody = airportService.findAirports(pageable, flightCriteria);
+    public ResponseEntity<AirportListWrapperResponse> getAirports(Pageable pageable, AirportCriteria airportCriteria) {
+        var responseBody = airportService.findAirports(pageable, airportCriteria);
         return ResponseEntity.status(OK).body(responseBody);
     }
 
