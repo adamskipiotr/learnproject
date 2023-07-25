@@ -10,7 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PassengerCriteria {
 
-    private LocalDateTime flightStartLowerBoundary;
+    private String firstName;
 
-    private LocalDateTime flightStartUpperBoundary;
+    private String lastName;
+
+    private Integer age;
+
+    private Boolean isPremium;
 }

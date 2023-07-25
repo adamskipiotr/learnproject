@@ -1,10 +1,10 @@
 package com.pada.learnproject.flight.web.passenger;
 
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
-import static com.pada.learnproject.flight.constant.FlightConstants.Urls.createUrlWithEntityId;
-import static com.pada.learnproject.flight.constant.FlightTestValues.NON_EXISTING_ID;
-import static com.pada.learnproject.flight.constant.FlightTestValues.createUpdateFlightRequest;
-import static com.pada.learnproject.flight.validator.FlightValidator.validateUpdateFlightResponse;
+import static com.pada.learnproject.flight.constant.PassengerConstants.Urls.createUrlWithEntityId;
+import static com.pada.learnproject.flight.constant.PassengerTestValues.NON_EXISTING_ID;
+import static com.pada.learnproject.flight.constant.PassengerTestValues.createUpdatePassengerRequest;
+import static com.pada.learnproject.flight.validator.PassengerValidator.validateUpdatePassengerResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
 import com.pada.learnproject.common.util.TestUtil;
-import com.pada.learnproject.flight.service.dto.FlightResponse;
+import com.pada.learnproject.flight.service.dto.PassengerResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
@@ -21,15 +21,15 @@ class PassengerControllerPutPassengerIT extends PassengerBaseIT {
     @Test
     void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {
         var result = mockMvc.perform(
-                put(createUrlWithEntityId(defaultFlight.getId()))
-                    .content(TestUtil.convertObjectToJsonBytes(createUpdateFlightRequest()))
+                put(createUrlWithEntityId(defaultPassenger.getId()))
+                    .content(TestUtil.convertObjectToJsonBytes(createUpdatePassengerRequest()))
                     .contentType(MediaType.APPLICATION_JSON))
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        var response = objectMapper.readValue(result, FlightResponse.class);
-        validateUpdateFlightResponse(response);
+        var response = objectMapper.readValue(result, PassengerResponse.class);
+        validateUpdatePassengerResponse(response);
     }
 
     @Test

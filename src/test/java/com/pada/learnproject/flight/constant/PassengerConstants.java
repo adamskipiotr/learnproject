@@ -3,18 +3,20 @@ package com.pada.learnproject.flight.constant;
 public interface PassengerConstants {
 
      class FilteringFields {
-         public static final String NAME = "name";
-         public static final String WEATHER_CONDITION = "weatherCondition";
+         public static final String FIRSTNAME = "firstName";
+         public static final String LASTNAME = "lastName";
+         public static final String AGE = "age";
+         public static final String IS_PREMIUM = "isPremium";
 
         private FilteringFields() {
         }
     }
 
     class Urls {
-         public static final String AIRPORTS = "/airports";
+         public static final String PASSENGERS = "/passengers";
 
          public static String createUrlWithEntityId(Long id){
-             return AIRPORTS + "/" + id;
+             return PASSENGERS + "/" + id;
          }
     }
 }

@@ -2,30 +2,30 @@ package com.pada.learnproject.flight.web.passenger;
 
 
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
-import static com.pada.learnproject.flight.constant.FlightConstants.Urls.createUrlWithEntityId;
-import static com.pada.learnproject.flight.constant.FlightTestValues.NON_EXISTING_ID;
+import static com.pada.learnproject.flight.constant.PassengerConstants.Urls.createUrlWithEntityId;
+import static com.pada.learnproject.flight.constant.PassengerTestValues.NON_EXISTING_ID;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
-import com.pada.learnproject.flight.service.dto.FlightResponse;
-import com.pada.learnproject.flight.validator.FlightValidator;
+import com.pada.learnproject.flight.service.dto.PassengerResponse;
+import com.pada.learnproject.flight.validator.PassengerValidator;
 import org.junit.jupiter.api.Test;
 
 class PassengerControllerGetPassengerIT extends PassengerBaseIT {
 
 
     @Test
-    void shouldReturnDefaultFlightWhenSearchingWithValidId() throws Exception {
+    void shouldReturnDefaultPassengerWhenSearchingWithValidId() throws Exception {
         var result = mockMvc.perform(
-                get(createUrlWithEntityId(defaultFlight.getId())))
+                get(createUrlWithEntityId(defaultPassenger.getId())))
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        var response = objectMapper.readValue(result, FlightResponse.class);
-        FlightValidator.validateFlightResponseDetails(response);
+        var response = objectMapper.readValue(result, PassengerResponse.class);
+        PassengerValidator.validatePassengerResponseDetails(response);
     }
 
     @Test

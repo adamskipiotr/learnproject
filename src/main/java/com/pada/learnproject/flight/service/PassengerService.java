@@ -1,5 +1,10 @@
 package com.pada.learnproject.flight.service;
 
+import static com.pada.learnproject.flight.repository.PassengerRepository.Specs.byAgeFrom;
+import static com.pada.learnproject.flight.repository.PassengerRepository.Specs.byIsPremium;
+import static com.pada.learnproject.flight.repository.PassengerRepository.Specs.byNameLike;
+
+import com.pada.learnproject.flight.domain.Passenger_;
 import com.pada.learnproject.flight.domain.Passenger;
 import com.pada.learnproject.flight.repository.PassengerRepository;
 import com.pada.learnproject.flight.service.dto.PassengerListResponse;
@@ -25,8 +30,8 @@ public class PassengerService {
     @Transactional
     public PassengerListWrapperResponse findPassengers(Pageable pageable, PassengerCriteria passengerCriteria) {
         Specification<Passenger> passengerSpecification = createSpecification(passengerCriteria);
-        Page<Passenger> flightPage = passengerRepository.findAll(passengerSpecification, pageable);
-        List<PassengerListResponse> data = flightPage
+        Page<Passenger> passengerPage = passengerRepository.findAll(passengerSpecification, pageable);
+        List<PassengerListResponse> data = passengerPage
             .stream()
             .map(passengerMapper::toListResponse)
             .toList();
@@ -36,37 +41,40 @@ public class PassengerService {
 
     private Specification<Passenger> createSpecification(PassengerCriteria filter) {
         Specification<Passenger> specification = Specification.where(null);
-
+        specification = byNameLike(specification, filter.getFirstName(), Passenger_.firstName);
+        specification = byNameLike(specification, filter.getLastName(), Passenger_.lastName);
+        specification = byAgeFrom(specification, filter.getAge());
+        specification = byIsPremium(specification, filter.getIsPremium());
         return specification;
 
     }
 
     @Transactional
     public PassengerResponse findById(Long id) {
-        Passenger flight = passengerRepository.findById(id).orElseThrow(RuntimeException::new);
-        return passengerMapper.toResponse(flight);
+        Passenger passenger = passengerRepository.findById(id).orElseThrow(RuntimeException::new);
+        return passengerMapper.toResponse(passenger);
     }
 
     @Transactional
     public PassengerResponse addPassenger(PassengerRequest passengerRequest) {
-        Passenger flight = passengerMapper.toEntity(passengerRequest);
-        flight = passengerRepository.save(flight);
-        return passengerMapper.toResponse(flight);
+        Passenger passenger = passengerMapper.toEntity(passengerRequest);
+        passenger = passengerRepository.save(passenger);
+        return passengerMapper.toResponse(passenger);
     }
 
 
     @Transactional
     public PassengerResponse updatePassenger(Long id, PassengerRequest passengerRequest) {
-        Passenger flight = passengerRepository.findById(id).orElseThrow(RuntimeException::new);
-        flight = passengerMapper.updateEntity(flight, passengerRequest);
-        return passengerMapper.toResponse(flight);
+        Passenger passenger = passengerRepository.findById(id).orElseThrow(RuntimeException::new);
+        passenger = passengerMapper.updateEntity(passenger, passengerRequest);
+        return passengerMapper.toResponse(passenger);
     }
 
     @Transactional
     public PassengerResponse deletePassenger(Long id) {
-        Passenger flight = passengerRepository.findById(id).orElseThrow(RuntimeException::new);
+        Passenger passenger = passengerRepository.findById(id).orElseThrow(RuntimeException::new);
         passengerRepository.deleteById(id);
-        return passengerMapper.toResponse(flight);
+        return passengerMapper.toResponse(passenger);
     }
 
 }

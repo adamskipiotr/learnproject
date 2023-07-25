@@ -1,13 +1,13 @@
 package com.pada.learnproject.flight.web.passenger;
 
-import static com.pada.learnproject.flight.constant.FlightTestValues.createDefaultTestFlight;
-import static com.pada.learnproject.flight.constant.FlightTestValues.createSecondTestFlight;
-import static com.pada.learnproject.flight.constant.FlightTestValues.createThirdTestFlight;
+import static com.pada.learnproject.flight.constant.PassengerTestValues.createDefaultTestPassenger;
+import static com.pada.learnproject.flight.constant.PassengerTestValues.createSecondTestPassenger;
+import static com.pada.learnproject.flight.constant.PassengerTestValues.createThirdTestPassenger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pada.learnproject.LearnprojectApplicationTests;
-import com.pada.learnproject.flight.domain.Flight;
-import com.pada.learnproject.flight.repository.FlightRepository;
+import com.pada.learnproject.flight.domain.Passenger;
+import com.pada.learnproject.flight.repository.PassengerRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,26 +24,26 @@ public class PassengerBaseIT extends LearnprojectApplicationTests {
     protected MockMvc mockMvc;
     @Autowired
     protected ObjectMapper objectMapper;
-    protected Flight defaultFlight;
+    protected Passenger defaultPassenger;
     @Autowired
-    private FlightRepository flightRepository;
+    private PassengerRepository passengerRepository;
 
     @BeforeEach
     @Transactional
     public void setUpTestData() {
-        insertDefaultFlight();
+        insertDefaultPassenger();
 
-        flightRepository.saveAndFlush(createSecondTestFlight());
-        flightRepository.saveAndFlush(createThirdTestFlight());
+        passengerRepository.saveAndFlush(createSecondTestPassenger());
+        passengerRepository.saveAndFlush(createThirdTestPassenger());
     }
 
-    private void insertDefaultFlight() {
-        defaultFlight = createDefaultTestFlight();
-        defaultFlight = flightRepository.saveAndFlush(defaultFlight);
+    private void insertDefaultPassenger() {
+        defaultPassenger = createDefaultTestPassenger();
+        defaultPassenger = passengerRepository.saveAndFlush(defaultPassenger);
     }
 
     @AfterEach
     public void deleteTestData() {
-        flightRepository.deleteAll();
+        passengerRepository.deleteAll();
     }
 }
