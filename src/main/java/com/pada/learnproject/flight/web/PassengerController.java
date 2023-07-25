@@ -5,8 +5,6 @@ import static org.springframework.http.HttpStatus.OK;
 
 import com.pada.learnproject.flight.service.PassengerCriteria;
 import com.pada.learnproject.flight.service.PassengerService;
-import com.pada.learnproject.flight.service.PassengerCriteria;
-import com.pada.learnproject.flight.service.PassengerService;
 import com.pada.learnproject.flight.service.dto.PassengerListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.PassengerRequest;
 import com.pada.learnproject.flight.service.dto.PassengerResponse;

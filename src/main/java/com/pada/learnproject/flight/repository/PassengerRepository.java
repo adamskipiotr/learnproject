@@ -2,7 +2,6 @@ package com.pada.learnproject.flight.repository;
 
 import com.pada.learnproject.flight.domain.Passenger;
 import com.pada.learnproject.flight.domain.Passenger_;
-import com.pada.learnproject.flight.domain.Passenger;
 import jakarta.persistence.metamodel.SingularAttribute;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;

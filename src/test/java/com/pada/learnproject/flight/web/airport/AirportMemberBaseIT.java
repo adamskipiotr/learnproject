@@ -3,9 +3,6 @@ package com.pada.learnproject.flight.web.airport;
 import static com.pada.learnproject.flight.constant.AirportTestValues.createDefaultTestAirport;
 import static com.pada.learnproject.flight.constant.AirportTestValues.createSecondTestAirport;
 import static com.pada.learnproject.flight.constant.AirportTestValues.createThirdTestAirport;
-import static com.pada.learnproject.flight.constant.CrewMemberTestValues.createDefaultTestCrewMember;
-import static com.pada.learnproject.flight.constant.CrewMemberTestValues.createSecondTestCrewMember;
-import static com.pada.learnproject.flight.constant.CrewMemberTestValues.createThirdTestCrewMember;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pada.learnproject.LearnprojectApplicationTests;

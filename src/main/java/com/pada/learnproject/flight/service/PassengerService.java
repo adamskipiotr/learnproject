@@ -4,8 +4,8 @@ import static com.pada.learnproject.flight.repository.PassengerRepository.Specs.
 import static com.pada.learnproject.flight.repository.PassengerRepository.Specs.byIsPremium;
 import static com.pada.learnproject.flight.repository.PassengerRepository.Specs.byNameLike;
 
-import com.pada.learnproject.flight.domain.Passenger_;
 import com.pada.learnproject.flight.domain.Passenger;
+import com.pada.learnproject.flight.domain.Passenger_;
 import com.pada.learnproject.flight.repository.PassengerRepository;
 import com.pada.learnproject.flight.service.dto.PassengerListResponse;
 import com.pada.learnproject.flight.service.dto.PassengerListWrapperResponse;
