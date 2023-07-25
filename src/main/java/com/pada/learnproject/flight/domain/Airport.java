@@ -37,6 +37,4 @@ public class Airport {
     @Enumerated(STRING)
     private WeatherCondition weatherCondition;
 
-    private LocalDateTime localDateTime;
-
 }

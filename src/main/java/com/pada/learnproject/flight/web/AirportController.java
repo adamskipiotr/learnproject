@@ -3,8 +3,8 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
-import com.pada.learnproject.flight.service.AirportService;
 import com.pada.learnproject.flight.service.AirportCriteria;
+import com.pada.learnproject.flight.service.AirportService;
 import com.pada.learnproject.flight.service.dto.AirportListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.AirportRequest;
 import com.pada.learnproject.flight.service.dto.AirportResponse;

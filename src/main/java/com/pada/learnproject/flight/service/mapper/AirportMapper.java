@@ -5,7 +5,6 @@ import com.pada.learnproject.flight.service.dto.AirportListResponse;
 import com.pada.learnproject.flight.service.dto.AirportRequest;
 import com.pada.learnproject.flight.service.dto.AirportResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
@@ -14,9 +13,9 @@ public interface AirportMapper {
 
     Airport toEntity(AirportRequest request);
 
-    AirportResponse toResponse(Airport flight);
+    AirportResponse toResponse(Airport entity);
 
-    AirportListResponse toListResponse(Airport flight);
+    AirportListResponse toListResponse(Airport entity);
 
-    Airport updateEntity(@MappingTarget Airport flight, AirportRequest flightRequest);
+    Airport updateEntity(@MappingTarget Airport entity, AirportRequest request);
 }

@@ -1,6 +1,8 @@
 package com.pada.learnproject.flight.repository;
 
 import com.pada.learnproject.flight.domain.Airport;
+import com.pada.learnproject.flight.domain.Airport_;
+import com.pada.learnproject.flight.domain.WeatherCondition;
 import jakarta.persistence.metamodel.SingularAttribute;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,13 +14,13 @@ public interface AirportRepository extends JpaRepository<Airport, Long>, JpaSpec
 
     interface Specs {
 
-        //    static Specification<Airport> byWeatherCondition(Specification<Airport> specification, Integer value) {
-        //        if (value != null) {
-        //            specification = specification.and((root, query, builder) ->
-        //                builder.lessThanOrEqualTo(root.get(Airport_.), value));
-        //        }
-        //        return specification;
-        //    }
+            static Specification<Airport> byWeatherCondition(Specification<Airport> specification, WeatherCondition value) {
+                if (value != null) {
+                    specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get(Airport_.weatherCondition), value));
+                }
+                return specification;
+            }
 
         static Specification<Airport> airportByNameLike(Specification<Airport> specification,
             String name, SingularAttribute<Airport, String> attribute) {

@@ -1,10 +1,9 @@
 package com.pada.learnproject.flight.service.dto;
 
-import com.pada.learnproject.flight.domain.CrewMemberRank;
+import com.pada.learnproject.flight.domain.WeatherCondition;
 
 public record AirportListResponse(
-    String firstName,
-    String lastName,
-    CrewMemberRank crewMemberRank,
-    Integer age) {
+    String name,
+    WeatherCondition weatherCondition
+) {
 }

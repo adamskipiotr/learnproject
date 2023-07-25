@@ -1,6 +1,6 @@
 package com.pada.learnproject.flight.service.dto;
 
-import java.time.LocalDateTime;
+import com.pada.learnproject.flight.domain.WeatherCondition;
 
-public record AirportRequest(LocalDateTime flightStart, LocalDateTime flightEnd) {
+public record AirportRequest(String airportName, WeatherCondition weatherCondition) {
 }

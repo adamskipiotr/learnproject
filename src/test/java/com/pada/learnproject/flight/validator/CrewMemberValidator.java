@@ -24,42 +24,42 @@ public class CrewMemberValidator {
 
     public static void validateCrewMemberListWrapperWithWithThreeElementsInList(
         CrewMemberListWrapperResponse response) {
-        var flightListResponseList = response.crewMembers();
-        assertEquals(3, flightListResponseList.size());
+        var crewMemberResponseList = response.crewMembers();
+        assertEquals(3, crewMemberResponseList.size());
     }
 
     public static void validateCrewMemberListWrapperWithCrewMemberListResponse(CrewMemberListWrapperResponse response) {
-        var flightListResponseList = response.crewMembers();
-        assertEquals(1, flightListResponseList.size());
+        var crewMemberResponseList = response.crewMembers();
+        assertEquals(1, crewMemberResponseList.size());
 
-        var flightListResponse = flightListResponseList.get(0);
-        assertEquals(FIRST_CREW_MEMBER_FIRSTNAME, flightListResponse.firstName());
-        assertEquals(FIRST_CREW_MEMBER_LASTNAME, flightListResponse.lastName());
+        var crewMemberListResponse = crewMemberResponseList.get(0);
+        assertEquals(FIRST_CREW_MEMBER_FIRSTNAME, crewMemberListResponse.firstName());
+        assertEquals(FIRST_CREW_MEMBER_LASTNAME, crewMemberListResponse.lastName());
     }
 
     public static void validateEmptyCrewMemberListWrapperResponse(CrewMemberListWrapperResponse response) {
-        var flightListResponseList = response.crewMembers();
-        assertTrue(flightListResponseList.isEmpty());
+        var crewMemberResponseList = response.crewMembers();
+        assertTrue(crewMemberResponseList.isEmpty());
     }
 
-    public static void validateCrewMemberResponseDetails(CrewMemberResponse flightResponse) {
-        assertEquals(FIRST_CREW_MEMBER_FIRSTNAME, flightResponse.firstName());
-        assertEquals(FIRST_CREW_MEMBER_LASTNAME, flightResponse.lastName());
-        assertEquals(FIRST_CREW_MEMBER_AGE, flightResponse.age());
-        assertEquals(FIRST_CREW_MEMBER_RANK, flightResponse.crewMemberRank());
+    public static void validateCrewMemberResponseDetails(CrewMemberResponse crewMemberResponse) {
+        assertEquals(FIRST_CREW_MEMBER_FIRSTNAME, crewMemberResponse.firstName());
+        assertEquals(FIRST_CREW_MEMBER_LASTNAME, crewMemberResponse.lastName());
+        assertEquals(FIRST_CREW_MEMBER_AGE, crewMemberResponse.age());
+        assertEquals(FIRST_CREW_MEMBER_RANK, crewMemberResponse.crewMemberRank());
     }
 
-    public static void validateCreateCrewMemberResponse(CrewMemberResponse flightResponse) {
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_FIRSTNAME, flightResponse.firstName());
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_LASTNAME, flightResponse.lastName());
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_AGE, flightResponse.age());
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_RANK, flightResponse.crewMemberRank());
+    public static void validateCreateCrewMemberResponse(CrewMemberResponse crewMemberResponse) {
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_FIRSTNAME, crewMemberResponse.firstName());
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_LASTNAME, crewMemberResponse.lastName());
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_AGE, crewMemberResponse.age());
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_RANK, crewMemberResponse.crewMemberRank());
     }
 
-    public static void validateUpdateCrewMemberResponse(CrewMemberResponse flightResponse) {
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_FIRSTNAME, flightResponse.firstName());
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_LASTNAME, flightResponse.lastName());
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_AGE, flightResponse.age());
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_RANK, flightResponse.crewMemberRank());
+    public static void validateUpdateCrewMemberResponse(CrewMemberResponse crewMemberResponse) {
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_FIRSTNAME, crewMemberResponse.firstName());
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_LASTNAME, crewMemberResponse.lastName());
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_AGE, crewMemberResponse.age());
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_RANK, crewMemberResponse.crewMemberRank());
     }
 }

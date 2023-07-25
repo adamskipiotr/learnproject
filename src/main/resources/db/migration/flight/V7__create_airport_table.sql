@@ -13,6 +13,5 @@ CREATE TABLE IF NOT EXISTS airport
     id BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('airport_id_seq'),
     name VARCHAR(255),
     last_name VARCHAR(255),
-    weather_condition VARCHAR(255),
-    local_date_time TIMESTAMP(6)
+    weather_condition VARCHAR(255)
 );

@@ -1,6 +1,10 @@
 package com.pada.learnproject.flight.service;
 
+import static com.pada.learnproject.flight.repository.AirportRepository.Specs.airportByNameLike;
+import static com.pada.learnproject.flight.repository.AirportRepository.Specs.byWeatherCondition;
+
 import com.pada.learnproject.flight.domain.Airport;
+import com.pada.learnproject.flight.domain.Airport_;
 import com.pada.learnproject.flight.repository.AirportRepository;
 import com.pada.learnproject.flight.service.dto.AirportListResponse;
 import com.pada.learnproject.flight.service.dto.AirportListWrapperResponse;
@@ -34,8 +38,8 @@ public class AirportService {
 
     private Specification<Airport> createSpecification(AirportCriteria filter) {
         Specification<Airport> specification = Specification.where(null);
-        //   specification = byNameLike(specification, filter.getName(), Airport_.firstName);
-        //  specification = byAgeFrom(specification, filter.getWeatherCondition());
+        specification = airportByNameLike(specification, filter.getName(), Airport_.name);
+        specification = byWeatherCondition(specification, filter.getWeatherCondition());
         return specification;
     }
 
