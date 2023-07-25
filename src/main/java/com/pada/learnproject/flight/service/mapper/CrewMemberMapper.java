@@ -13,9 +13,9 @@ public interface CrewMemberMapper {
 
     CrewMember toEntity(CrewMemberRequest request);
 
-    CrewMemberResponse toResponse(CrewMember flight);
+    CrewMemberResponse toResponse(CrewMember entity);
 
-    CrewMemberListResponse toListResponse(CrewMember crewMember);
+    CrewMemberListResponse toListResponse(CrewMember entity);
 
-    CrewMember updateEntity(@MappingTarget CrewMember crewMember, CrewMemberRequest flightRequest);
+    CrewMember updateEntity(@MappingTarget CrewMember entity, CrewMemberRequest request);
 }
