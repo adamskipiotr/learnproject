@@ -1,12 +1,12 @@
 package com.pada.learnproject.flight.web.ticket;
 
-import static com.pada.learnproject.flight.constant.PassengerConstants.Urls.PASSENGERS;
-import static com.pada.learnproject.flight.constant.PassengerTestValues.createPassengerRequest;
-import static com.pada.learnproject.flight.validator.PassengerValidator.validateCreatePassengerResponse;
+import static com.pada.learnproject.flight.constant.TicketConstants.Urls.TICKETS;
+import static com.pada.learnproject.flight.constant.TicketTestValues.createTicketRequest;
+import static com.pada.learnproject.flight.validator.TicketValidator.validateCreateTicketResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.pada.learnproject.common.util.TestUtil;
-import com.pada.learnproject.flight.service.dto.PassengerResponse;
+import com.pada.learnproject.flight.service.dto.TicketResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
@@ -15,14 +15,14 @@ class TicketControllerPostTicketIT extends TicketBaseIT {
     @Test
     void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {
         var result = mockMvc.perform(
-                post(PASSENGERS)
-                    .content(TestUtil.convertObjectToJsonBytes(createPassengerRequest()))
+                post(TICKETS)
+                    .content(TestUtil.convertObjectToJsonBytes(createTicketRequest()))
                     .contentType(MediaType.APPLICATION_JSON))
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        var response = objectMapper.readValue(result, PassengerResponse.class);
-        validateCreatePassengerResponse(response);
+        var response = objectMapper.readValue(result, TicketResponse.class);
+        validateCreateTicketResponse(response);
     }
 }

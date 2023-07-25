@@ -1,13 +1,13 @@
 package com.pada.learnproject.flight.web.ticket;
 
-import static com.pada.learnproject.flight.constant.PassengerTestValues.createDefaultTestPassenger;
-import static com.pada.learnproject.flight.constant.PassengerTestValues.createSecondTestPassenger;
-import static com.pada.learnproject.flight.constant.PassengerTestValues.createThirdTestPassenger;
+import static com.pada.learnproject.flight.constant.TicketTestValues.createDefaultTestTicket;
+import static com.pada.learnproject.flight.constant.TicketTestValues.createSecondTestTicket;
+import static com.pada.learnproject.flight.constant.TicketTestValues.createThirdTestTicket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pada.learnproject.LearnprojectApplicationTests;
-import com.pada.learnproject.flight.domain.Passenger;
-import com.pada.learnproject.flight.repository.PassengerRepository;
+import com.pada.learnproject.flight.domain.Ticket;
+import com.pada.learnproject.flight.repository.TicketRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,26 +24,26 @@ public class TicketBaseIT extends LearnprojectApplicationTests {
     protected MockMvc mockMvc;
     @Autowired
     protected ObjectMapper objectMapper;
-    protected Passenger defaultPassenger;
+    protected Ticket defaultTicket;
     @Autowired
-    private PassengerRepository passengerRepository;
+    private TicketRepository ticketRepository;
 
     @BeforeEach
     @Transactional
     public void setUpTestData() {
         insertDefaultPassenger();
 
-        passengerRepository.saveAndFlush(createSecondTestPassenger());
-        passengerRepository.saveAndFlush(createThirdTestPassenger());
+        ticketRepository.saveAndFlush(createSecondTestTicket());
+        ticketRepository.saveAndFlush(createThirdTestTicket());
     }
 
     private void insertDefaultPassenger() {
-        defaultPassenger = createDefaultTestPassenger();
-        defaultPassenger = passengerRepository.saveAndFlush(defaultPassenger);
+        defaultTicket = createDefaultTestTicket();
+        defaultTicket = ticketRepository.saveAndFlush(defaultTicket);
     }
 
     @AfterEach
     public void deleteTestData() {
-        passengerRepository.deleteAll();
+        ticketRepository.deleteAll();
     }
 }

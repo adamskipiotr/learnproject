@@ -2,30 +2,30 @@ package com.pada.learnproject.flight.web.ticket;
 
 
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
-import static com.pada.learnproject.flight.constant.PassengerConstants.Urls.createUrlWithEntityId;
-import static com.pada.learnproject.flight.constant.PassengerTestValues.NON_EXISTING_ID;
+import static com.pada.learnproject.flight.constant.TicketConstants.Urls.createUrlWithEntityId;
+import static com.pada.learnproject.flight.constant.TicketTestValues.NON_EXISTING_ID;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
-import com.pada.learnproject.flight.service.dto.PassengerResponse;
-import com.pada.learnproject.flight.validator.PassengerValidator;
+import com.pada.learnproject.flight.service.dto.TicketResponse;
+import com.pada.learnproject.flight.validator.TicketValidator;
 import org.junit.jupiter.api.Test;
 
 class TicketControllerGetTicketIT extends TicketBaseIT {
 
 
     @Test
-    void shouldReturnDefaultPassengerWhenSearchingWithValidId() throws Exception {
+    void shouldReturnDefaultTicketWhenSearchingWithValidId() throws Exception {
         var result = mockMvc.perform(
-                get(createUrlWithEntityId(defaultPassenger.getId())))
+                get(createUrlWithEntityId(defaultTicket.getId())))
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        var response = objectMapper.readValue(result, PassengerResponse.class);
-        PassengerValidator.validatePassengerResponseDetails(response);
+        var response = objectMapper.readValue(result, TicketResponse.class);
+        TicketValidator.validateTicketResponseDetails(response);
     }
 
     @Test
