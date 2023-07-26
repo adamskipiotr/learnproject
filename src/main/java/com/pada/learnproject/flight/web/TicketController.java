@@ -3,11 +3,11 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
-import com.pada.learnproject.flight.service.TicketCriteria;
+import com.pada.learnproject.flight.domain.criteria.TicketCriteria;
 import com.pada.learnproject.flight.service.TicketService;
-import com.pada.learnproject.flight.service.dto.TicketListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.TicketRequest;
-import com.pada.learnproject.flight.service.dto.TicketResponse;
+import com.pada.learnproject.flight.service.dto.request.TicketRequest;
+import com.pada.learnproject.flight.service.dto.response.TicketListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/tickets")
-@Tag(name = "TIckets Controller")
+@Tag(name = "Tickets Controller")
 @RequiredArgsConstructor
 public class TicketController {
 

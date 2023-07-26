@@ -5,11 +5,12 @@ import static com.pada.learnproject.flight.repository.TicketRepository.Specs.byT
 
 import com.pada.learnproject.flight.domain.Ticket;
 import com.pada.learnproject.flight.domain.Ticket_;
+import com.pada.learnproject.flight.domain.criteria.TicketCriteria;
 import com.pada.learnproject.flight.repository.TicketRepository;
-import com.pada.learnproject.flight.service.dto.TicketListResponse;
-import com.pada.learnproject.flight.service.dto.TicketListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.TicketRequest;
-import com.pada.learnproject.flight.service.dto.TicketResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketListResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.request.TicketRequest;
+import com.pada.learnproject.flight.service.dto.response.TicketResponse;
 import com.pada.learnproject.flight.service.mapper.TicketMapper;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

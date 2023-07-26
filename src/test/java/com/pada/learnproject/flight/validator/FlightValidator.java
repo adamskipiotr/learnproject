@@ -10,8 +10,8 @@ import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIG
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.FlightResponse;
+import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import org.springframework.stereotype.Component;
 
 @Component

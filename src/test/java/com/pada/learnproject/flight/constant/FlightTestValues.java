@@ -2,7 +2,7 @@ package com.pada.learnproject.flight.constant;
 
 import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.domain.FlightStatus;
-import com.pada.learnproject.flight.service.dto.FlightRequest;
+import com.pada.learnproject.flight.service.dto.request.FlightRequest;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 

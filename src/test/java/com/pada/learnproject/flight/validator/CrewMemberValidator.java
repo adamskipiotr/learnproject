@@ -15,8 +15,8 @@ import static com.pada.learnproject.flight.constant.CrewMemberTestValues.UPDATE_
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.pada.learnproject.flight.service.dto.CrewMemberListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.CrewMemberResponse;
+import com.pada.learnproject.flight.service.dto.response.CrewMemberListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.CrewMemberResponse;
 import org.springframework.stereotype.Component;
 
 @Component

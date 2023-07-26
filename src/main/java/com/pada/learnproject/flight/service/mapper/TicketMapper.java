@@ -1,9 +1,9 @@
 package com.pada.learnproject.flight.service.mapper;
 
 import com.pada.learnproject.flight.domain.Ticket;
-import com.pada.learnproject.flight.service.dto.TicketListResponse;
-import com.pada.learnproject.flight.service.dto.TicketRequest;
-import com.pada.learnproject.flight.service.dto.TicketResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketListResponse;
+import com.pada.learnproject.flight.service.dto.request.TicketRequest;
+import com.pada.learnproject.flight.service.dto.response.TicketResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;

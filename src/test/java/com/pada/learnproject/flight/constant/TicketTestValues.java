@@ -7,7 +7,7 @@ import static com.pada.learnproject.flight.domain.TicketClass.PREMIUM_ECONOMY;
 
 import com.pada.learnproject.flight.domain.Ticket;
 import com.pada.learnproject.flight.domain.TicketClass;
-import com.pada.learnproject.flight.service.dto.TicketRequest;
+import com.pada.learnproject.flight.service.dto.request.TicketRequest;
 
 public interface TicketTestValues {
 

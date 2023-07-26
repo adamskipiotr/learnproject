@@ -13,7 +13,7 @@ import static com.pada.learnproject.flight.validator.AirportValidator.validateAi
 import static com.pada.learnproject.flight.validator.AirportValidator.validateEmptyAirportListWrapperResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import com.pada.learnproject.flight.service.dto.AirportListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.AirportListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
 class AirportControllerGetAirportMembersIT extends AirportMemberBaseIT {

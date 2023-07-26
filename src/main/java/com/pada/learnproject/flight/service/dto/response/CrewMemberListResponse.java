@@ -1,8 +1,8 @@
-package com.pada.learnproject.flight.service.dto;
+package com.pada.learnproject.flight.service.dto.response;
 
 import com.pada.learnproject.flight.domain.CrewMemberRank;
 
-public record PassengerListResponse(
+public record CrewMemberListResponse(
     String firstName,
     String lastName,
     CrewMemberRank crewMemberRank,

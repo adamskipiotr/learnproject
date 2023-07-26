@@ -1,4 +1,4 @@
-package com.pada.learnproject.flight.service;
+package com.pada.learnproject.flight.domain.criteria;
 
 import com.pada.learnproject.flight.domain.WeatherCondition;
 import lombok.Getter;

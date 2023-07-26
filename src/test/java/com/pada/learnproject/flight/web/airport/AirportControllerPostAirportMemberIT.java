@@ -6,7 +6,7 @@ import static com.pada.learnproject.flight.validator.AirportValidator.validateCr
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.pada.learnproject.common.util.TestUtil;
-import com.pada.learnproject.flight.service.dto.AirportResponse;
+import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 

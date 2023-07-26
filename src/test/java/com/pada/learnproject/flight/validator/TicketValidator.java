@@ -12,8 +12,8 @@ import static com.pada.learnproject.flight.constant.TicketTestValues.UPDATE_REQU
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.pada.learnproject.flight.service.dto.TicketListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.TicketResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketResponse;
 import org.springframework.stereotype.Component;
 
 @Component

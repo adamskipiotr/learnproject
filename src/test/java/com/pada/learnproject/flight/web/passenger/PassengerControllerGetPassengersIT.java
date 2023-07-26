@@ -16,7 +16,7 @@ import static com.pada.learnproject.flight.validator.PassengerValidator.validate
 import static com.pada.learnproject.flight.validator.PassengerValidator.validatePassengerListWrapperWithWithThreeElementsInList;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import com.pada.learnproject.flight.service.dto.PassengerListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.PassengerListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
 class PassengerControllerGetPassengersIT extends PassengerBaseIT {

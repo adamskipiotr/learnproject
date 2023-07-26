@@ -1,4 +1,4 @@
-package com.pada.learnproject.flight.service;
+package com.pada.learnproject.flight.domain.criteria;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CrewMemberCriteria {
+public class PassengerCriteria {
 
     private String firstName;
 
@@ -15,4 +15,5 @@ public class CrewMemberCriteria {
 
     private Integer age;
 
+    private Boolean isPremium;
 }

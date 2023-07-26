@@ -5,11 +5,12 @@ import static com.pada.learnproject.flight.repository.AirportRepository.Specs.by
 
 import com.pada.learnproject.flight.domain.Airport;
 import com.pada.learnproject.flight.domain.Airport_;
+import com.pada.learnproject.flight.domain.criteria.AirportCriteria;
 import com.pada.learnproject.flight.repository.AirportRepository;
-import com.pada.learnproject.flight.service.dto.AirportListResponse;
-import com.pada.learnproject.flight.service.dto.AirportListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.AirportRequest;
-import com.pada.learnproject.flight.service.dto.AirportResponse;
+import com.pada.learnproject.flight.service.dto.response.AirportListResponse;
+import com.pada.learnproject.flight.service.dto.response.AirportListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.request.AirportRequest;
+import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import com.pada.learnproject.flight.service.mapper.AirportMapper;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

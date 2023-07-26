@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
-import com.pada.learnproject.flight.service.dto.FlightResponse;
+import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import org.junit.jupiter.api.Test;
 
 class FlightControllerDeleteFlightIT extends FlightBaseIT {

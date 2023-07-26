@@ -6,11 +6,12 @@ import static com.pada.learnproject.flight.repository.PassengerRepository.Specs.
 
 import com.pada.learnproject.flight.domain.Passenger;
 import com.pada.learnproject.flight.domain.Passenger_;
+import com.pada.learnproject.flight.domain.criteria.PassengerCriteria;
 import com.pada.learnproject.flight.repository.PassengerRepository;
-import com.pada.learnproject.flight.service.dto.PassengerListResponse;
-import com.pada.learnproject.flight.service.dto.PassengerListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.PassengerRequest;
-import com.pada.learnproject.flight.service.dto.PassengerResponse;
+import com.pada.learnproject.flight.service.dto.response.PassengerListResponse;
+import com.pada.learnproject.flight.service.dto.response.PassengerListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.request.PassengerRequest;
+import com.pada.learnproject.flight.service.dto.response.PassengerResponse;
 import com.pada.learnproject.flight.service.mapper.PassengerMapper;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
