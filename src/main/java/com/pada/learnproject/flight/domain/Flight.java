@@ -43,6 +43,8 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flight_id_sequence")
     private Long id;
 
+    private String flightName;
+
     private LocalDateTime flightStart;
 
     private LocalDateTime flightEnd;
