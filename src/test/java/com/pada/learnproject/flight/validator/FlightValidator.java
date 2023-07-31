@@ -7,6 +7,8 @@ import static com.pada.learnproject.flight.constant.FlightTestValues.DEFAULT_FLI
 import static com.pada.learnproject.flight.constant.FlightTestValues.DEFAULT_FLIGHT_STATUS;
 import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIGHT_END;
 import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIGHT_START;
+import static com.pada.learnproject.flight.validator.AirportValidator.validateAirportResponseDetails;
+import static com.pada.learnproject.flight.validator.CrewMemberValidator.validateCrewMemberResponseDetails;
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,6 +42,11 @@ public class FlightValidator {
         assertEquals(DEFAULT_FLIGHT_START, flightResponse.getFlightStart());
         assertEquals(DEFAULT_FLIGHT_END, flightResponse.getFlightEnd());
         assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
+        validateAirportResponseDetails(flightResponse.getStartAirport());
+        validateAirportResponseDetails(flightResponse.getEndAirport());
+        for(var crewMember: flightResponse.getCrewMembers()){
+            validateCrewMemberResponseDetails(crewMember);
+        }
     }
 
     public static void validateCreateFlightResponse(FlightResponse flightResponse) {

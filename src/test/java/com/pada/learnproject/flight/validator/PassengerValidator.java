@@ -12,6 +12,7 @@ import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_R
 import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_REQUEST_PASSENGER_FIRST_NAME;
 import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_REQUEST_PASSENGER_IS_PREMIUM;
 import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_REQUEST_PASSENGER_LAST_NAME;
+import static com.pada.learnproject.flight.validator.TicketValidator.validateTicketResponseDetails;
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,6 +48,9 @@ public class PassengerValidator {
         assertEquals(FIRST_PASSENGER_LAST_NAME, passengerResponse.getLastName());
         assertEquals(FIRST_PASSENGER_AGE, passengerResponse.getAge());
         assertEquals(FIRST_PASSENGER_IS_PREMIUM, passengerResponse.getIsPremium());
+        for(var ticket: passengerResponse.getTickets()){
+            validateTicketResponseDetails(ticket);
+        }
     }
 
     public static void validateCreatePassengerResponse(PassengerResponse passengerResponse) {
