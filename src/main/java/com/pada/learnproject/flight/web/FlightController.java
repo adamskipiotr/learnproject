@@ -35,7 +35,7 @@ public class FlightController {
         return ResponseEntity.status(OK).body(responseBody);
     }
 
-    @GetMapping("/{value}")
+    @GetMapping("/{id}")
     public ResponseEntity<FlightResponse> getFlightById(@PathVariable(name = "id") Long id) {
         var responseBody = flightService.findById(id);
         return ResponseEntity.status(OK).body(responseBody);
@@ -47,14 +47,14 @@ public class FlightController {
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @PutMapping("/{value}")
+    @PutMapping("/{id}")
     public ResponseEntity<FlightResponse> updateFlight(@PathVariable(name = "id") Long id,
         @RequestBody FlightRequest flightRequest) {
         var responseBody = flightService.updateFlight(id, flightRequest);
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @DeleteMapping("/{value}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<FlightResponse> deleteFlight(@PathVariable(name = "id") Long id) {
         var responseBody = flightService.deleteFlight(id);
         return ResponseEntity.status(OK).body(responseBody);

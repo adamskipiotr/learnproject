@@ -35,7 +35,7 @@ public class PassengerController {
         return ResponseEntity.status(OK).body(responseBody);
     }
 
-    @GetMapping("/{value}")
+    @GetMapping("/{id}")
     public ResponseEntity<PassengerResponse> getPassengerById(@PathVariable(name = "id") Long id) {
         var responseBody = passengerService.findById(id);
         return ResponseEntity.status(OK).body(responseBody);
@@ -47,14 +47,14 @@ public class PassengerController {
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @PutMapping("/{value}")
+    @PutMapping("/{id}")
     public ResponseEntity<PassengerResponse> updatePassenger(@PathVariable(name = "id") Long id,
         @RequestBody PassengerRequest passengerRequest) {
         var responseBody = passengerService.updatePassenger(id, passengerRequest);
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @DeleteMapping("/{value}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<PassengerResponse> deletePassenger(@PathVariable(name = "id") Long id) {
         var responseBody = passengerService.deletePassenger(id);
         return ResponseEntity.status(OK).body(responseBody);

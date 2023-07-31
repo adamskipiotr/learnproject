@@ -16,7 +16,7 @@ import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-class AirportControllerPutAirportMemberIT extends AirportMemberBaseIT {
+class AirportControllerPutAirportIT extends AirportBaseIT {
 
     @Test
     void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {

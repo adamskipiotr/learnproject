@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import com.pada.learnproject.flight.service.dto.response.AirportListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
-class AirportControllerGetAirportMembersIT extends AirportMemberBaseIT {
+class AirportControllerGetAirportMembersIT extends AirportBaseIT {
 
     @Test
     void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {

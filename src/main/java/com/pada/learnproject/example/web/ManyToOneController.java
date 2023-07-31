@@ -19,7 +19,7 @@ public class ManyToOneController {
 
     private final ManyToOneService manyToOneService;
 
-    @PostMapping("/{value}")
+    @PostMapping("/{id}")
     public ManyToOneResponse addManyToOneToExample(@PathVariable(name = "id") Long id,
         @RequestBody ManyToOneRequest manyToOneRequest) {
         return manyToOneService.addManyToOneToExample(id, manyToOneRequest);

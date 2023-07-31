@@ -13,7 +13,7 @@ import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import com.pada.learnproject.flight.validator.AirportValidator;
 import org.junit.jupiter.api.Test;
 
-class AirportControllerGetAirportMemberIT extends AirportMemberBaseIT {
+class AirportControllerGetAirportIT extends AirportBaseIT {
 
 
     @Test

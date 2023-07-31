@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AirportMemberBaseIT extends LearnprojectApplicationTests {
+public class AirportBaseIT extends LearnprojectApplicationTests {
 
     @Autowired
     protected MockMvc mockMvc;

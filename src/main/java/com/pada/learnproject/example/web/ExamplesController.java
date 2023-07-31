@@ -37,7 +37,7 @@ public class ExamplesController {
         return ResponseEntity.status(OK).body(response);
     }
 
-    @GetMapping("/{value}")
+    @GetMapping("/{id}")
     public ResponseEntity<ExampleResponse> getExample(@PathVariable(name = "id") Long id) {
         ExampleResponse response = exampleEntityService.getExample(id);
         return ResponseEntity.status(OK).body(response);
@@ -57,14 +57,14 @@ public class ExamplesController {
         return null;
     }
 
-    @PutMapping("/{value}")
+    @PutMapping("/{id}")
     public ResponseEntity<ExampleResponse> updateExample(@PathVariable(name = "id") Long id,
         @RequestBody ExampleRequest exampleRequest) {
         ExampleResponse response = exampleEntityService.updateExampleEntity(exampleRequest, id);
         return ResponseEntity.status(OK).body(response);
     }
 
-    @DeleteMapping("/{value}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<ExampleResponse> deleteExample(@PathVariable(name = "id") Long id) {
         ExampleResponse response = exampleEntityService.deleteExample(id);
         return ResponseEntity.status(OK).body(response);

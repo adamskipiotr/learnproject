@@ -10,7 +10,7 @@ import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-class AirportControllerPostAirportMemberIT extends AirportMemberBaseIT {
+class AirportControllerPostAirportIT extends AirportBaseIT {
 
     @Test
     void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {

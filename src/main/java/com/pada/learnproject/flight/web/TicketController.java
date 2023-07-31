@@ -37,7 +37,7 @@ public class TicketController {
         return ResponseEntity.status(OK).body(responseBody);
     }
 
-    @GetMapping("/{value}")
+    @GetMapping("/{id}")
     public ResponseEntity<TicketResponse> getTicketById(@PathVariable(name = "id") Long id) {
         var responseBody = ticketService.findById(id);
         return ResponseEntity.status(OK).body(responseBody);
@@ -49,7 +49,7 @@ public class TicketController {
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @PutMapping("/{value}")
+    @PutMapping("/{id}")
     public ResponseEntity<TicketResponse> updateTicket(@PathVariable(name = "id") Long id,
         @RequestBody TicketRequest ticketRequest) {
         TicketId ticketId = new TicketId(id);
@@ -58,7 +58,7 @@ public class TicketController {
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @DeleteMapping("/{value}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<TicketResponse> deleteTicket(@PathVariable(name = "id") Long id) {
         var responseBody = ticketService.deleteTicket(id);
         return ResponseEntity.status(OK).body(responseBody);
