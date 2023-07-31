@@ -1,11 +1,15 @@
 package com.pada.learnproject.flight.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -35,4 +39,8 @@ public class Passenger {
     private Integer age;
 
     private Boolean isPremium;
+
+    @OneToMany(mappedBy = Ticket_.PASSENGER, cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Ticket> tickets;
 }

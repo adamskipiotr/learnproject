@@ -48,5 +48,4 @@ public class CrewMember {
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = Flight_.CREW_MEMBERS, fetch = FetchType.LAZY)
     private Set<Flight> flights = new HashSet<>();
-
 }
