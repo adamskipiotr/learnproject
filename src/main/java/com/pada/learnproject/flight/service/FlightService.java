@@ -5,9 +5,9 @@ import static com.pada.learnproject.flight.repository.FlightRepository.Specs.fli
 import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.repository.FlightRepository;
+import com.pada.learnproject.flight.service.dto.request.FlightRequest;
 import com.pada.learnproject.flight.service.dto.response.FlightListResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.request.FlightRequest;
 import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import com.pada.learnproject.flight.service.mapper.FlightMapper;
 import java.util.List;

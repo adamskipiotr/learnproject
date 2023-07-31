@@ -3,9 +3,9 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
+import com.pada.learnproject.flight.domain.TicketId;
 import com.pada.learnproject.flight.domain.criteria.TicketCriteria;
 import com.pada.learnproject.flight.service.TicketService;
-import com.pada.learnproject.flight.domain.TicketId;
 import com.pada.learnproject.flight.service.command.UpdateTicketCommand;
 import com.pada.learnproject.flight.service.dto.request.TicketRequest;
 import com.pada.learnproject.flight.service.dto.response.TicketListWrapperResponse;

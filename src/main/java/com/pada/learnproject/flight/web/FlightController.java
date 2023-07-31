@@ -5,8 +5,8 @@ import static org.springframework.http.HttpStatus.OK;
 
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.service.FlightService;
-import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
+import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

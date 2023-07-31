@@ -1,8 +1,8 @@
 package com.pada.learnproject.flight.service.mapper;
 
 import com.pada.learnproject.flight.domain.Airport;
-import com.pada.learnproject.flight.service.dto.response.AirportListResponse;
 import com.pada.learnproject.flight.service.dto.request.AirportRequest;
+import com.pada.learnproject.flight.service.dto.response.AirportListResponse;
 import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
