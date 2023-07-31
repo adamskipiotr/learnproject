@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
-import com.pada.learnproject.flight.service.dto.TicketResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketResponse;
 import com.pada.learnproject.flight.validator.TicketValidator;
 import org.junit.jupiter.api.Test;
 

@@ -9,7 +9,7 @@ import static com.pada.learnproject.flight.domain.WeatherCondition.THUNDERSTORM;
 
 import com.pada.learnproject.flight.domain.Airport;
 import com.pada.learnproject.flight.domain.WeatherCondition;
-import com.pada.learnproject.flight.service.dto.AirportRequest;
+import com.pada.learnproject.flight.service.dto.request.AirportRequest;
 
 public interface AirportTestValues {
 

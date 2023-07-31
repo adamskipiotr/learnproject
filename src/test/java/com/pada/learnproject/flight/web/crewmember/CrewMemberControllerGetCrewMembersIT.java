@@ -16,7 +16,7 @@ import static com.pada.learnproject.flight.validator.CrewMemberValidator.validat
 import static com.pada.learnproject.flight.validator.CrewMemberValidator.validateEmptyCrewMemberListWrapperResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import com.pada.learnproject.flight.service.dto.CrewMemberListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.CrewMemberListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
 class CrewMemberControllerGetCrewMembersIT extends CrewMemberBaseIT {

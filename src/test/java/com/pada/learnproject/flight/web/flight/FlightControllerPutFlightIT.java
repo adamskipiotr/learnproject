@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
 import com.pada.learnproject.common.util.TestUtil;
-import com.pada.learnproject.flight.service.dto.FlightResponse;
+import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 

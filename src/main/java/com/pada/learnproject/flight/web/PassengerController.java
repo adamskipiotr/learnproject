@@ -3,11 +3,11 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
-import com.pada.learnproject.flight.service.PassengerCriteria;
+import com.pada.learnproject.flight.domain.criteria.PassengerCriteria;
 import com.pada.learnproject.flight.service.PassengerService;
-import com.pada.learnproject.flight.service.dto.PassengerListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.PassengerRequest;
-import com.pada.learnproject.flight.service.dto.PassengerResponse;
+import com.pada.learnproject.flight.service.dto.request.PassengerRequest;
+import com.pada.learnproject.flight.service.dto.response.PassengerListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.PassengerResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

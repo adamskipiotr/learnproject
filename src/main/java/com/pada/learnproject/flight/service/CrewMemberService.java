@@ -6,11 +6,12 @@ import static com.pada.learnproject.flight.repository.CrewMemberRepository.Specs
 
 import com.pada.learnproject.flight.domain.CrewMember;
 import com.pada.learnproject.flight.domain.CrewMember_;
+import com.pada.learnproject.flight.domain.criteria.CrewMemberCriteria;
 import com.pada.learnproject.flight.repository.CrewMemberRepository;
-import com.pada.learnproject.flight.service.dto.CrewMemberListResponse;
-import com.pada.learnproject.flight.service.dto.CrewMemberListWrapperResponse;
-import com.pada.learnproject.flight.service.dto.CrewMemberRequest;
-import com.pada.learnproject.flight.service.dto.CrewMemberResponse;
+import com.pada.learnproject.flight.service.dto.request.CrewMemberRequest;
+import com.pada.learnproject.flight.service.dto.response.CrewMemberListResponse;
+import com.pada.learnproject.flight.service.dto.response.CrewMemberListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.CrewMemberResponse;
 import com.pada.learnproject.flight.service.mapper.CrewMemberMapper;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

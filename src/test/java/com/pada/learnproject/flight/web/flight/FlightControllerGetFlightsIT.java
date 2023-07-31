@@ -13,7 +13,7 @@ import static com.pada.learnproject.flight.validator.FlightValidator.validateFli
 import static com.pada.learnproject.flight.validator.FlightValidator.validateFlightListWrapperWithWithThreeElementsInList;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import com.pada.learnproject.flight.service.dto.FlightListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
 class FlightControllerGetFlightsIT extends FlightBaseIT {

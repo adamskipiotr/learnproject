@@ -1,7 +1,7 @@
 package com.pada.learnproject.flight.constant;
 
 import com.pada.learnproject.flight.domain.Passenger;
-import com.pada.learnproject.flight.service.dto.PassengerRequest;
+import com.pada.learnproject.flight.service.dto.request.PassengerRequest;
 
 public interface PassengerTestValues {
 

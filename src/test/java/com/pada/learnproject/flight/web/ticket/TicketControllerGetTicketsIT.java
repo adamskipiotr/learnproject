@@ -14,7 +14,7 @@ import static com.pada.learnproject.flight.validator.TicketValidator.validateTic
 import static com.pada.learnproject.flight.validator.TicketValidator.validateTicketListWrapperWithWithThreeElementsInList;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import com.pada.learnproject.flight.service.dto.TicketListWrapperResponse;
+import com.pada.learnproject.flight.service.dto.response.TicketListWrapperResponse;
 import org.junit.jupiter.api.Test;
 
 class TicketControllerGetTicketsIT extends TicketBaseIT {

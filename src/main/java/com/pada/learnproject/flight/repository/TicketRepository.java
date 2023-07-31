@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long>, JpaSpecificationExecutor<Ticket> {
-
     interface Specs {
         static Specification<Ticket> byPriceTo(Specification<Ticket> specification, Integer value,
             SingularAttribute<Ticket, Integer> field) {

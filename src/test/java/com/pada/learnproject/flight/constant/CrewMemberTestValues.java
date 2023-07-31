@@ -6,7 +6,7 @@ import static com.pada.learnproject.flight.domain.CrewMemberRank.SENIOR_FIRST_OF
 
 import com.pada.learnproject.flight.domain.CrewMember;
 import com.pada.learnproject.flight.domain.CrewMemberRank;
-import com.pada.learnproject.flight.service.dto.CrewMemberRequest;
+import com.pada.learnproject.flight.service.dto.request.CrewMemberRequest;
 
 public interface CrewMemberTestValues {
 
