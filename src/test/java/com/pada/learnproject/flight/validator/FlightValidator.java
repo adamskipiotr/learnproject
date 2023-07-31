@@ -27,8 +27,8 @@ public class FlightValidator {
         assertEquals(1, flightListResponseList.size());
 
         var flightListResponse = flightListResponseList.get(0);
-        assertEquals(DEFAULT_FLIGHT_START, flightListResponse.flightStart());
-        assertEquals(DEFAULT_FLIGHT_END, flightListResponse.flightEnd());
+        assertEquals(DEFAULT_FLIGHT_START, flightListResponse.getFlightStart());
+        assertEquals(DEFAULT_FLIGHT_END, flightListResponse.getFlightEnd());
     }
 
     public static void validateEmptyFlightListWrapperResponse(FlightListWrapperResponse response) {
@@ -37,21 +37,21 @@ public class FlightValidator {
     }
 
     public static void validateFlightResponseDetails(FlightResponse flightResponse) {
-        assertEquals(DEFAULT_FLIGHT_START, flightResponse.flightStart());
-        assertEquals(DEFAULT_FLIGHT_END, flightResponse.flightEnd());
-        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.flightStatus());
+        assertEquals(DEFAULT_FLIGHT_START, flightResponse.getFlightStart());
+        assertEquals(DEFAULT_FLIGHT_END, flightResponse.getFlightEnd());
+        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
     }
 
     public static void validateCreateFlightResponse(FlightResponse flightResponse) {
-        assertEquals(DEFAULT_FLIGHT_REQUEST_START, flightResponse.flightStart());
-        assertEquals(DEFAULT_FLIGHT_REQUEST_END, flightResponse.flightEnd());
-        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.flightStatus());
+        assertEquals(DEFAULT_FLIGHT_REQUEST_START, flightResponse.getFlightStart());
+        assertEquals(DEFAULT_FLIGHT_REQUEST_END, flightResponse.getFlightEnd());
+        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
     }
 
     public static void validateUpdateFlightResponse(FlightResponse flightResponse) {
-        assertEquals(UPDATE_FLIGHT_START, flightResponse.flightStart());
-        assertEquals(UPDATE_FLIGHT_END, flightResponse.flightEnd());
-        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.flightStatus());
+        assertEquals(UPDATE_FLIGHT_START, flightResponse.getFlightStart());
+        assertEquals(UPDATE_FLIGHT_END, flightResponse.getFlightEnd());
+        assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
 
     }
 }

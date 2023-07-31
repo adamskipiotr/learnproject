@@ -43,23 +43,23 @@ public class CrewMemberValidator {
     }
 
     public static void validateCrewMemberResponseDetails(CrewMemberResponse crewMemberResponse) {
-        assertEquals(FIRST_CREW_MEMBER_FIRSTNAME, crewMemberResponse.firstName());
-        assertEquals(FIRST_CREW_MEMBER_LASTNAME, crewMemberResponse.lastName());
-        assertEquals(FIRST_CREW_MEMBER_AGE, crewMemberResponse.age());
-        assertEquals(FIRST_CREW_MEMBER_RANK, crewMemberResponse.crewMemberRank());
+        assertEquals(FIRST_CREW_MEMBER_FIRSTNAME, crewMemberResponse.getFirstName());
+        assertEquals(FIRST_CREW_MEMBER_LASTNAME, crewMemberResponse.getLastName());
+        assertEquals(FIRST_CREW_MEMBER_AGE, crewMemberResponse.getAge());
+        assertEquals(FIRST_CREW_MEMBER_RANK, crewMemberResponse.getCrewMemberRank());
     }
 
     public static void validateCreateCrewMemberResponse(CrewMemberResponse crewMemberResponse) {
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_FIRSTNAME, crewMemberResponse.firstName());
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_LASTNAME, crewMemberResponse.lastName());
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_AGE, crewMemberResponse.age());
-        assertEquals(DEFAULT_CREATE_CREW_MEMBER_RANK, crewMemberResponse.crewMemberRank());
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_FIRSTNAME, crewMemberResponse.getFirstName());
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_LASTNAME, crewMemberResponse.getLastName());
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_AGE, crewMemberResponse.getAge());
+        assertEquals(DEFAULT_CREATE_CREW_MEMBER_RANK, crewMemberResponse.getCrewMemberRank());
     }
 
     public static void validateUpdateCrewMemberResponse(CrewMemberResponse crewMemberResponse) {
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_FIRSTNAME, crewMemberResponse.firstName());
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_LASTNAME, crewMemberResponse.lastName());
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_AGE, crewMemberResponse.age());
-        assertEquals(UPDATE_CREATE_CREW_MEMBER_RANK, crewMemberResponse.crewMemberRank());
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_FIRSTNAME, crewMemberResponse.getFirstName());
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_LASTNAME, crewMemberResponse.getLastName());
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_AGE, crewMemberResponse.getAge());
+        assertEquals(UPDATE_CREATE_CREW_MEMBER_RANK, crewMemberResponse.getCrewMemberRank());
     }
 }
