@@ -35,7 +35,7 @@ public class CrewMemberController {
         return ResponseEntity.status(OK).body(responseBody);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{value}")
     public ResponseEntity<CrewMemberResponse> getCrewMemberById(@PathVariable(name = "id") Long id) {
         var responseBody = crewMemberService.findById(id);
         return ResponseEntity.status(OK).body(responseBody);
@@ -47,14 +47,14 @@ public class CrewMemberController {
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{value}")
     public ResponseEntity<CrewMemberResponse> updateCrewMember(@PathVariable(name = "id") Long id,
         @RequestBody CrewMemberRequest flightRequest) {
         var responseBody = crewMemberService.updateCrewMember(id, flightRequest);
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{value}")
     public ResponseEntity<CrewMemberResponse> deleteCrewMember(@PathVariable(name = "id") Long id) {
         var responseBody = crewMemberService.deleteCrewMember(id);
         return ResponseEntity.status(OK).body(responseBody);

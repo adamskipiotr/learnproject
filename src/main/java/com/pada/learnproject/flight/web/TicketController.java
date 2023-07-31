@@ -5,6 +5,8 @@ import static org.springframework.http.HttpStatus.OK;
 
 import com.pada.learnproject.flight.domain.criteria.TicketCriteria;
 import com.pada.learnproject.flight.service.TicketService;
+import com.pada.learnproject.flight.domain.TicketId;
+import com.pada.learnproject.flight.service.command.UpdateTicketCommand;
 import com.pada.learnproject.flight.service.dto.request.TicketRequest;
 import com.pada.learnproject.flight.service.dto.response.TicketListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.TicketResponse;
@@ -35,7 +37,7 @@ public class TicketController {
         return ResponseEntity.status(OK).body(responseBody);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{value}")
     public ResponseEntity<TicketResponse> getTicketById(@PathVariable(name = "id") Long id) {
         var responseBody = ticketService.findById(id);
         return ResponseEntity.status(OK).body(responseBody);
@@ -47,14 +49,16 @@ public class TicketController {
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{value}")
     public ResponseEntity<TicketResponse> updateTicket(@PathVariable(name = "id") Long id,
         @RequestBody TicketRequest ticketRequest) {
-        var responseBody = ticketService.updateTicket(id, ticketRequest);
+        TicketId ticketId = new TicketId(id);
+        UpdateTicketCommand command = new UpdateTicketCommand(ticketId, ticketRequest);
+        var responseBody = ticketService.updateTicket(command);
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{value}")
     public ResponseEntity<TicketResponse> deleteTicket(@PathVariable(name = "id") Long id) {
         var responseBody = ticketService.deleteTicket(id);
         return ResponseEntity.status(OK).body(responseBody);

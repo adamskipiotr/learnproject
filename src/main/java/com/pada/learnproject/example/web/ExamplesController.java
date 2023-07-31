@@ -37,7 +37,7 @@ public class ExamplesController {
         return ResponseEntity.status(OK).body(response);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{value}")
     public ResponseEntity<ExampleResponse> getExample(@PathVariable(name = "id") Long id) {
         ExampleResponse response = exampleEntityService.getExample(id);
         return ResponseEntity.status(OK).body(response);
@@ -52,19 +52,19 @@ public class ExamplesController {
     @PostMapping("/{exampleEntityId}/many-to-ones/{manyToOneId}")
     public ManyToOneResponse addManyToOneToExample(@PathVariable(name = "exampleEntityId") Long exampleEntityId,
         @PathVariable(name = "manyToOneId") Long manyToOneId, @RequestBody ManyToOneRequest manyToOneRequest) {
-        // return manyToOneService.addManyToOneToExample(id, manyToOneRequest);
+        // return manyToOneService.addManyToOneToExample(value, manyToOneRequest);
         //TODO to implement
         return null;
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{value}")
     public ResponseEntity<ExampleResponse> updateExample(@PathVariable(name = "id") Long id,
         @RequestBody ExampleRequest exampleRequest) {
         ExampleResponse response = exampleEntityService.updateExampleEntity(exampleRequest, id);
         return ResponseEntity.status(OK).body(response);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{value}")
     public ResponseEntity<ExampleResponse> deleteExample(@PathVariable(name = "id") Long id) {
         ExampleResponse response = exampleEntityService.deleteExample(id);
         return ResponseEntity.status(OK).body(response);
