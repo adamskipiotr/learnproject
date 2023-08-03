@@ -4,6 +4,8 @@ import static com.pada.learnproject.flight.constant.AirportTestValues.DEFAULT_RE
 import static com.pada.learnproject.flight.constant.AirportTestValues.DEFAULT_REQUEST_AIRPORT_WEATHER_CONDITION;
 import static com.pada.learnproject.flight.constant.AirportTestValues.FIRST_AIRPORT_NAME;
 import static com.pada.learnproject.flight.constant.AirportTestValues.FIRST_AIRPORT_WEATHER_CONDITION;
+import static com.pada.learnproject.flight.constant.AirportTestValues.SECOND_AIRPORT_NAME;
+import static com.pada.learnproject.flight.constant.AirportTestValues.SECOND_AIRPORT_WEATHER_CONDITION;
 import static com.pada.learnproject.flight.constant.AirportTestValues.UPDATE_REQUEST_AIRPORT_NAME;
 import static com.pada.learnproject.flight.constant.AirportTestValues.UPDATE_REQUEST_AIRPORT_WEATHER_CONDITION;
 import static graphql.Assert.assertTrue;
@@ -38,6 +40,11 @@ public class AirportValidator {
     public static void validateAirportResponseDetails(AirportResponse airportResponse) {
         assertEquals(FIRST_AIRPORT_NAME, airportResponse.getName());
         assertEquals(FIRST_AIRPORT_WEATHER_CONDITION, airportResponse.getWeatherCondition());
+    }
+
+    public static void validateSecondAirportResponseDetails(AirportResponse airportResponse) {
+        assertEquals(SECOND_AIRPORT_NAME, airportResponse.getName());
+        assertEquals(SECOND_AIRPORT_WEATHER_CONDITION, airportResponse.getWeatherCondition());
     }
 
     public static void validateCreateAirportResponse(AirportResponse airportResponse) {

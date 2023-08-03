@@ -14,6 +14,7 @@ import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIG
 import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIGHT_REQUEST_MAX_PASSENGER_COUNT;
 import static com.pada.learnproject.flight.constant.FlightTestValues.UPDATE_FLIGHT_START;
 import static com.pada.learnproject.flight.validator.AirportValidator.validateAirportResponseDetails;
+import static com.pada.learnproject.flight.validator.AirportValidator.validateSecondAirportResponseDetails;
 import static com.pada.learnproject.flight.validator.CrewMemberValidator.validateCrewMemberResponseDetails;
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -51,7 +52,7 @@ public class FlightValidator {
         assertEquals(DEFAULT_FLIGHT_STATUS, flightResponse.getFlightStatus());
         assertEquals(DEFAULT_MAX_PASSENGER_COUNT, flightResponse.getMaxPassengerCount());
         validateAirportResponseDetails(flightResponse.getStartAirport());
-        validateAirportResponseDetails(flightResponse.getEndAirport());
+        validateSecondAirportResponseDetails(flightResponse.getEndAirport());
         for (var crewMember : flightResponse.getCrewMembers()) {
             validateCrewMemberResponseDetails(crewMember);
         }
