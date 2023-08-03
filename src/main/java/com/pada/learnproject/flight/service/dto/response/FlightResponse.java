@@ -18,4 +18,5 @@ public class FlightResponse {
     private List<CrewMemberResponse> crewMembers;
     private AirportResponse startAirport;
     private AirportResponse endAirport;
+    private Integer maxPassengerCount;
 }

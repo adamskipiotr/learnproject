@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,5 +43,6 @@ public class Passenger {
 
     @OneToMany(mappedBy = Ticket_.PASSENGER, cascade = CascadeType.ALL,
         fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Ticket> tickets;
+    @Builder.Default
+    private List<Ticket> tickets = new ArrayList<>();
 }

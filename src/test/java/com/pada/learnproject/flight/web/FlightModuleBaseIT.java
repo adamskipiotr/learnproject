@@ -28,6 +28,7 @@ import com.pada.learnproject.flight.repository.CrewMemberRepository;
 import com.pada.learnproject.flight.repository.FlightRepository;
 import com.pada.learnproject.flight.repository.PassengerRepository;
 import com.pada.learnproject.flight.repository.TicketRepository;
+import java.util.Set;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,6 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     private AirportRepository airportRepository;
 
     @BeforeEach
-    @Transactional
     public void setUpTestData() {
         insertDefaultAirport();
         insertSecondAirport();
@@ -84,16 +84,19 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
         insertSecondFlight();
         insertThirdFlight();
 
-        insertDefaultTicket();
-        insertDefaultPassenger();
         insertDefaultCrewMember();
-        insertSecondTicket();
-        insertSecondPassenger();
         insertSecondCrewMember();
-        insertThirdTicket();
-        insertThirdPassenger();
         insertThirdCrewMember();
 
+
+
+        insertDefaultPassenger();
+        insertSecondPassenger();
+        insertThirdPassenger();
+
+        insertDefaultTicket();
+        insertSecondTicket();
+        insertThirdTicket();
     }
 
     private void insertDefaultAirport() {
@@ -102,7 +105,7 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     }
 
     private void insertDefaultFlight() {
-        defaultFlight = createDefaultTestFlight(defaultAirport, secondAirport);
+        defaultFlight = createDefaultTestFlight(defaultAirport, secondAirport, defaultCrewMember);
         defaultFlight = flightRepository.saveAndFlush(defaultFlight);
     }
 
@@ -117,7 +120,7 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     }
 
     private void insertDefaultCrewMember() {
-        defaultCrewMember = createDefaultTestCrewMember();
+        defaultCrewMember = createDefaultTestCrewMember(defaultFlight);
         defaultCrewMember = crewMemberRepository.saveAndFlush(defaultCrewMember);
     }
 
@@ -127,7 +130,7 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     }
 
     private void insertSecondFlight() {
-        secondFlight = createSecondTestFlight(secondAirport, thirdAirport);
+        secondFlight = createSecondTestFlight(secondAirport, thirdAirport, secondCrewMember);
         secondFlight = flightRepository.saveAndFlush(secondFlight);
     }
 
@@ -142,7 +145,7 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     }
 
     private void insertSecondCrewMember() {
-        secondCrewMember = createSecondTestCrewMember();
+        secondCrewMember = createSecondTestCrewMember(secondFlight);
         secondCrewMember = crewMemberRepository.saveAndFlush(secondCrewMember);
     }
 
@@ -153,7 +156,7 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     }
 
     private void insertThirdFlight() {
-        thirdFlight = createThirdTestFlight(thirdAirport, defaultAirport);
+        thirdFlight = createThirdTestFlight(thirdAirport, defaultAirport, thirdCrewMember);
         thirdFlight = flightRepository.saveAndFlush(thirdFlight);
     }
 
@@ -168,7 +171,7 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     }
 
     private void insertThirdCrewMember() {
-        thirdCrewMember = createThirdTestCrewMember();
+        thirdCrewMember = createThirdTestCrewMember(thirdFlight);
         thirdCrewMember = crewMemberRepository.saveAndFlush(thirdCrewMember);
     }
     @AfterEach

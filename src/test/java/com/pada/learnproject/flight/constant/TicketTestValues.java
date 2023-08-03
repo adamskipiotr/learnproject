@@ -80,7 +80,7 @@ public interface TicketTestValues {
     }
 
     static void bindTicketWithPassenger(Ticket ticket, Passenger passenger) {
-        ticket.setFlight(passenger);
+        ticket.setPassenger(passenger);
         passenger.getTickets().add(ticket);
     }
 
