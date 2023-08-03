@@ -11,9 +11,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.pada.learnproject.common.infractructure.ErrorResponse;
 import com.pada.learnproject.flight.service.dto.response.CrewMemberResponse;
 import com.pada.learnproject.flight.validator.CrewMemberValidator;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 
-class CrewMemberControllerGetCrewMemberIT extends CrewMemberBaseIT {
+class CrewMemberControllerGetCrewMemberIT extends FlightModuleBaseIT {
 
 
     @Test

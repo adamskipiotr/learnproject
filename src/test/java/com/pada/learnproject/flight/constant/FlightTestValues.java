@@ -1,5 +1,6 @@
 package com.pada.learnproject.flight.constant;
 
+import com.pada.learnproject.flight.domain.Airport;
 import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
@@ -32,32 +33,45 @@ public interface FlightTestValues {
 
     Long NON_EXISTING_ID = -1L;
 
-    static Flight createDefaultTestFlight() {
-        return Flight.builder()
+    static Flight createDefaultTestFlight(Airport startAirport, Airport endAirport) {
+        Flight flight =  Flight.builder()
             .flightStart(DEFAULT_FLIGHT_START)
             .flightEnd(DEFAULT_FLIGHT_END)
             .flightStatus(DEFAULT_FLIGHT_STATUS)
             .crewMembers(new HashSet<>())
             .build();
+        bindFlightWithAirports(flight,startAirport,endAirport);
+        return flight;
     }
 
-    static Flight createSecondTestFlight() {
-        return Flight.builder()
+    static Flight createSecondTestFlight(Airport startAirport, Airport endAirport) {
+        Flight flight =  Flight.builder()
             .flightStart(SECOND_FLIGHT_START)
             .flightEnd(SECOND_FLIGHT_END)
             .crewMembers(new HashSet<>())
-
             .build();
+        bindFlightWithAirports(flight,startAirport,endAirport);
+        return flight;
     }
 
-    static Flight createThirdTestFlight() {
-        return Flight.builder()
+    static Flight createThirdTestFlight(Airport startAirport, Airport endAirport) {
+        Flight flight =  Flight.builder()
             .flightStart(THIRD_FLIGHT_START)
             .flightEnd(THIRD_FLIGHT_END)
             .crewMembers(new HashSet<>())
-
             .build();
+        bindFlightWithAirports(flight,startAirport,endAirport);
+        return flight;
     }
+
+    static void bindFlightWithAirports(Flight flight, Airport startAirport, Airport endAirport) {
+        flight.setStartAirport(startAirport);
+        startAirport.getDepartures().add(flight);
+        flight.setEndAirport(endAirport);
+        endAirport.getArrivals().add(flight);
+    }
+
+
 
     static FlightRequest createFlightRequest() {
         return new FlightRequest(DEFAULT_FLIGHT_REQUEST_START, DEFAULT_FLIGHT_REQUEST_END);

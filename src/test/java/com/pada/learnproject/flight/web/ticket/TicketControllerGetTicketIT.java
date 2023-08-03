@@ -11,9 +11,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.pada.learnproject.common.infractructure.ErrorResponse;
 import com.pada.learnproject.flight.service.dto.response.TicketResponse;
 import com.pada.learnproject.flight.validator.TicketValidator;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 
-class TicketControllerGetTicketIT extends TicketBaseIT {
+class TicketControllerGetTicketIT extends FlightModuleBaseIT {
 
 
     @Test
