@@ -30,9 +30,9 @@ public class TicketValidator {
         assertEquals(1, ticketResponseList.size());
 
         var ticketListResponse = ticketResponseList.get(0);
-        assertEquals(FIRST_TICKET_TICKET_CLASS, ticketListResponse.ticketClass());
-        assertEquals(FIRST_TICKET_BASE_PRICE, ticketListResponse.basePrice());
-        assertEquals(FIRST_TICKET_LUGGAGE_FEE, ticketListResponse.luggageFee());
+        assertEquals(FIRST_TICKET_TICKET_CLASS, ticketListResponse.getTicketClass());
+        assertEquals(FIRST_TICKET_BASE_PRICE, ticketListResponse.getBasePrice());
+        assertEquals(FIRST_TICKET_LUGGAGE_FEE, ticketListResponse.getLuggageFee());
 
     }
 
@@ -42,20 +42,20 @@ public class TicketValidator {
     }
 
     public static void validateTicketResponseDetails(TicketResponse ticketResponse) {
-        assertEquals(FIRST_TICKET_TICKET_CLASS, ticketResponse.ticketClass());
-        assertEquals(FIRST_TICKET_BASE_PRICE, ticketResponse.basePrice());
-        assertEquals(FIRST_TICKET_LUGGAGE_FEE, ticketResponse.luggageFee());
+        assertEquals(FIRST_TICKET_TICKET_CLASS, ticketResponse.getTicketClass());
+        assertEquals(FIRST_TICKET_BASE_PRICE, ticketResponse.getBasePrice());
+        assertEquals(FIRST_TICKET_LUGGAGE_FEE, ticketResponse.getLuggageFee());
     }
 
     public static void validateCreateTicketResponse(TicketResponse ticketResponse) {
-        assertEquals(DEFAULT_REQUEST_TICKET_TICKET_CLASS, ticketResponse.ticketClass());
-        assertEquals(DEFAULT_REQUEST_TICKET_BASE_PRICE, ticketResponse.basePrice());
-        assertEquals(DEFAULT_REQUEST_TICKET_LUGGAGE_FEE, ticketResponse.luggageFee());
+        assertEquals(DEFAULT_REQUEST_TICKET_TICKET_CLASS, ticketResponse.getTicketClass());
+        assertEquals(DEFAULT_REQUEST_TICKET_BASE_PRICE, ticketResponse.getBasePrice());
+        assertEquals(DEFAULT_REQUEST_TICKET_LUGGAGE_FEE, ticketResponse.getLuggageFee());
     }
 
     public static void validateUpdateTicketResponse(TicketResponse ticketResponse) {
-        assertEquals(UPDATE_REQUEST_TICKET_TICKET_CLASS, ticketResponse.ticketClass());
-        assertEquals(UPDATE_REQUEST_TICKET_BASE_PRICE, ticketResponse.basePrice());
-        assertEquals(UPDATE_REQUEST_TICKET_LUGGAGE_FEE, ticketResponse.luggageFee());
+        assertEquals(UPDATE_REQUEST_TICKET_TICKET_CLASS, ticketResponse.getTicketClass());
+        assertEquals(UPDATE_REQUEST_TICKET_BASE_PRICE, ticketResponse.getBasePrice());
+        assertEquals(UPDATE_REQUEST_TICKET_LUGGAGE_FEE, ticketResponse.getLuggageFee());
     }
 }

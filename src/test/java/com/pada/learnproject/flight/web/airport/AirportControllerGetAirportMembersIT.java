@@ -14,9 +14,10 @@ import static com.pada.learnproject.flight.validator.AirportValidator.validateEm
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import com.pada.learnproject.flight.service.dto.response.AirportListWrapperResponse;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 
-class AirportControllerGetAirportMembersIT extends AirportBaseIT {
+class AirportControllerGetAirportMembersIT extends FlightModuleBaseIT {
 
     @Test
     void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {

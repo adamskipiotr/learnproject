@@ -6,6 +6,7 @@ import static com.pada.learnproject.flight.domain.CrewMemberRank.SENIOR_FIRST_OF
 
 import com.pada.learnproject.flight.domain.CrewMember;
 import com.pada.learnproject.flight.domain.CrewMemberRank;
+import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.service.dto.request.CrewMemberRequest;
 
 public interface CrewMemberTestValues {
@@ -42,31 +43,42 @@ public interface CrewMemberTestValues {
 
     Long NON_EXISTING_ID = -1L;
 
-    static CrewMember createDefaultTestCrewMember() {
-        return CrewMember.builder()
+    static CrewMember createDefaultTestCrewMember(Flight flight) {
+        CrewMember crewMember = CrewMember.builder()
             .firstName(FIRST_CREW_MEMBER_FIRSTNAME)
             .lastName(FIRST_CREW_MEMBER_LASTNAME)
             .age(FIRST_CREW_MEMBER_AGE)
             .crewMemberRank(FIRST_CREW_MEMBER_RANK)
             .build();
+        bindCrewMemberWithFlight(crewMember, flight);
+        return crewMember;
     }
 
-    static CrewMember createSecondTestCrewMember() {
-        return CrewMember.builder()
+    static CrewMember createSecondTestCrewMember(Flight flight) {
+        CrewMember crewMember = CrewMember.builder()
             .firstName(SECOND_CREW_MEMBER_FIRSTNAME)
             .lastName(SECOND_CREW_MEMBER_LASTNAME)
             .age(SECOND_CREW_MEMBER_AGE)
             .crewMemberRank(SECOND_CREW_MEMBER_RANK)
             .build();
+        bindCrewMemberWithFlight(crewMember, flight);
+        return crewMember;
     }
 
-    static CrewMember createThirdTestCrewMember() {
-        return CrewMember.builder()
+    static CrewMember createThirdTestCrewMember(Flight flight) {
+        CrewMember crewMember = CrewMember.builder()
             .firstName(THIRD_CREW_MEMBER_FIRSTNAME)
             .lastName(THIRD_CREW_MEMBER_LASTNAME)
             .age(THIRD_CREW_MEMBER_AGE)
             .crewMemberRank(THIRD_CREW_MEMBER_RANK)
             .build();
+        bindCrewMemberWithFlight(crewMember, flight);
+        return crewMember;
+    }
+
+    private static void bindCrewMemberWithFlight(CrewMember crewMember, Flight flight) {
+        flight.getCrewMembers().add(crewMember);
+        crewMember.getFlights().add(flight);
     }
 
     static CrewMemberRequest createCrewMemberRequest() {

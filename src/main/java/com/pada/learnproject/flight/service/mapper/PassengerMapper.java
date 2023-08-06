@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", uses = TicketMapper.class, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PassengerMapper {
 
     Passenger toEntity(PassengerRequest request);

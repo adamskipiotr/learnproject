@@ -7,10 +7,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import com.pada.learnproject.common.util.TestUtil;
 import com.pada.learnproject.flight.service.dto.response.FlightResponse;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-class FlightControllerPostFlightIT extends FlightBaseIT {
+class FlightControllerPostFlightIT extends FlightModuleBaseIT {
 
     @Test
     void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {

@@ -9,7 +9,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", uses = {CrewMemberMapper.class,
+    AirportMapper.class}, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface FlightMapper {
 
     @Mapping(target = "flightStatus", constant = "SCHEDULED")

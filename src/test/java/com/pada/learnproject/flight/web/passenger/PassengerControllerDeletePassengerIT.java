@@ -11,9 +11,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
 import com.pada.learnproject.flight.service.dto.response.PassengerResponse;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 
-class PassengerControllerDeletePassengerIT extends PassengerBaseIT {
+class PassengerControllerDeletePassengerIT extends FlightModuleBaseIT {
 
     @Test
     void shouldReturnDeletedPassengerWhenCorrectRequestProvided() throws Exception {

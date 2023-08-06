@@ -17,9 +17,10 @@ import static com.pada.learnproject.flight.validator.CrewMemberValidator.validat
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import com.pada.learnproject.flight.service.dto.response.CrewMemberListWrapperResponse;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 
-class CrewMemberControllerGetCrewMembersIT extends CrewMemberBaseIT {
+class CrewMemberControllerGetCrewMembersIT extends FlightModuleBaseIT {
 
     @Test
     void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {

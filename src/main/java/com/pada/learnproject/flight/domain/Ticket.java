@@ -4,9 +4,11 @@ import static jakarta.persistence.EnumType.STRING;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -37,5 +39,11 @@ public class Ticket {
     private Integer basePrice;
 
     private Integer luggageFee;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    Passenger passenger;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    Flight flight;
 
 }

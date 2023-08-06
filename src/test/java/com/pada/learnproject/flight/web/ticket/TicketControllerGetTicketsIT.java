@@ -15,9 +15,10 @@ import static com.pada.learnproject.flight.validator.TicketValidator.validateTic
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import com.pada.learnproject.flight.service.dto.response.TicketListWrapperResponse;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 
-class TicketControllerGetTicketsIT extends TicketBaseIT {
+class TicketControllerGetTicketsIT extends FlightModuleBaseIT {
 
     @Test
     void shouldReturnResponseWithThreeElementInListWhenQueryWithoutFilters() throws Exception {

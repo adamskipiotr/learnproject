@@ -12,6 +12,7 @@ import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_R
 import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_REQUEST_PASSENGER_FIRST_NAME;
 import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_REQUEST_PASSENGER_IS_PREMIUM;
 import static com.pada.learnproject.flight.constant.PassengerTestValues.UPDATE_REQUEST_PASSENGER_LAST_NAME;
+import static com.pada.learnproject.flight.validator.TicketValidator.validateTicketResponseDetails;
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -43,23 +44,26 @@ public class PassengerValidator {
     }
 
     public static void validatePassengerResponseDetails(PassengerResponse passengerResponse) {
-        assertEquals(FIRST_PASSENGER_FIRST_NAME, passengerResponse.firstName());
-        assertEquals(FIRST_PASSENGER_LAST_NAME, passengerResponse.lastName());
-        assertEquals(FIRST_PASSENGER_AGE, passengerResponse.age());
-        assertEquals(FIRST_PASSENGER_IS_PREMIUM, passengerResponse.isPremium());
+        assertEquals(FIRST_PASSENGER_FIRST_NAME, passengerResponse.getFirstName());
+        assertEquals(FIRST_PASSENGER_LAST_NAME, passengerResponse.getLastName());
+        assertEquals(FIRST_PASSENGER_AGE, passengerResponse.getAge());
+        assertEquals(FIRST_PASSENGER_IS_PREMIUM, passengerResponse.getIsPremium());
+        for(var ticket: passengerResponse.getTickets()){
+            validateTicketResponseDetails(ticket);
+        }
     }
 
     public static void validateCreatePassengerResponse(PassengerResponse passengerResponse) {
-        assertEquals(DEFAULT_REQUEST_PASSENGER_FIRST_NAME, passengerResponse.firstName());
-        assertEquals(DEFAULT_REQUEST_PASSENGER_LAST_NAME, passengerResponse.lastName());
-        assertEquals(DEFAULT_REQUEST_PASSENGER_AGE, passengerResponse.age());
-        assertEquals(DEFAULT_REQUEST_PASSENGER_IS_PREMIUM, passengerResponse.isPremium());
+        assertEquals(DEFAULT_REQUEST_PASSENGER_FIRST_NAME, passengerResponse.getFirstName());
+        assertEquals(DEFAULT_REQUEST_PASSENGER_LAST_NAME, passengerResponse.getLastName());
+        assertEquals(DEFAULT_REQUEST_PASSENGER_AGE, passengerResponse.getAge());
+        assertEquals(DEFAULT_REQUEST_PASSENGER_IS_PREMIUM, passengerResponse.getIsPremium());
     }
 
     public static void validateUpdatePassengerResponse(PassengerResponse passengerResponse) {
-        assertEquals(UPDATE_REQUEST_PASSENGER_FIRST_NAME, passengerResponse.firstName());
-        assertEquals(UPDATE_REQUEST_PASSENGER_LAST_NAME, passengerResponse.lastName());
-        assertEquals(UPDATE_REQUEST_PASSENGER_AGE, passengerResponse.age());
-        assertEquals(UPDATE_REQUEST_PASSENGER_IS_PREMIUM, passengerResponse.isPremium());
+        assertEquals(UPDATE_REQUEST_PASSENGER_FIRST_NAME, passengerResponse.getFirstName());
+        assertEquals(UPDATE_REQUEST_PASSENGER_LAST_NAME, passengerResponse.getLastName());
+        assertEquals(UPDATE_REQUEST_PASSENGER_AGE, passengerResponse.getAge());
+        assertEquals(UPDATE_REQUEST_PASSENGER_IS_PREMIUM, passengerResponse.getIsPremium());
     }
 }
