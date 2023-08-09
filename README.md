@@ -1,13 +1,11 @@
 # Learnproject Documentation
 
-[!image](https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png)
-
 
 - [1. The purpose of this project](#1-the-purpose-of-this-project)
-- [2. Development roadmap](#1-development-roadmap)
+- [2. Development roadmap](#2-development-roadmap)
 - [3. Domain](#3-domain)
 - [4. Architecture](#4-architecture)
-- [5. Technology stack](#4-technology-stact)
+- [5. Technology stack](#5-technology-stack)
 
 ## 1. The purpose of this project
 TODO
@@ -22,4 +20,10 @@ TODO
 TODO
 
 ## 5. Technology stack
-TODO
+- Java 17
+- Spring Framework (Boot,
+- Gradle
+- Lombok
+- JUnit
+- Postgres
+- Testcontainers
