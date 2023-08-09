@@ -3,13 +3,18 @@ package com.pada.learnproject.flight.service;
 import static com.pada.learnproject.flight.repository.FlightRepository.Specs.flightStartBetween;
 
 import com.pada.learnproject.flight.domain.Flight;
+import com.pada.learnproject.flight.domain.FlightStatus;
+import com.pada.learnproject.flight.domain.Ticket;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.repository.FlightRepository;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
+import com.pada.learnproject.flight.service.dto.request.TicketRequest;
 import com.pada.learnproject.flight.service.dto.response.FlightListResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import com.pada.learnproject.flight.service.mapper.FlightMapper;
+import com.pada.learnproject.flight.service.validation.FlightValidator;
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,13 +22,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @RequiredArgsConstructor
+@Validated
 public class FlightService {
 
     private final FlightRepository flightRepository;
     private final FlightMapper flightMapper;
+    private final FlightValidator flightValidator;
+    private final TicketService ticketService;
 
     @Transactional
     public FlightListWrapperResponse findFlights(Pageable pageable, FlightCriteria flightCriteria) {
@@ -48,29 +57,46 @@ public class FlightService {
 
     @Transactional
     public FlightResponse findById(Long id) {
-        Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
+        Flight flight = getFlightById(id);
         return flightMapper.toResponse(flight);
     }
 
     @Transactional
-    public FlightResponse addFlight(FlightRequest flightRequest) {
+    public FlightResponse addFlight(@Valid FlightRequest flightRequest) {
+        flightValidator.validate(flightRequest);
         Flight flight = flightMapper.toEntity(flightRequest);
         flight = flightRepository.save(flight);
         return flightMapper.toResponse(flight);
     }
 
-
     @Transactional
     public FlightResponse updateFlight(Long id, FlightRequest flightRequest) {
-        Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
+        flightValidator.validate(flightRequest);
+        Flight flight = getFlightById(id);
         flight = flightMapper.updateEntity(flight, flightRequest);
         return flightMapper.toResponse(flight);
     }
 
     @Transactional
     public FlightResponse deleteFlight(Long id) {
-        Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
+        Flight flight = getFlightById(id);
         flightRepository.deleteById(id);
         return flightMapper.toResponse(flight);
+    }
+
+    public void toggleFlightStatus(Long id, FlightStatus flightStatus) {
+        Flight flight = getFlightById(id);
+        flight.toggleFlightStatus(flightStatus);
+    }
+
+    public void addTicketToFlight(Long id, TicketRequest ticketRequest) {
+        Flight flight = getFlightById(id);
+        Ticket ticket = ticketService.createTicket(ticketRequest);
+        flight.addTicket(ticket);
+
+    }
+
+    private Flight getFlightById(Long id) {
+        return flightRepository.findById(id).orElseThrow(() -> new RuntimeException("Flight not found"));
     }
 }

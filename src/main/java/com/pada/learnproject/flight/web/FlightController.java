@@ -3,9 +3,11 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
+import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.service.FlightService;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
+import com.pada.learnproject.flight.service.dto.request.TicketRequest;
 import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -52,6 +54,17 @@ public class FlightController {
         @RequestBody FlightRequest flightRequest) {
         var responseBody = flightService.updateFlight(id, flightRequest);
         return ResponseEntity.status(CREATED).body(responseBody);
+    }
+
+    @PutMapping("/{id}/status/{status}")
+    public void toggleFlightStatus(@PathVariable(name = "id") Long id,
+        @PathVariable(name = "status") FlightStatus flightStatus) {
+        flightService.toggleFlightStatus(id, flightStatus);
+    }
+
+    @PostMapping({"/{id}/ticket"})
+    public void addTicketToFlight(@PathVariable(name = "id") Long id, @RequestBody TicketRequest ticketRequest){
+        flightService.addTicketToFlight(id,  ticketRequest);
     }
 
     @DeleteMapping("/{id}")

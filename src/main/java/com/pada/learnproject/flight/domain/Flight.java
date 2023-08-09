@@ -16,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -62,9 +63,9 @@ public class Flight {
         inverseJoinColumns = @JoinColumn(name = "crew_member_id"))
     private Set<CrewMember> crewMembers = new HashSet<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = Ticket_.FLIGHT, cascade = CascadeType.ALL,
         fetch = FetchType.LAZY, orphanRemoval = true)
-    @Builder.Default
     private List<Ticket> tickets = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -73,4 +74,17 @@ public class Flight {
     @ManyToOne(fetch = FetchType.LAZY)
     private Airport endAirport;
 
+    public void toggleFlightStatus(FlightStatus flightStatus) {
+        this.flightStatus.isValidTransitionTo(flightStatus);
+        this.flightStatus = flightStatus;
+
+    }
+
+    public void addTicket(Ticket ticket) {
+        if(tickets.size() >= maxPassengerCount){
+            throw new IllegalStateException("Maximum count of passengers reached");
+        }
+        this.tickets.add(ticket);
+        ticket.setFlight(this);
+    }
 }

@@ -80,4 +80,7 @@ public class TicketService {
         return ticketMapper.toResponse(ticket);
     }
 
+    public Ticket createTicket(TicketRequest ticketRequest) {
+        return ticketMapper.toEntity(ticketRequest);
+    }
 }
