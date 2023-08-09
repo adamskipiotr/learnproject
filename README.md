@@ -13,9 +13,9 @@ TODO
 ## 2. Development roadmap
 | Milestone | Status |
 | ------- | ------ |
-| Create basic CRUD for entities | COMPLETED |
+| Create basic CRUD for entities | DONE |
 | Implement business logic |  |
-| Refactor project structure to follow principles of Hexagonal Architecture with Domain Rich Model |  |
+| Refactor project structure |  |
 
 ## 3. Domain
 TODO
