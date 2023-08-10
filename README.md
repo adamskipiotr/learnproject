@@ -39,7 +39,11 @@ Each `Flight` has its status expressed with a value of `FlightStatus` enum (cons
 
 Value of `flightEnd` must not be before `flightStart`.
 Number of related `Ticket` objects in `tickets` cannot be greater than value of `maxPassengerCount`.
-It is possible that `airportStart` and `airportEnd` are reffering to the same `Airport` entity
+It is possible that `airportStart` and `airportEnd` are reffering to the same `Airport` entity.
+
+It is forbidden to bind `CrewMember` with `Flight` if at least one of the rules are not followed:
+- `CrewMember` must not be binded with two `Flights` if thier duration timelap overlaps
+- `CrewMember` must not be binded with `Flight` that with value of `flightStart` sooner than 1 hour after `flightEnd` of a `Flight` with the smallest difference between its `flightEnd` and `flightStart` of a new `Flight` from all `Flights` connected with `CrewMember`
 
 ### 3.1. Other
 No other domain implemented at the moment
