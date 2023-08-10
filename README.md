@@ -4,7 +4,7 @@
 - [1. About the project](#1-about-the-project)
 - [2. Development roadmap](#2-development-roadmap)
 - [3. Domain](#3-domain)
-    - [3. Flight](#3-flight)
+    - [3.1. Flight](#31-flight)
 - [4. Architecture](#4-architecture)
 - [5. Technology stack](#5-technology-stack)
 
@@ -24,7 +24,7 @@ As a result of the above objectives, and as is common in software development, t
 
 ## 3. Domain
 
-### 3. Flight
+### 3.1. Flight
 `Flight`
 
 `Airport`
