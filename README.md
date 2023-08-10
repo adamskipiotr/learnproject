@@ -26,15 +26,20 @@ As a result of the above objectives, and as is common in software development, t
 ## 3. Domain
 
 ### 3.1. Flight
-`Flight`
+Flight business domain is based on entities: `Flight`, `Airport`, `CrewMember`, `Ticket`, `Passenger`.
 
-`Airport`
+Following domain name, `Flight` entity plays a key role and as such should be considered as potential aggregate in future architecture changes in order to follow Domain Driven Design principles (see [4. Architecture](#4-architecture)).
 
-`CrewMember`
+Each `Flight` has its status expressed with a value of `FlightStatus` enum (consisting of the following values: `SCHEDULED`, `ONGOING`, `FINISHED`, `CANCELED`, `DELAYED`, `OTHER`). When changnig its status, `Flight` must comply with following rules:
+- `SCHEDULED` cannot be changed directly to `FINISHED`
+- `SCHEDULED` cannot be changed to `ONGOING` unless at least two `CrewMember` entities amd two `Airport` entites are binded with it.
+- `SCHEDULED` cannot be changed to `ONGOING` unless values for: `flightName`, `flightStart`, `flightEnd`, `maxPassengerCount` are provided
+- `ONGOIND` cannot be changed neither to `CANCELLED` nor `SCHEDULED`
+- `DELAYED` cannot be changed to `SCHEDULED`
 
-`Ticket`
-
-`Passenger`
+Value of `flightEnd` must not be before `flightStart`.
+Number of related `Ticket` objects in `tickets` cannot be greater than value of `maxPassengerCount`.
+It is possible that `airportStart` and `airportEnd` are reffering to the same `Airport` entity
 
 ### 3.1. Other
 No other domain implemented at the moment
