@@ -4,6 +4,7 @@
 - [1. About the project](#1-about-the-project)
 - [2. Development roadmap](#2-development-roadmap)
 - [3. Domain](#3-domain)
+    - [3. Flight](#3-flight)
 - [4. Architecture](#4-architecture)
 - [5. Technology stack](#5-technology-stack)
 
@@ -22,7 +23,18 @@ As a result of the above objectives, and as is common in software development, t
 | Refactor project structure |  |
 
 ## 3. Domain
-TODO
+
+### 3. Flight
+`Flight`
+
+`Airport`
+
+`CrewMember`
+
+`Ticket`
+
+`Passenger`
+
 
 ## 4. Architecture
 TODO
