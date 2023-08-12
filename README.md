@@ -46,6 +46,10 @@ It is forbidden to bind `CrewMember` with `Flight` if at least one of the rules 
 - `CrewMember` must not be binded with new `Flight` if new `Flight`'s value of `flightStart` is: 
     - sooner than 1 hour after `flightEnd` of the last `Flight` that the `CrewMember` took part in and `startAirport` of a new `Flight` is the same as `endAirport` of his last participed `Flight`
     - sooner than 12 hour if `endAirport` and `startAirport` are different
+ 
+New `Flight` can be added to `Airport`'s `departures` list with the rule of 5 minutes between flight. The same applies to `arrivals`. No `Flight` can be added to neither of list if `WeatherCondition` for an `Airport` has value `HURRICANE`.
+
+
 
 ### 3.1. Other
 No other domain implemented at the moment
@@ -56,7 +60,7 @@ TODO
 
 ## 5. Technology stack
 - Java 17
-- Spring Framework (Boot,
+- Spring Framework
 - Gradle
 - Lombok
 - JUnit
