@@ -43,7 +43,9 @@ It is possible that `airportStart` and `airportEnd` are reffering to the same `A
 
 It is forbidden to bind `CrewMember` with `Flight` if at least one of the rules are not followed:
 - `CrewMember` must not be binded with two `Flights` if thier duration timelap overlaps
-- `CrewMember` must not be binded with `Flight` that with value of `flightStart` sooner than 1 hour after `flightEnd` of a `Flight` with the smallest difference between its `flightEnd` and `flightStart` of a new `Flight` from all `Flights` connected with `CrewMember`
+- `CrewMember` must not be binded with new `Flight` if new `Flight`'s value of `flightStart` is: 
+    - sooner than 1 hour after `flightEnd` of the last `Flight` that the `CrewMember` took part in and `startAirport` of a new `Flight` is the same as `endAirport` of his last participed `Flight`
+    - sooner than 12 hour if `endAirport` and `startAirport` are different
 
 ### 3.1. Other
 No other domain implemented at the moment
