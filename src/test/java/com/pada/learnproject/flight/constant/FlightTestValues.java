@@ -56,7 +56,6 @@ public interface FlightTestValues {
             .crewMembers(new HashSet<>())
             .build();
         bindFlightWithAirports(flight, startAirport, endAirport);
-        bindFlightWithCrewMembers(flight, crewMember);
         return flight;
     }
 
@@ -69,7 +68,6 @@ public interface FlightTestValues {
             .crewMembers(new HashSet<>())
             .build();
         bindFlightWithAirports(flight, startAirport, endAirport);
-        bindFlightWithCrewMembers(flight, crewMember);
                 return flight;
     }
 
@@ -82,7 +80,6 @@ public interface FlightTestValues {
             .crewMembers(new HashSet<>())
             .build();
         bindFlightWithAirports(flight, startAirport, endAirport);
-        bindFlightWithCrewMembers(flight, crewMember);
         return flight;
     }
 
@@ -91,11 +88,6 @@ public interface FlightTestValues {
         startAirport.getDepartures().add(flight);
         flight.setEndAirport(endAirport);
         endAirport.getArrivals().add(flight);
-    }
-
-    private static void bindFlightWithCrewMembers(Flight flight, CrewMember crewMember) {
-   //     flight.getCrewMembers().add(crewMember);
-     //   crewMember.getFlights().add(flight);
     }
 
     static FlightRequest createFlightRequest() {

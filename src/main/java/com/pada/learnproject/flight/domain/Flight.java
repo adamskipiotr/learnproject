@@ -93,7 +93,7 @@ public class Flight {
     }
 
     private void validateCrewMembersForOngoing() {
-        if (crewMembers.size() < 2) {
+        if (this.crewMembers.size() < 2) {
             throw new RuntimeException("Cannot change flight status to Ongoing. Too few crew members.");
         }
     }

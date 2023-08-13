@@ -75,8 +75,9 @@ public class FlightService {
     }
 
     @Transactional
-    public void changeFlightStatus(Long id, FlightStatus flightStatus){
+    public FlightResponse changeFlightStatus(Long id, FlightStatus flightStatus){
         Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
         flight.changeFlightStatus(flightStatus);
+        return flightMapper.toResponse(flight);
     }
 }
