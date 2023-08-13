@@ -3,6 +3,7 @@ package com.pada.learnproject.flight.service;
 import static com.pada.learnproject.flight.repository.FlightRepository.Specs.flightStartBetween;
 
 import com.pada.learnproject.flight.domain.Flight;
+import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.repository.FlightRepository;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
@@ -59,7 +60,6 @@ public class FlightService {
         return flightMapper.toResponse(flight);
     }
 
-
     @Transactional
     public FlightResponse updateFlight(Long id, FlightRequest flightRequest) {
         Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -72,5 +72,11 @@ public class FlightService {
         Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
         flightRepository.deleteById(id);
         return flightMapper.toResponse(flight);
+    }
+
+    @Transactional
+    public void changeFlightStatus(Long id, FlightStatus flightStatus){
+        Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
+        flight.changeFlightStatus(flightStatus);
     }
 }

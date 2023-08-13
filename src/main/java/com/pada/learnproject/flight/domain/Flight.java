@@ -73,4 +73,28 @@ public class Flight {
     @ManyToOne(fetch = FetchType.LAZY)
     private Airport endAirport;
 
+    public void changeFlightStatus(FlightStatus newFlightStatus) {
+        validateFlightForOngoing(newFlightStatus);
+        flightStatus.changeValue(newFlightStatus);
+    }
+
+    private void validateFlightForOngoing(FlightStatus newFlightStatus) {
+        if (newFlightStatus == FlightStatus.ONGOING) {
+            validateFlightDetails();
+            validateCrewMembersForOngoing();
+        }
+    }
+
+    private void validateFlightDetails() {
+        if (flightName == null || flightStart == null || flightEnd == null || maxPassengerCount == null
+            || startAirport == null || endAirport == null) {
+            throw new RuntimeException("Cannot change flight status to Ongoing. Required fields are missing.");
+        }
+    }
+
+    private void validateCrewMembersForOngoing() {
+        if (crewMembers.size() < 2) {
+            throw new RuntimeException("Cannot change flight status to Ongoing. Too few crew members.");
+        }
+    }
 }

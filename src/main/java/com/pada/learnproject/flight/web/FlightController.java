@@ -3,6 +3,7 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
+import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.service.FlightService;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
@@ -51,7 +52,14 @@ public class FlightController {
     public ResponseEntity<FlightResponse> updateFlight(@PathVariable(name = "id") Long id,
         @RequestBody FlightRequest flightRequest) {
         var responseBody = flightService.updateFlight(id, flightRequest);
-        return ResponseEntity.status(CREATED).body(responseBody);
+        return ResponseEntity.status(OK).body(responseBody);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> changeFlightStatus(@PathVariable(name = "id") Long id,
+        @RequestBody FlightStatus flightStatus) {
+        flightService.changeFlightStatus(id, flightStatus);
+        return ResponseEntity.status(OK).body(null);
     }
 
     @DeleteMapping("/{id}")
