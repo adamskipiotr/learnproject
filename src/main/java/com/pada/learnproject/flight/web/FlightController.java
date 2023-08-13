@@ -55,9 +55,9 @@ public class FlightController {
         return ResponseEntity.status(OK).body(responseBody);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/{status}")
     public ResponseEntity<Void> changeFlightStatus(@PathVariable(name = "id") Long id,
-        @RequestBody FlightStatus flightStatus) {
+        @PathVariable(name = "status") FlightStatus flightStatus) {
         flightService.changeFlightStatus(id, flightStatus);
         return ResponseEntity.status(OK).body(null);
     }

@@ -5,6 +5,7 @@ import static com.pada.learnproject.flight.constant.FlightConstants.Urls.createU
 import static com.pada.learnproject.flight.constant.FlightTestValues.NON_EXISTING_ID;
 import static com.pada.learnproject.flight.constant.FlightTestValues.createUpdateFlightRequest;
 import static com.pada.learnproject.flight.validator.FlightValidator.validateUpdateFlightResponse;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -16,7 +17,7 @@ import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-class FlightControllerPutFlightIT extends FlightModuleBaseIT {
+class FlightControllerPutUpdateFlightStatusIT extends FlightModuleBaseIT {
 
     @Test
     void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {
@@ -35,7 +36,7 @@ class FlightControllerPutFlightIT extends FlightModuleBaseIT {
     @Test
     void shouldThrowRuntimeExceptionWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
-                put(createUrlWithEntityId(NON_EXISTING_ID)))
+                get(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())
             .andExpect(status().isBadRequest())
             .andReturn()

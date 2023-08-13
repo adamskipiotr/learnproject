@@ -5,7 +5,6 @@ import static com.pada.learnproject.flight.constant.TicketConstants.Urls.createU
 import static com.pada.learnproject.flight.constant.TicketTestValues.NON_EXISTING_ID;
 import static com.pada.learnproject.flight.constant.TicketTestValues.createUpdateTicketRequest;
 import static com.pada.learnproject.flight.validator.TicketValidator.validateUpdateTicketResponse;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,7 +35,7 @@ class TicketControllerPutTicketIT extends FlightModuleBaseIT {
     @Test
     void shouldThrowRuntimeExceptionWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
-                get(createUrlWithEntityId(NON_EXISTING_ID)))
+                put(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())
             .andExpect(status().isBadRequest())
             .andReturn()
