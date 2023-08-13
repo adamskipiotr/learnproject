@@ -96,7 +96,7 @@ class FlightControllerPutUpdateFlightStatusIT extends FlightModuleBaseIT {
     }
 
     @ParameterizedTest
-    @EnumSource(value = FlightStatus.class, names = "OTHER", mode = EnumSource.Mode.EXCLUDE)
+    @EnumSource(value = FlightStatus.class, names = {"SCHEDULED", "OTHER"}, mode = EnumSource.Mode.EXCLUDE)
     void shouldThrowRuntimeExceptionWhenChangingNotOtherStatusToScheduled(FlightStatus flightStatus) throws Exception {
         defaultFlight.setFlightStatus(flightStatus);
         flightRepository.save(defaultFlight);
