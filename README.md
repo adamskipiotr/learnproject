@@ -38,7 +38,7 @@ Each `Flight` has its status expressed with a value of `FlightStatus` enum (cons
 - `DELAYED` cannot be changed to `SCHEDULED`
 
 Value of `flightEnd` must not be before `flightStart`.
-Number of related `Ticket` objects in `tickets` cannot be greater than value of `maxPassengerCount`.
+Number of related `Ticket` objects in `tickets` cannot be greater than value of `maxPassengerCount`. It is possible to remove relation with any entity related to `Flight` as long as it's status is `SCHEDULED`.
 It is possible that `airportStart` and `airportEnd` are reffering to the same `Airport` entity.
 
 It is forbidden to bind `CrewMember` with `Flight` if at least one of the rules are not followed:
