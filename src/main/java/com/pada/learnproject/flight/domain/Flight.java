@@ -18,9 +18,14 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -73,6 +78,39 @@ public class Flight {
     @ManyToOne(fetch = FetchType.LAZY)
     private Airport endAirport;
 
+    public void addTicket(Ticket ticket){
+        if(tickets.size() >= maxPassengerCount){
+            throw new RuntimeException("Maximum airplane flight passengers count reached");
+        }
+        tickets.add(ticket);
+        ticket.setFlight(this);
+    }
+
+    public void removeTicket(Ticket ticket){
+        validateFlightStatusBeforeRemovingRelated(ticket.getClass().getName());
+        tickets.remove(ticket);
+        ticket.setFlight(null);
+    }
+
+    public void addCrewMember(CrewMember crewMember){
+        crewMember.getLastFlightEnd();
+
+        crewMembers.add(crewMember);
+        crewMember.getFlights().add(this);
+    }
+
+    public void removeCrewMember(CrewMember crewMember){
+        validateFlightStatusBeforeRemovingRelated(crewMembers.getClass().getName());
+        crewMembers.remove(crewMember);
+        crewMember.getFlights().remove(this);
+    }
+
+    private void validateFlightStatusBeforeRemovingRelated(String name) {
+        if(!flightStatus.isRemovable()){
+            throw new RuntimeException("Cannot remove " + name + " flight status is not scheduled");
+        }
+    }
+
     public void changeFlightStatus(FlightStatus newFlightStatus) {
         validateFlightForOngoing(newFlightStatus);
         flightStatus.changeValue(newFlightStatus);
@@ -86,9 +124,22 @@ public class Flight {
     }
 
     private void validateFlightDetails() {
-        if (flightName == null || flightStart == null || flightEnd == null || maxPassengerCount == null
-            || startAirport == null || endAirport == null) {
-            throw new RuntimeException("Cannot change flight status to Ongoing. Required fields are missing.");
+        Map<Object, String> fieldToName = new HashMap<>();
+        fieldToName.put(flightName, "flightName");
+        fieldToName.put(flightStart, "flightStart");
+        fieldToName.put(flightEnd, "flightEnd");
+        fieldToName.put(maxPassengerCount, "maxPassengerCount");
+        fieldToName.put(startAirport, "startAirport");
+        fieldToName.put(endAirport, "endAirport");
+
+        List<String> missingFields = fieldToName.entrySet().stream()
+            .filter(entry -> entry.getKey() == null)
+            .map(Map.Entry::getValue)
+            .collect(Collectors.toList());
+
+        if (!missingFields.isEmpty()) {
+            String missingFieldNames = String.join(", ", missingFields);
+            throw new RuntimeException("Cannot change flight status to Ongoing. Required fields are missing: " + missingFieldNames);
         }
     }
 

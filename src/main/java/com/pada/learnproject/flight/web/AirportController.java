@@ -5,6 +5,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 import com.pada.learnproject.flight.domain.criteria.AirportCriteria;
 import com.pada.learnproject.flight.service.AirportService;
+import com.pada.learnproject.flight.service.FlightType;
 import com.pada.learnproject.flight.service.dto.request.AirportRequest;
 import com.pada.learnproject.flight.service.dto.response.AirportListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.AirportResponse;
@@ -52,6 +53,13 @@ public class AirportController {
         @RequestBody AirportRequest airportRequest) {
         var responseBody = airportService.updateAirport(id, airportRequest);
         return ResponseEntity.status(CREATED).body(responseBody);
+    }
+
+    @PostMapping("/{airportId}/flights/{flightId}/{relationshipType}")
+    public ResponseEntity<AirportResponse> addFlightToAirport(@PathVariable Long airportId,
+        @PathVariable Long flightId, @PathVariable FlightType flightType) {
+         airportService.addFlight(airportId, flightId, flightType);
+        return ResponseEntity.status(CREATED).body(null);
     }
 
     @DeleteMapping("/{id}")

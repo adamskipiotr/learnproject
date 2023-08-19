@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -48,4 +49,10 @@ public class CrewMember {
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = Flight_.CREW_MEMBERS, fetch = FetchType.LAZY)
     private Set<Flight> flights = new HashSet<>();
+
+    public Flight getLastFlightEnd() {
+        return flights.stream()
+            .max(Comparator.comparing(Flight::getFlightEnd))
+            .get();
+    }
 }

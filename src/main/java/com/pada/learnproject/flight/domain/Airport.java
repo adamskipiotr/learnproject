@@ -1,7 +1,10 @@
 package com.pada.learnproject.flight.domain;
 
+import static com.pada.learnproject.flight.service.FlightType.ARRIVAL;
+import static com.pada.learnproject.flight.service.FlightType.DEPARTURE;
 import static jakarta.persistence.EnumType.STRING;
 
+import com.pada.learnproject.flight.service.FlightType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
@@ -12,7 +15,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,4 +56,41 @@ public class Airport {
     @Builder.Default
     private List<Flight> arrivals = new ArrayList<>();
 
+    public Flight getLastArrival() {
+        return arrivals
+            .stream()
+            .max(Comparator.comparing(Flight::getFlightEnd))
+            .get();
+    }
+
+    public Flight getLastDeparture() {
+        return arrivals
+            .stream()
+            .max(Comparator.comparing(Flight::getFlightStart))
+            .get();
+    }
+
+    public boolean isPreviousDepartureBeforeNew(Flight flight) {
+        return getLastDeparture().getFlightStart().plus(5, ChronoUnit.MINUTES)
+            .isBefore(flight.getFlightStart());
+    }
+
+    public boolean isPreviousArrivalBeforeNew(Flight flight) {
+        return getLastArrival().getFlightEnd().plus(5, ChronoUnit.MINUTES)
+            .isBefore(flight.getFlightStart());
+    }
+
+    public void addFlight(Flight flight, FlightType flightType) {
+        if (DEPARTURE.equals(flightType)) {
+            if (!this.isPreviousDepartureBeforeNew(flight)) {
+                throw new RuntimeException();
+            }
+            flight.setStartAirport(this);
+        } else if (ARRIVAL.equals(flightType)) {
+            if (!this.isPreviousArrivalBeforeNew(flight)) {
+                throw new RuntimeException();
+            }
+            flight.setEndAirport(this);
+        }
+    }
 }

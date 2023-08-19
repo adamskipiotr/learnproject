@@ -41,6 +41,10 @@ public enum FlightStatus {
 
     public abstract void changeValue(FlightStatus newFlightStatus);
 
+    public boolean isRemovable() {
+        return this == SCHEDULED;
+    }
+
     private static void preventScheduledTransition(FlightStatus newFlightStatus) {
         if(SCHEDULED.equals(newFlightStatus)){
             throw new RuntimeException("Delayed flight can't be changed to Scheduled");

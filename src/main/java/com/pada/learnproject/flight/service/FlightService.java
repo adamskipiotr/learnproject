@@ -48,10 +48,16 @@ public class FlightService {
     }
 
     @Transactional
-    public FlightResponse findById(Long id) {
-        Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
+    public FlightResponse getById(Long id) {
+        Flight flight = findById(id);
         return flightMapper.toResponse(flight);
     }
+
+    @Transactional
+    public Flight findById(Long id) {
+        return flightRepository.findById(id).orElseThrow(RuntimeException::new);
+    }
+
 
     @Transactional
     public FlightResponse addFlight(FlightRequest flightRequest) {
