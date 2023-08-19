@@ -76,7 +76,7 @@ public class AirportService {
     public void addFlight(Long airportId, Long flightId, FlightType flightType) {
         Airport airport = airportRepository.findById(airportId).orElseThrow(RuntimeException::new);
         Flight flight = flightService.findById(flightId);
-        airport.addFlight(flight,flightType);
+        flightType.addFlight(airport,flight);
     }
 
 

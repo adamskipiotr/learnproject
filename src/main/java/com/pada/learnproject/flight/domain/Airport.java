@@ -80,17 +80,17 @@ public class Airport {
             .isBefore(flight.getFlightStart());
     }
 
-    public void addFlight(Flight flight, FlightType flightType) {
-        if (DEPARTURE.equals(flightType)) {
-            if (!this.isPreviousDepartureBeforeNew(flight)) {
-                throw new RuntimeException();
-            }
-            flight.setStartAirport(this);
-        } else if (ARRIVAL.equals(flightType)) {
-            if (!this.isPreviousArrivalBeforeNew(flight)) {
-                throw new RuntimeException();
-            }
-            flight.setEndAirport(this);
+    public void addDepartureFlight(Flight flight) {
+        if (!isPreviousDepartureBeforeNew(flight)) {
+            throw new RuntimeException("Previous departure is too close");
         }
+        flight.setStartAirport(this);
+    }
+
+    public void addArrivalFlight(Flight flight) {
+        if (!isPreviousArrivalBeforeNew(flight)) {
+            throw new RuntimeException("Previous arrival is too close");
+        }
+        flight.setEndAirport(this);
     }
 }
