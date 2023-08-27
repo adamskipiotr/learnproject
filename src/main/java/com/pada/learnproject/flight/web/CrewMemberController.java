@@ -37,7 +37,7 @@ public class CrewMemberController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CrewMemberResponse> getCrewMemberById(@PathVariable(name = "id") Long id) {
-        var responseBody = crewMemberService.findById(id);
+        var responseBody = crewMemberService.getById(id);
         return ResponseEntity.status(OK).body(responseBody);
     }
 

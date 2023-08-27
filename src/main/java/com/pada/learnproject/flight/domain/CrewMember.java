@@ -11,8 +11,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -55,4 +58,45 @@ public class CrewMember {
             .max(Comparator.comparing(Flight::getFlightEnd))
             .get();
     }
+
+    public void isAvailableToFly(LocalDateTime flightStart, Airport startAirport) {
+        Optional<Flight> optionalFlight = flights.stream()
+            .filter(flight -> flight.getFlightEnd().toLocalDate().equals(flightStart.toLocalDate()))
+            .max(Comparator.comparing(Flight::getFlightEnd));
+
+        Flight f;
+        if (optionalFlight.isPresent()) {
+            f = optionalFlight.get();
+        } else {
+            return;
+        }
+
+        if (f.getEndAirport().equals(startAirport)) {
+            validate1HourDelayFromTheSameAirport(f, flightStart);
+        } else {
+            validate12HoursDelayFromOtherAirports(f, flightStart);
+        }
+
+    }
+
+    private void validate1HourDelayFromTheSameAirport(Flight f, LocalDateTime flightStart) {
+        Duration duration = Duration.between(flightStart, f.getFlightEnd());
+        if (duration.toHours() < 1) {
+            throw new RuntimeException(
+                "Crew member cannot take part in flight from the same airport if gap between latest landing and "
+                    + "departure is less than 1 hour");
+        }
+
+    }
+
+    private void validate12HoursDelayFromOtherAirports(Flight f, LocalDateTime flightStart) {
+        Duration duration = Duration.between(flightStart, f.getFlightEnd());
+        if (duration.toHours() < 12) {
+            throw new RuntimeException(
+                "Crew member cannot take part in flight from different airports if gap between latest landing and "
+                    + "departure is less than 12 hour");
+        }
+    }
+
+
 }

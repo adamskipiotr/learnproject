@@ -50,9 +50,14 @@ public class CrewMemberService {
     }
 
     @Transactional
-    public CrewMemberResponse findById(Long id) {
-        CrewMember crewMember = crewMemberRepository.findById(id).orElseThrow(RuntimeException::new);
+    public CrewMemberResponse getById(Long id) {
+        CrewMember crewMember = findById(id);
         return crewMemberMapper.toResponse(crewMember);
+    }
+
+    @Transactional
+    public CrewMember findById(Long id) {
+        return crewMemberRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @Transactional

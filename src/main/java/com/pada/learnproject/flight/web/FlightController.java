@@ -6,7 +6,10 @@ import static org.springframework.http.HttpStatus.OK;
 import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.service.FlightService;
+import com.pada.learnproject.flight.service.FlightType;
+import com.pada.learnproject.flight.service.command.AddFlightCommand;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
+import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -47,6 +50,13 @@ public class FlightController {
     public ResponseEntity<FlightResponse> addFlight(@RequestBody FlightRequest flightRequest) {
         var responseBody = flightService.addFlight(flightRequest);
         return ResponseEntity.status(CREATED).body(responseBody);
+    }
+
+    @PostMapping("/{flightId}/crew-members/{crewMemberId}/")
+    public ResponseEntity<AirportResponse> addFlightToAirport(@PathVariable Long flightId,
+        @PathVariable Long crewMemberId) {
+        flightService.addCrewMember(flightId,crewMemberId);
+        return ResponseEntity.status(OK).body(null);
     }
 
     @PutMapping("/{id}")

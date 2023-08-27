@@ -2,6 +2,7 @@ package com.pada.learnproject.flight.service;
 
 import static com.pada.learnproject.flight.repository.FlightRepository.Specs.flightStartBetween;
 
+import com.pada.learnproject.flight.domain.CrewMember;
 import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
@@ -25,6 +26,7 @@ public class FlightService {
 
     private final FlightRepository flightRepository;
     private final FlightMapper flightMapper;
+    private final CrewMemberService crewMemberService;
 
     @Transactional
     public FlightListWrapperResponse findFlights(Pageable pageable, FlightCriteria flightCriteria) {
@@ -85,5 +87,12 @@ public class FlightService {
         Flight flight = flightRepository.findById(id).orElseThrow(RuntimeException::new);
         flight.changeFlightStatus(flightStatus);
         return flightMapper.toResponse(flight);
+    }
+
+    public void addCrewMember(Long flightId, Long crewMemberId) {
+        Flight flight = flightRepository.findById(flightId).orElseThrow(RuntimeException::new);
+        CrewMember crewMember = crewMemberService.findById(crewMemberId);
+        flight.addCrewMember(crewMember);
+
     }
 }

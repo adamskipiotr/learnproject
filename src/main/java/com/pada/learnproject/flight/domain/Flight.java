@@ -93,7 +93,7 @@ public class Flight {
     }
 
     public void addCrewMember(CrewMember crewMember){
-        crewMember.getLastFlightEnd();
+        crewMember.isAvailableToFly(flightStart, startAirport);
 
         crewMembers.add(crewMember);
         crewMember.getFlights().add(this);

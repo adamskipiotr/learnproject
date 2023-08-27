@@ -2,20 +2,18 @@ package com.pada.learnproject.flight.service;
 
 import static com.pada.learnproject.flight.repository.AirportRepository.Specs.airportByNameLike;
 import static com.pada.learnproject.flight.repository.AirportRepository.Specs.byWeatherCondition;
-import static com.pada.learnproject.flight.service.FlightType.ARRIVAL;
-import static com.pada.learnproject.flight.service.FlightType.DEPARTURE;
 
 import com.pada.learnproject.flight.domain.Airport;
 import com.pada.learnproject.flight.domain.Airport_;
 import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.domain.criteria.AirportCriteria;
 import com.pada.learnproject.flight.repository.AirportRepository;
+import com.pada.learnproject.flight.service.command.AddFlightCommand;
 import com.pada.learnproject.flight.service.dto.request.AirportRequest;
 import com.pada.learnproject.flight.service.dto.response.AirportListResponse;
 import com.pada.learnproject.flight.service.dto.response.AirportListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import com.pada.learnproject.flight.service.mapper.AirportMapper;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -73,10 +71,12 @@ public class AirportService {
         return airportMapper.toResponse(airport);
     }
 
-    public void addFlight(Long airportId, Long flightId, FlightType flightType) {
-        Airport airport = airportRepository.findById(airportId).orElseThrow(RuntimeException::new);
-        Flight flight = flightService.findById(flightId);
-        flightType.addFlight(airport,flight);
+    public void addFlight(AddFlightCommand addFlightCommand) {
+        Airport airport = airportRepository.findById(addFlightCommand.airportId()).orElseThrow(RuntimeException::new);
+        Flight flight = flightService.findById(addFlightCommand.flightId());
+
+        FlightType flightType = addFlightCommand.flightType();
+        flightType.addFlightToAirport(airport,flight);
     }
 
 
