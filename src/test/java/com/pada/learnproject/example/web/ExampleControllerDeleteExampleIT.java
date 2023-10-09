@@ -14,10 +14,10 @@ import com.pada.learnproject.example.service.dto.response.ExampleResponse;
 import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 
-public class ExampleControllerDeleteExample extends ExampleBaseIT {
+class ExampleControllerDeleteExampleIT extends ExampleBaseIT {
 
     @Test
-    public void shouldReturnDeletedEntityWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnDeletedEntityWhenCorrectRequestProvided() throws Exception {
         var result = mockMvc.perform(
                 delete(createUrlWithEntityId(exampleEntity.getId())))
             .andReturn()
@@ -29,7 +29,7 @@ public class ExampleControllerDeleteExample extends ExampleBaseIT {
     }
 
     @Test
-    public void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
+    void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
                 get(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())

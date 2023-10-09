@@ -7,7 +7,6 @@ plugins {
 
 }
 
-
 group = 'com.pada'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
@@ -79,8 +78,11 @@ dependencies {
     runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.19'
     // https://mvnrepository.com/artifact/org.testcontainers/postgresql
     testImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.18.3'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.15.2'
     // https://mvnrepository.com/artifact/net.javacrumbs.shedlock/shedlock-spring
     implementation group: 'net.javacrumbs.shedlock', name: 'shedlock-spring', version: '5.5.0'
+
 }
 
 tasks.named('test') {
@@ -94,11 +96,17 @@ compileJava {
     options.compilerArgs << "-Amapstruct.defaultComponentModel=spring"
 }
 
-
 sonar {
     properties {
         property "sonar.projectKey", "adamskipiotr_learnproject"
         property "sonar.organization", "adamskipiotr"
         property "sonar.host.url", "https://sonarcloud.io"
     }
+
+jacocoTestReport {
+        reports {
+            xml.enabled true
+        }
+    }
+
 }

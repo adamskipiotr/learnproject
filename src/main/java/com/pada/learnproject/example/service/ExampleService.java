@@ -2,7 +2,6 @@ package com.pada.learnproject.example.service;
 
 import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byNameLike;
 import static com.pada.learnproject.example.repository.ExampleEntityRepository.Specs.byValue;
-import static java.util.stream.Collectors.toList;
 
 import com.pada.learnproject.example.domain.ExampleCriteria;
 import com.pada.learnproject.example.domain.ExampleEntity;
@@ -37,7 +36,7 @@ public class ExampleService {
         List<ExampleListResponse> data = exampleEntityPage
             .stream()
             .map(exampleEntityMapper::toListResponse)
-            .collect(toList());
+            .toList();
 
         return new ExampleListWrapperResponse(data);
     }

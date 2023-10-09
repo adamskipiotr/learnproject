@@ -1,37 +1,36 @@
-package com.pada.learnproject.example.web;
+package com.pada.learnproject.flight.web.flight;
 
 
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
-import static com.pada.learnproject.example.constant.ExampleEntityConstants.Urls.createUrlWithEntityId;
-import static com.pada.learnproject.example.constant.ExampleEntityMother.NON_EXISTING_ID;
-import static com.pada.learnproject.example.validator.ExampleValidator.validateExampleResponse;
+import static com.pada.learnproject.flight.constant.FlightConstants.Urls.createUrlWithEntityId;
+import static com.pada.learnproject.flight.constant.FlightTestValues.NON_EXISTING_ID;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
-import com.pada.learnproject.example.ExampleBaseIT;
-import com.pada.learnproject.example.service.dto.response.ExampleResponse;
-import com.pada.learnproject.example.validator.ExampleValidator;
+import com.pada.learnproject.flight.service.dto.response.FlightResponse;
+import com.pada.learnproject.flight.validator.FlightValidator;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 
-public class ExampleControllerGetExample extends ExampleBaseIT {
+class FlightControllerGetFlightIT extends FlightModuleBaseIT {
 
 
     @Test
-    public void shouldReturnDefaultEntityWhenSearchingForExampleEntityWithValidId() throws Exception {
+    void shouldReturnDefaultFlightWhenSearchingWithValidId() throws Exception {
         var result = mockMvc.perform(
-                get(createUrlWithEntityId(exampleEntity.getId())))
+                get(createUrlWithEntityId(defaultFlight.getId())))
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        var response = objectMapper.readValue(result, ExampleResponse.class);
-        ExampleValidator.validateExampleResponse(response);
+        var response = objectMapper.readValue(result, FlightResponse.class);
+        FlightValidator.validateFlightResponseDetails(response);
     }
 
     @Test
-    public void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
+    void shouldThrowRuntimeExceptionWhenWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
                 get(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())

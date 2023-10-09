@@ -59,7 +59,7 @@ public class ExamplesController {
     @PostMapping("/{exampleEntityId}/many-to-ones/{manyToOneId}")
     public ManyToOneResponse addManyToOneToExample(@PathVariable(name = "exampleEntityId") Long exampleEntityId,
         @PathVariable(name = "manyToOneId") Long manyToOneId, @RequestBody ManyToOneRequest manyToOneRequest) {
-        // return manyToOneService.addManyToOneToExample(id, manyToOneRequest);
+        // return manyToOneService.addManyToOneToExample(value, manyToOneRequest);
         //TODO to implement
         return null;
     }

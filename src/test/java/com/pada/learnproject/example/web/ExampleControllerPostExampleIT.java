@@ -2,7 +2,6 @@ package com.pada.learnproject.example.web;
 
 import static com.pada.learnproject.example.constant.ExampleEntityConstants.Urls.EXAMPLES;
 import static com.pada.learnproject.example.constant.ExampleEntityMother.createExampleRequest;
-import static com.pada.learnproject.example.validator.ExampleValidator.validateExampleResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.pada.learnproject.common.util.TestUtil;
@@ -12,10 +11,10 @@ import com.pada.learnproject.example.validator.ExampleValidator;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class ExampleControllerPostExample extends ExampleBaseIT {
+class ExampleControllerPostExampleIT extends ExampleBaseIT {
 
     @Test
-    public void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnCreatedEntityWhenCorrectRequestProvided() throws Exception {
         var result = mockMvc.perform(
                 post(EXAMPLES)
                     .content(TestUtil.convertObjectToJsonBytes(createExampleRequest()))

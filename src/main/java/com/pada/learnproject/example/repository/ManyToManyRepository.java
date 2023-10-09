@@ -1,7 +1,6 @@
 package com.pada.learnproject.example.repository;
 
 import com.pada.learnproject.example.domain.ManyToManyEntity;
-import com.pada.learnproject.example.domain.ManyToOneEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
