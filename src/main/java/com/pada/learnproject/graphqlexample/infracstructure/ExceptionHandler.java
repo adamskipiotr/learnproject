@@ -2,7 +2,6 @@ package com.pada.learnproject.graphqlexample.infracstructure;
 
 import static org.springframework.graphql.execution.ErrorType.INTERNAL_ERROR;
 
-import graphql.ErrorClassification;
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;
 import graphql.schema.DataFetchingEnvironment;

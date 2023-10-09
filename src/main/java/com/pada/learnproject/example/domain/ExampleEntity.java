@@ -10,7 +10,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -28,7 +27,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.Singular;
 import org.hibernate.annotations.SortNatural;
 
 
@@ -44,7 +42,7 @@ import org.hibernate.annotations.SortNatural;
 // AllArgsConstructor in order to be used
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "example_table", indexes = @Index(columnList = "name, value"))
+@Table(name = "example_table")
 public class ExampleEntity {
 
     @Id

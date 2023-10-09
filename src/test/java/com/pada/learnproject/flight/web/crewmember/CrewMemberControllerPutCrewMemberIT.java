@@ -1,10 +1,10 @@
-package com.pada.learnproject.example.web;
+package com.pada.learnproject.flight.web.crewmember;
 
 import static com.pada.learnproject.common.validator.ErrorResponseValidator.validateErrorResponse;
-import static com.pada.learnproject.example.constant.ExampleEntityConstants.Urls.createUrlWithEntityId;
-import static com.pada.learnproject.example.constant.ExampleEntityMother.NON_EXISTING_ID;
-import static com.pada.learnproject.example.constant.ExampleEntityMother.createUpdateExampleRequest;
-import static com.pada.learnproject.example.validator.ExampleValidator.validateUpdateExampleResponse;
+import static com.pada.learnproject.flight.constant.CrewMemberConstants.Urls.createUrlWithEntityId;
+import static com.pada.learnproject.flight.constant.CrewMemberTestValues.NON_EXISTING_ID;
+import static com.pada.learnproject.flight.constant.CrewMemberTestValues.createUpdateCrewMemberRequest;
+import static com.pada.learnproject.flight.validator.CrewMemberValidator.validateUpdateCrewMemberResponse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -12,29 +12,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.pada.learnproject.common.infractructure.ErrorResponse;
 import com.pada.learnproject.common.util.TestUtil;
-import com.pada.learnproject.example.ExampleBaseIT;
-import com.pada.learnproject.example.service.dto.response.ExampleResponse;
+import com.pada.learnproject.flight.service.dto.response.CrewMemberResponse;
+import com.pada.learnproject.flight.web.FlightModuleBaseIT;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
-public class ExampleControllerPutExample extends ExampleBaseIT {
+class CrewMemberControllerPutCrewMemberIT extends FlightModuleBaseIT {
 
     @Test
-    public void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {
+    void shouldReturnUpdatedEntityWhenCorrectRequestProvided() throws Exception {
         var result = mockMvc.perform(
-                put(createUrlWithEntityId(exampleEntity.getId()))
-                    .content(TestUtil.convertObjectToJsonBytes(createUpdateExampleRequest()))
+                put(createUrlWithEntityId(defaultCrewMember.getId()))
+                    .content(TestUtil.convertObjectToJsonBytes(createUpdateCrewMemberRequest()))
                     .contentType(MediaType.APPLICATION_JSON))
             .andReturn()
             .getResponse()
             .getContentAsString();
 
-        var response = objectMapper.readValue(result, ExampleResponse.class);
-        validateUpdateExampleResponse(response);
+        var response = objectMapper.readValue(result, CrewMemberResponse.class);
+        validateUpdateCrewMemberResponse(response);
     }
 
     @Test
-    public void shouldThrowRuntimeExceptionWhenNonExistingIdProvided() throws Exception {
+    void shouldThrowRuntimeExceptionWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
                 get(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())
