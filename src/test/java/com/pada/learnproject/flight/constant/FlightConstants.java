@@ -1,5 +1,7 @@
 package com.pada.learnproject.flight.constant;
 
+import com.pada.learnproject.flight.domain.FlightStatus;
+
 public interface FlightConstants {
 
      class FilteringFields {
@@ -16,5 +18,9 @@ public interface FlightConstants {
          public static String createUrlWithEntityId(Long id){
              return FLIGHTS + "/" + id;
          }
+
+        public static String createUrlWithEntityIdAndStatus(Long id, FlightStatus status){
+            return FLIGHTS + "/" + id + "/" + status;
+        }
     }
 }

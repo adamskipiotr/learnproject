@@ -5,8 +5,10 @@ import static com.pada.learnproject.flight.repository.AirportRepository.Specs.by
 
 import com.pada.learnproject.flight.domain.Airport;
 import com.pada.learnproject.flight.domain.Airport_;
+import com.pada.learnproject.flight.domain.Flight;
 import com.pada.learnproject.flight.domain.criteria.AirportCriteria;
 import com.pada.learnproject.flight.repository.AirportRepository;
+import com.pada.learnproject.flight.service.command.AddFlightCommand;
 import com.pada.learnproject.flight.service.dto.request.AirportRequest;
 import com.pada.learnproject.flight.service.dto.response.AirportListResponse;
 import com.pada.learnproject.flight.service.dto.response.AirportListWrapperResponse;
@@ -25,6 +27,7 @@ public class AirportService {
 
     private final AirportRepository airportRepository;
     private final AirportMapper airportMapper;
+    private final FlightService flightService;
 
     public AirportListWrapperResponse findAirports(Pageable pageable, AirportCriteria airportCriteria) {
         Specification<Airport> airportSpecification = createSpecification(airportCriteria);
@@ -67,4 +70,14 @@ public class AirportService {
         airportRepository.deleteById(id);
         return airportMapper.toResponse(airport);
     }
+
+    public void addFlight(AddFlightCommand addFlightCommand) {
+        Airport airport = airportRepository.findById(addFlightCommand.airportId()).orElseThrow(RuntimeException::new);
+        Flight flight = flightService.findById(addFlightCommand.flightId());
+
+        FlightType flightType = addFlightCommand.flightType();
+        flightType.addFlightToAirport(airport,flight);
+    }
+
+
 }

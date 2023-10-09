@@ -36,7 +36,7 @@ class PassengerControllerPutPassengerIT extends FlightModuleBaseIT {
     @Test
     void shouldThrowRuntimeExceptionWhenNonExistingIdProvided() throws Exception {
         var result = mockMvc.perform(
-                get(createUrlWithEntityId(NON_EXISTING_ID)))
+                put(createUrlWithEntityId(NON_EXISTING_ID)))
             .andDo(print())
             .andExpect(status().isBadRequest())
             .andReturn()

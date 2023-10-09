@@ -3,9 +3,13 @@ package com.pada.learnproject.flight.web;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
+import com.pada.learnproject.flight.domain.FlightStatus;
 import com.pada.learnproject.flight.domain.criteria.FlightCriteria;
 import com.pada.learnproject.flight.service.FlightService;
+import com.pada.learnproject.flight.service.FlightType;
+import com.pada.learnproject.flight.service.command.AddFlightCommand;
 import com.pada.learnproject.flight.service.dto.request.FlightRequest;
+import com.pada.learnproject.flight.service.dto.response.AirportResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightListWrapperResponse;
 import com.pada.learnproject.flight.service.dto.response.FlightResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -37,7 +42,7 @@ public class FlightController {
 
     @GetMapping("/{id}")
     public ResponseEntity<FlightResponse> getFlightById(@PathVariable(name = "id") Long id) {
-        var responseBody = flightService.findById(id);
+        var responseBody = flightService.getById(id);
         return ResponseEntity.status(OK).body(responseBody);
     }
 
@@ -47,11 +52,25 @@ public class FlightController {
         return ResponseEntity.status(CREATED).body(responseBody);
     }
 
+    @PostMapping("/{flightId}/crew-members/{crewMemberId}/")
+    public ResponseEntity<AirportResponse> addFlightToAirport(@PathVariable Long flightId,
+        @PathVariable Long crewMemberId) {
+        flightService.addCrewMember(flightId,crewMemberId);
+        return ResponseEntity.status(OK).body(null);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<FlightResponse> updateFlight(@PathVariable(name = "id") Long id,
         @RequestBody FlightRequest flightRequest) {
         var responseBody = flightService.updateFlight(id, flightRequest);
-        return ResponseEntity.status(CREATED).body(responseBody);
+        return ResponseEntity.status(OK).body(responseBody);
+    }
+
+    @PatchMapping("/{id}/{status}")
+    public ResponseEntity<FlightResponse> changeFlightStatus(@PathVariable(name = "id") Long id,
+        @PathVariable(name = "status") FlightStatus status) {
+        var responseBody = flightService.changeFlightStatus(id, status);
+        return ResponseEntity.status(OK).body(responseBody);
     }
 
     @DeleteMapping("/{id}")

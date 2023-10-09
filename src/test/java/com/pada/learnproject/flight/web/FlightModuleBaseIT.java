@@ -63,16 +63,15 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     protected Flight thirdFlight;
     protected CrewMember thirdCrewMember;
     @Autowired
-    private CrewMemberRepository crewMemberRepository;
-
+    protected CrewMemberRepository crewMemberRepository;
     @Autowired
-    private TicketRepository ticketRepository;
+    protected TicketRepository ticketRepository;
     @Autowired
-    private PassengerRepository passengerRepository;
+    protected PassengerRepository passengerRepository;
     @Autowired
-    private FlightRepository flightRepository;
+    protected FlightRepository flightRepository;
     @Autowired
-    private AirportRepository airportRepository;
+    protected AirportRepository airportRepository;
 
     @BeforeEach
     public void setUpTestData() {
@@ -87,8 +86,6 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
         insertDefaultCrewMember();
         insertSecondCrewMember();
         insertThirdCrewMember();
-
-
 
         insertDefaultPassenger();
         insertSecondPassenger();
@@ -122,6 +119,7 @@ public class FlightModuleBaseIT extends LearnprojectApplicationTests {
     private void insertDefaultCrewMember() {
         defaultCrewMember = createDefaultTestCrewMember(defaultFlight);
         defaultCrewMember = crewMemberRepository.saveAndFlush(defaultCrewMember);
+        defaultFlight = flightRepository.saveAndFlush(defaultFlight);
     }
 
     private void insertSecondAirport() {
