@@ -23,3 +23,11 @@ graphql.servlet.maxQueryDepth: 5
 
 
 spring.jpa.open-in-view: false
+
+com:
+  pada:
+    learnproject:
+      example:
+        change-example-enum:
+#          every 5 minutes between 08:00 and 15:59, Monday - Friday
+          cron-job: 0 */5 8-15 * * 1-5

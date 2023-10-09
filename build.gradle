@@ -80,6 +80,8 @@ dependencies {
     testImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.18.3'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.15.2'
+    // https://mvnrepository.com/artifact/net.javacrumbs.shedlock/shedlock-spring
+    implementation group: 'net.javacrumbs.shedlock', name: 'shedlock-spring', version: '5.5.0'
 
 }
 
