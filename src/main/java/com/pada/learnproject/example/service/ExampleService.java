@@ -6,6 +6,8 @@ import static com.pada.learnproject.example.repository.ExampleEntityRepository.S
 import com.pada.learnproject.example.domain.ExampleCriteria;
 import com.pada.learnproject.example.domain.ExampleEntity;
 import com.pada.learnproject.example.repository.ExampleEntityRepository;
+import com.pada.learnproject.example.service.dto.request.ManyToManyRequest;
+import com.pada.learnproject.example.service.dto.request.ManyToOneRequest;
 import com.pada.learnproject.example.service.dto.request.ExampleRequest;
 import com.pada.learnproject.example.service.dto.response.ExampleListResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
@@ -25,6 +27,9 @@ public class ExampleService {
 
     private final ExampleEntityRepository exampleEntityRepository;
     private final ExampleEntityMapper exampleEntityMapper;
+    private final ManyToOneService manyToOneService;
+    private final ManyToManyService manyToManyService;
+
 
 
     @Transactional
@@ -53,8 +58,6 @@ public class ExampleService {
     @Transactional
     public ExampleResponse addExampleEntity(ExampleRequest exampleRequest) {
         ExampleEntity entity = exampleEntityMapper.toEntity(exampleRequest);
-        //TODO refactor setter
-        entity.getOneToOneEntity().setExampleEntity(entity);
         exampleEntityRepository.save(entity);
         return exampleEntityMapper.toResponse(entity);
     }
@@ -78,6 +81,22 @@ public class ExampleService {
     public ExampleResponse deleteExample(Long id) {
         ExampleEntity entity = exampleEntityRepository.findById(id).orElseThrow(RuntimeException::new);
         exampleEntityRepository.deleteById(id);
+        return exampleEntityMapper.toResponse(entity);
+    }
+
+    @Transactional
+    public ExampleResponse addManyToOneItemToExampleEntity(Long exampleEntityId, ManyToOneRequest manyToOneRequest) {
+        ExampleEntity entity = exampleEntityRepository.findById(exampleEntityId).orElseThrow(RuntimeException::new);
+        var manyToOneEntity = manyToOneService.createManyToOneEntity(manyToOneRequest);
+        entity.addManyToOneEntity(manyToOneEntity);
+        return exampleEntityMapper.toResponse(entity);
+    }
+
+    @Transactional
+    public ExampleResponse addManyToManyItemToExampleEntity(Long exampleEntityId, ManyToManyRequest manyToManyRequest) {
+        ExampleEntity entity = exampleEntityRepository.findById(exampleEntityId).orElseThrow(RuntimeException::new);
+        var manyToManyEntity = manyToManyService.createManyToManyEntity(manyToManyRequest);
+        entity.addManyToManyEntity(manyToManyEntity);
         return exampleEntityMapper.toResponse(entity);
     }
 }

@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.OK;
 import com.pada.learnproject.example.domain.ExampleCriteria;
 import com.pada.learnproject.example.service.ExampleService;
 import com.pada.learnproject.example.service.dto.request.ExampleRequest;
+import com.pada.learnproject.example.service.dto.request.ManyToManyRequest;
 import com.pada.learnproject.example.service.dto.request.ManyToOneRequest;
 import com.pada.learnproject.example.service.dto.response.ExampleListWrapperResponse;
 import com.pada.learnproject.example.service.dto.response.ExampleResponse;
@@ -49,12 +50,18 @@ public class ExamplesController {
         return ResponseEntity.status(CREATED).body(response);
     }
 
-    @PostMapping("/{exampleEntityId}/many-to-ones/{manyToOneId}")
-    public ManyToOneResponse addManyToOneToExample(@PathVariable(name = "exampleEntityId") Long exampleEntityId,
-        @PathVariable(name = "manyToOneId") Long manyToOneId, @RequestBody ManyToOneRequest manyToOneRequest) {
-        // return manyToOneService.addManyToOneToExample(value, manyToOneRequest);
-        //TODO to implement
-        return null;
+    @PostMapping("/{exampleEntityId}/many-to-ones")
+    public ResponseEntity<ExampleResponse> addManyToOneToExample(@PathVariable(name = "exampleEntityId") Long exampleEntityId,
+        @RequestBody ManyToOneRequest manyToOneRequest) {
+        ExampleResponse response = exampleEntityService.addManyToOneItemToExampleEntity(exampleEntityId, manyToOneRequest);
+        return ResponseEntity.status(CREATED).body(response);
+    }
+
+    @PostMapping("/{exampleEntityId}/many-to-manies")
+    public ResponseEntity<ExampleResponse> addManyToManyToExample(@PathVariable(name = "exampleEntityId") Long exampleEntityId,
+        @RequestBody ManyToManyRequest manyToManyRequest) {
+        ExampleResponse response = exampleEntityService.addManyToManyItemToExampleEntity(exampleEntityId, manyToManyRequest);
+        return ResponseEntity.status(CREATED).body(response);
     }
 
     @PutMapping("/{id}")
