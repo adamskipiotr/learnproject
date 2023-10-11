@@ -1,18 +1,11 @@
-CREATE TYPE crew_member_rank as ENUM ('FIRST_OFFICER','SENIOR_FIRST_OFFICER','CAPTAIN');
+CREATE TYPE flight_status as ENUM ('SCHEDULED','ONGOING','FINISHED', 'CANCELLED', 'DELAYED', 'OTHER');
 
-CREATE SEQUENCE crew_member_id_seq START 1000 INCREMENT 10;
+CREATE SEQUENCE flight_id_seq START 1000 INCREMENT 10;
 
-CREATE TABLE IF NOT EXISTS flights__crew_members
+CREATE TABLE IF NOT EXISTS flight
 (
-    flight_id BIGINT,
-    crew_member_id BIGINT
-);
-
-CREATE TABLE IF NOT EXISTS crew_member
-(
-    id BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('crew_member_id_seq'),
-    first_name VARCHAR(255),
-    last_name VARCHAR(255),
-    crew_member_rank VARCHAR(255),
-    age INTEGER
+    id  BIGINT NOT NULL PRIMARY KEY DEFAULT nextval('flight_id_seq'),
+    flight_status VARCHAR(255),
+    flight_start TIMESTAMP(6),
+    flight_end TIMESTAMP(6)
 );
