@@ -1,2 +1,4 @@
 rootProject.name = 'learnproject'
 include 'grpc-client'
+include 'main-module'
+
