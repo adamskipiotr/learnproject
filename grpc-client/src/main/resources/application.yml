@@ -17,14 +17,10 @@ spring:
   graphql:
     graphiql.enabled: true
     graphiql.path: /graphiql
-
+  main:
+    allow-bean-definition-overriding: true
 
 graphql.servlet.maxQueryDepth: 5
-
-
-spring.jpa.open-in-view: false
-
-spring.main.allow-bean-definition-overriding: true
 
 grpc:
   client:
