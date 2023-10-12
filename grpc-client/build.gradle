@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'com.github.ben-manes.versions' version '0.39.0'
+}
+
+group = 'com.pada'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(path: ':')
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:3.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-graphql:3.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.1.4'
+    implementation 'net.devh:grpc-server-spring-boot-starter:2.15.0.RELEASE'
+    implementation 'net.devh:grpc-client-spring-boot-starter:2.15.0.RELEASE'
+    implementation 'net.devh:grpc-client-spring-boot-autoconfigure:2.15.0.RELEASE'
+    implementation 'net.devh:grpc-common-spring-boot:2.15.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:3.1.4'
+    implementation 'org.springframework.boot:spring-boot:3.1.4'
+    implementation 'org.springframework:spring-beans:6.0.12'
+    implementation 'org.springframework:spring-context:6.0.12'
+    implementation 'org.springframework:spring-web:6.0.12'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.4'
+
+    runtimeOnly 'org.projectlombok:lombok:1.18.30'
+    runtimeOnly 'org.postgresql:postgresql:42.6.0'
+    runtimeOnly 'io.grpc:grpc-netty-shaded:1.58.0'
+    // https://mvnrepository.com/artifact/com.graphql-java-kickstart/playground-spring-boot-starter
+    runtimeOnly group: 'com.graphql-java-kickstart', name: 'playground-spring-boot-starter', version: '11.1.0'
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    runtimeOnly group: 'org.flywaydb', name: 'flyway-core', version: '9.22.2'
+    // https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa
+    runtimeOnly group: 'org.springframework.data', name: 'spring-data-jpa', version: '3.1.4'
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+    runtimeOnly group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.1.Final'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding
+    runtimeOnly group: 'org.projectlombok', name: 'lombok-mapstruct-binding', version: '0.2.0'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+    runtimeOnly group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.15.2'
+    // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+    runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.20.1'
+
+    //Needed for Specification<> to generate metamodel classes for entities
+    annotationProcessor 'org.hibernate:hibernate-jpamodelgen:6.3.1.Final'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.4'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    // https://mvnrepository.com/artifact/org.testcontainers/testcontainers
+    testRuntimeOnly group: 'org.testcontainers', name: 'testcontainers', version: '1.19.1'
+    // https://mvnrepository.com/artifact/org.testcontainers/postgresql
+    testRuntimeOnly group: 'org.testcontainers', name: 'postgresql', version: '1.19.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+dependencyUpdates {
+    outputFormatter = 'json'
+}

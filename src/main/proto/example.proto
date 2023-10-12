@@ -1,0 +1,24 @@
+// Which syntax this file uses.
+syntax = "proto3";
+
+// Specify the package we want to use for our generated Java classes.
+package com.pada.learnproject;
+
+// Everything will be generated in individual files.
+// By default, the compiler generates all the Java code in a single Java file.
+option java_multiple_files = true;
+
+// Request payload
+message HelloRequest {
+  string name = 1;
+}
+
+// Response payload
+message HelloResponse {
+  string greeting = 1;
+}
+
+// Service contract
+service HelloService {
+  rpc hello(HelloRequest) returns (HelloResponse);
+}
