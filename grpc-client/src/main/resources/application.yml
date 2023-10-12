@@ -25,3 +25,17 @@ graphql.servlet.maxQueryDepth: 5
 spring.jpa.open-in-view: false
 
 spring.main.allow-bean-definition-overriding: true
+
+grpc:
+  client:
+    grpc-client:
+      address: 'static://127.0.0.1:9090'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: 9091
+
+server:
+  port: 8081
+
